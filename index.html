@@ -6,6 +6,15 @@
   <title>Hotel Report Automation</title>
   <meta name="description" content="Automated daily hotel reporting workflows that turn occupancy, ADR, pickup, forecast, rates, and exceptions into decision-ready operating briefs.">
   <link rel="canonical" href="https://hotelreportautomation.com/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hotelreportautomation.com/">
+  <meta property="og:title" content="Hotel Report Automation — Automated daily reporting for hotel teams">
+  <meta property="og:description" content="We automate the manual steps behind hotel reporting so revenue and operations teams start with a decision-ready view every morning. No more spreadsheet assembly.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hotel Report Automation">
+  <meta name="twitter:description" content="Automated daily hotel reporting. No more manual assembly — just a decision-ready morning view for revenue and ops teams.">
   <style>
     :root {
       --bg: #f6efe3;
@@ -181,6 +190,12 @@
       .metrics { grid-template-columns: 1fr; }
       .metric { border-right: 0; }
     }
+    details summary { list-style: none; cursor: pointer; font-size: 17px; font-weight: 750; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "+"; font-size: 22px; font-weight: 300; color: var(--muted); flex-shrink: 0; margin-left: 16px; }
+    details[open] summary::after { content: "−"; }
+    details[open] summary { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+    details p { margin: 0; padding: 16px 24px 20px; color: var(--muted); }
   </style>
 </head>
 <body>
@@ -261,6 +276,28 @@
           <div style="flex:1;min-width:200px;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--paper)"><b style="display:block;font-size:14px;margin-bottom:5px">Positive signal</b><span style="color:var(--muted);font-size:13px;line-height:1.5">7-day pickup tracking ahead of pace across 6 of 9 properties.</span></div>
           <div style="flex:1;min-width:200px;padding:16px 18px;border:1px solid var(--line);border-radius:16px;background:var(--paper)"><b style="display:block;font-size:14px;margin-bottom:5px">Needs review</b><span style="color:var(--muted);font-size:13px;line-height:1.5">Two shoulder dates show soft demand with meaningful availability remaining.</span></div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Common questions.</h2>
+      <div style="display:grid;gap:8px;margin-top:28px;max-width:860px">
+        <details style="border:1px solid var(--line);border-radius:18px;background:rgba(255,250,241,.82);overflow:hidden">
+          <summary>What reporting systems and tools do you work with?</summary>
+          <p>The most common starting point is a team pulling from PMS exports, spreadsheet-based reports, or recurring email outputs. We work with Google Sheets, Excel, scheduled PMS exports, rate shop outputs, and channel manager reports. If the workflow involves pulling from a system and manually combining the results, that is what we fix. Direct PMS access is usually not required.</p>
+        </details>
+        <details style="border:1px solid var(--line);border-radius:18px;background:rgba(255,250,241,.82);overflow:hidden">
+          <summary>How long does a pilot take?</summary>
+          <p>Most pilots deliver a working output in 2 to 4 weeks. The first week is process mapping and scope confirmation. The second week is building and testing the automation. Simpler workflows with clean source access can move faster. We agree on the timeline before anything starts.</p>
+        </details>
+        <details style="border:1px solid var(--line);border-radius:18px;background:rgba(255,250,241,.82);overflow:hidden">
+          <summary>Do you need direct access to our PMS or internal systems?</summary>
+          <p>Usually not. We work from whatever the team already exports or receives — files, scheduled email reports, or spreadsheet outputs. If your daily reporting process starts with exports, we can typically build on top of those without needing credentials to the underlying system.</p>
+        </details>
+        <details style="border:1px solid var(--line);border-radius:18px;background:rgba(255,250,241,.82);overflow:hidden">
+          <summary>How is the pilot priced?</summary>
+          <p>Pilots are fixed-scope projects, not hourly engagements. The scope and price depend on the number of source reports, the complexity of the assembly, and the output format. We agree on that before anything starts. The workflow review call is where we size it together.</p>
+        </details>
       </div>
     </section>
 
