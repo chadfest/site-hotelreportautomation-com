@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Report Automation</title>
+  <meta name="description" content="Automate the manual steps behind daily hotel reporting across occupancy, RevPAR, pickup, forecast, rates, and exceptions.">
+  <style>
+    :root {
+      --bg: #f7f1e7;
+      --ink: #18231f;
+      --muted: #5e6a63;
+      --card: #fffaf2;
+      --line: #ded3c3;
+      --accent: #9b542f;
+      --accent-dark: #67351f;
+      --sea: #1f5961;
+      --green: #dcead8;
+      --shadow: 0 28px 80px rgba(47, 38, 26, 0.13);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 14% 6%, rgba(155, 84, 47, 0.15), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(31, 89, 97, 0.15), transparent 30%),
+        linear-gradient(180deg, #fbf6ed 0%, var(--bg) 48%, #efe2d1 100%);
+      line-height: 1.55;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .nav {
+      display: flex; justify-content: space-between; align-items: center; gap: 20px;
+      margin: 18px auto 0; padding: 14px 16px; border: 1px solid var(--line);
+      border-radius: 999px; background: rgba(255, 250, 242, 0.78); backdrop-filter: blur(14px);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.02em; }
+    .mark { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; color: #fff8ee; background: linear-gradient(145deg, var(--accent), var(--accent-dark)); }
+    .nav a { text-decoration: none; font-weight: 750; font-size: 14px; color: var(--muted); }
+    .nav .button { color: white; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+    .hero { padding: 92px 0 70px; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 46px; align-items: center; }
+    .eyebrow { display: inline-flex; padding: 8px 12px; border-radius: 999px; color: var(--accent-dark); background: rgba(155, 84, 47, 0.11); font-size: 12px; font-weight: 850; letter-spacing: 0.08em; text-transform: uppercase; }
+    h1 { margin: 18px 0 18px; font-size: clamp(45px, 7vw, 82px); line-height: 0.93; letter-spacing: -0.07em; }
+    .lead { font-size: clamp(18px, 2vw, 22px); color: var(--muted); max-width: 660px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 18px; border-radius: 999px; text-decoration: none; font-weight: 850; }
+    .primary { color: white; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); box-shadow: 0 14px 34px rgba(103, 53, 31, 0.22); }
+    .secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255, 250, 242, 0.72); }
+    .panel { position: relative; padding: 26px; border: 1px solid var(--line); border-radius: 30px; background: rgba(255, 250, 242, 0.84); box-shadow: var(--shadow); overflow: hidden; }
+    .panel::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(31, 89, 97, 0.08), transparent 45%); pointer-events: none; }
+    .report-card { position: relative; display: grid; gap: 14px; }
+    .row { display: flex; justify-content: space-between; gap: 20px; padding: 16px; border: 1px solid rgba(222, 211, 195, 0.9); border-radius: 18px; background: #fffdf8; }
+    .row span { color: var(--muted); font-size: 13px; font-weight: 750; }
+    .row strong { font-size: 24px; letter-spacing: -0.04em; }
+    .section { padding: 56px 0; }
+    .section h2 { margin: 0 0 14px; font-size: clamp(30px, 4vw, 48px); line-height: 1; letter-spacing: -0.05em; }
+    .section p { color: var(--muted); font-size: 17px; max-width: 760px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+    .card { min-height: 190px; padding: 24px; border: 1px solid var(--line); border-radius: 24px; background: rgba(255, 250, 242, 0.8); box-shadow: 0 16px 40px rgba(47, 38, 26, 0.07); }
+    .card h3 { margin: 0 0 12px; font-size: 21px; letter-spacing: -0.03em; }
+    .card p { margin: 0; font-size: 15px; }
+    .steps { display: grid; gap: 12px; margin-top: 28px; max-width: 860px; }
+    .step { display: grid; grid-template-columns: 44px 1fr; gap: 16px; align-items: start; padding: 20px; border: 1px solid var(--line); border-radius: 20px; background: #fffaf2; }
+    .num { width: 44px; height: 44px; border-radius: 14px; display: grid; place-items: center; color: white; background: var(--sea); font-weight: 900; }
+    .cta { margin: 58px 0; padding: 42px; border-radius: 32px; background: #17231f; color: #fff8ee; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .cta p { color: rgba(255, 248, 238, 0.76); margin: 8px 0 0; }
+    footer { padding: 28px 0 42px; color: var(--muted); font-size: 14px; }
+    @media (max-width: 860px) {
+      .hero, .grid, .cta { grid-template-columns: 1fr; }
+      .hero { padding-top: 56px; }
+      .nav a:not(.button) { display: none; }
+      .cta { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <div class="brand"><div class="mark">HR</div><div>Hotel Report Automation</div></div>
+    <div><a href="#pilot">Pilot</a> <a class="button" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20process%20review">Book a review</a></div>
+  </nav>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Daily reporting automation for hotel teams</div>
+        <h1>Stop building the morning report by hand.</h1>
+        <p class="lead">We automate the manual steps across occupancy, revenue, RevPAR, pickup, forecast, rate, and exception reporting so revenue and operations teams start each morning with a reliable cross-property view.</p>
+        <div class="actions">
+          <a class="button primary" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20process%20review">Book a reporting process review</a>
+          <a class="button secondary" href="#pilot">See the pilot</a>
+        </div>
+      </div>
+      <aside class="panel" aria-label="Example reporting view">
+        <div class="report-card">
+          <div class="row"><span>Portfolio occupancy</span><strong>72.4%</strong></div>
+          <div class="row"><span>Pickup exceptions</span><strong>9</strong></div>
+          <div class="row"><span>Forecast gaps</span><strong>4 hotels</strong></div>
+          <div class="row"><span>Manual assembly</span><strong>Removed</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section">
+      <h2>Most teams do not have a reporting problem. They have a manual process problem.</h2>
+      <p>The morning view often depends on someone pulling multiple recurring reports, combining them manually, formatting the output, and sending it to the team. That means less time acting on the numbers and more time producing the view.</p>
+      <div class="grid">
+        <div class="card"><h3>Fragmented source reports</h3><p>Occupancy, pickup, forecast, rates, and exceptions often live in separate exports, systems, or inboxes.</p></div>
+        <div class="card"><h3>Inconsistent review</h3><p>When bandwidth gets tight, teams review fewer properties or skip the deeper exception work.</p></div>
+        <div class="card"><h3>Slow morning visibility</h3><p>The team waits for the report instead of starting the day with the operating view already complete.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="pilot">
+      <h2>A fixed-scope pilot that removes the manual steps.</h2>
+      <p>We start with one high-value daily reporting workflow, map the inputs and manual handoffs, then deliver the completed morning result in the format your team will actually use.</p>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><div><strong>Map the current process.</strong><br>Source reports, recurring steps, handoffs, spreadsheet work, and final output.</div></div>
+        <div class="step"><div class="num">2</div><div><strong>Automate the assembly.</strong><br>Remove the gathering, combining, formatting, and file movement that should not be manual.</div></div>
+        <div class="step"><div class="num">3</div><div><strong>Deliver the morning view.</strong><br>Spreadsheet, dashboard, scheduled email, folder output, or lightweight internal tool.</div></div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div>
+        <h2>Find the best reporting process to automate first.</h2>
+        <p>Start with a review of where manual reporting work is happening and which workflow should become the first fixed-scope pilot.</p>
+      </div>
+      <a class="button primary" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20process%20review">Book a review</a>
+    </section>
+  </main>
+
+  <footer class="wrap">Hotel Report Automation. Built for hotel management teams with recurring cross-property reporting work.</footer>
+</body>
+</html>
