@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Hotel Tech Stack in 2026: An Honest Assessment | Hotel Report Automation</title>
+  <meta name="description" content="A category-by-category look at what the hotel tech stack actually does well, where it falls short, and the integration gap that no vendor has solved — for multi-property operators who want a clear-eyed view.">
+  <link rel="canonical" href="https://hotelreportautomation.com/blog/hotel-tech-stack-2026/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hotelreportautomation.com/blog/hotel-tech-stack-2026/">
+  <meta property="og:title" content="The Hotel Tech Stack in 2026: An Honest Assessment">
+  <meta property="og:description" content="A category-by-category look at what hotel tech does well, where it falls short, and the gap that no vendor has solved.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Hotel Tech Stack in 2026: An Honest Assessment","author":{"@type":"Person","name":"Chandler Mahaney"},"publisher":{"@type":"Organization","name":"Hotel Report Automation"},"datePublished":"2026-04-18","url":"https://hotelreportautomation.com/blog/hotel-tech-stack-2026/"}</script>
+  <style>
+    :root { --bg: #f6efe3; --paper: #fffaf1; --ink: #17221e; --muted: #5e6c64; --line: #ded1bf; --harbor: #174f58; --harbor-dark: #0d3037; --copper: #a95732; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%), radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%), linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%); line-height: 1.7; }
+    a { color: var(--harbor); }
+    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    .article-wrap { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 18px auto 0; padding: 13px 16px; border: 1px solid rgba(222, 209, 191, 0.9); border-radius: 999px; background: rgba(255, 250, 241, 0.82); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .navlinks { display: flex; align-items: center; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
+    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+    .article { padding: 56px 0 80px; }
+    .breadcrumb { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--harbor); }
+    .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .cat { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(23, 79, 88, 0.1); color: var(--harbor); }
+    .read-time, .byline { font-size: 14px; color: var(--muted); }
+    h1 { font-size: clamp(30px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 22px; }
+    .lede { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 32px; line-height: 1.6; }
+    h2 { font-size: clamp(21px, 2.5vw, 30px); line-height: 1.18; letter-spacing: -0.018em; margin: 52px 0 16px; padding-top: 12px; border-top: 1px solid var(--line); }
+    h3 { font-size: 18px; line-height: 1.3; letter-spacing: -0.01em; margin: 28px 0 10px; color: var(--harbor); }
+    p { font-size: 17px; line-height: 1.78; margin: 0 0 20px; color: var(--ink); }
+    .callout { margin: 32px 0; padding: 22px 26px; border-left: 4px solid var(--harbor); border-radius: 0 14px 14px 0; background: rgba(23, 79, 88, 0.06); }
+    .callout p { margin: 0; font-size: 16px; color: var(--muted); }
+    .callout p + p { margin-top: 12px; }
+    .tool-grid { display: grid; gap: 14px; margin: 20px 0 32px; }
+    .tool-card {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+      background: rgba(255, 250, 241, 0.88);
+    }
+    .tool-label {
+      padding: 18px 18px;
+      background: rgba(23, 79, 88, 0.05);
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .tool-label strong { display: block; font-size: 15px; color: var(--ink); line-height: 1.3; }
+    .tool-label span { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); }
+    .tool-body { padding: 18px 20px; }
+    .tool-body p { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.65; }
+    .verdict {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+    .v-strong { background: rgba(31, 111, 84, 0.1); color: #1f6f54; }
+    .v-solid { background: rgba(23, 79, 88, 0.1); color: var(--harbor); }
+    .v-watch { background: rgba(169, 87, 50, 0.1); color: #743d24; }
+    .v-caution { background: rgba(143, 47, 35, 0.1); color: #8f2f23; }
+    .layer-map {
+      margin: 28px 0 36px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .layer-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .layer-row:last-child { border-bottom: none; }
+    .layer-name {
+      padding: 14px 16px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--harbor);
+      background: rgba(23, 79, 88, 0.05);
+      border-right: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+    }
+    .layer-desc {
+      padding: 14px 18px;
+      font-size: 14px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+    }
+    .layer-row.gap .layer-name { color: var(--copper); background: rgba(169, 87, 50, 0.06); }
+    .layer-row.gap .layer-desc { color: var(--copper); background: rgba(169, 87, 50, 0.04); font-weight: 750; }
+    .cta-block { margin: 52px 0 0; padding: 36px 40px; border-radius: 22px; background: #14221e; color: #fffaf1; }
+    .cta-block h2 { color: #fffaf1; margin: 0 0 10px; font-size: clamp(20px, 2.4vw, 28px); border: none; padding: 0; }
+    .cta-block p { color: rgba(255, 250, 241, 0.75); margin-bottom: 20px; font-size: 16px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); text-decoration: none; margin-top: 40px; }
+    .back-link:hover { color: var(--harbor); }
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--harbor); }
+    @media (max-width: 640px) {
+      .navlinks a:not(.book) { display: none; }
+      .cta-block { padding: 26px; }
+      .tool-card { grid-template-columns: 1fr; }
+      .tool-label { border-right: none; border-bottom: 1px solid var(--line); }
+      .layer-row { grid-template-columns: 1fr; }
+      .layer-name { border-right: none; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
+        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
+        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
+        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
+      </svg>
+      Hotel Report Automation
+    </a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/morning-report-workflow-audit/">Free tools</a>
+      <a href="/#pilot">Pilot</a>
+      <a class="book" href="/#book">Book a review</a>
+    </div>
+  </nav>
+
+  <main class="article-wrap">
+    <article class="article">
+      <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Hotel Tech</div>
+
+      <div class="post-meta">
+        <span class="cat">Hotel Tech</span>
+        <span class="read-time">12 min read</span>
+        <span class="byline">by Chandler Mahaney &middot; April 18, 2026</span>
+      </div>
+
+      <h1>The Hotel Tech Stack in 2026: An Honest Assessment</h1>
+
+      <p class="lede">The question I hear most from multi-property operators isn't "which tools should we use?" It's "we already have all these tools — why doesn't it feel like they work together?" That's the right question, and the honest answer is: they don't. Not because any individual tool is bad, but because the stack was never designed as a system. It was assembled one vendor relationship at a time, and the seams between the pieces are where the work is still happening manually every morning.</p>
+
+      <p>What follows is a category-by-category assessment of the hotel tech stack as it actually exists in 2026 — what each layer does well, where it falls short, and what I'd actually recommend if you're making decisions today. This is written for multi-property independent and management company operators, not for the enterprise resort groups with dedicated IT and revenue analytics teams. The recommendations are different at that scale.</p>
+
+      <p>One caveat before diving in: I come to hotel tech from a software background, which means I evaluate these tools partially on how well they produce usable, automatable outputs — not just on their feature sets. A tool that has excellent revenue intelligence but exports data in formats that require an hour of manual cleaning every morning is a worse tool, in practical terms, than one that produces cleaner, more predictable outputs even if the features are more limited. That lens shapes some of what follows.</p>
+
+      <h2>How to think about the stack in layers</h2>
+
+      <p>Before evaluating individual tools, it helps to think about the stack as four distinct layers. Most technology evaluation conversations conflate them, which is part of why operators end up with tools that don't connect.</p>
+
+      <div class="layer-map">
+        <div class="layer-row">
+          <div class="layer-name">Data capture</div>
+          <div class="layer-desc">PMS, channel manager, booking engine — tools that record what's happening. This layer is generally well-solved. The data exists.</div>
+        </div>
+        <div class="layer-row">
+          <div class="layer-name">Intelligence</div>
+          <div class="layer-desc">RMS, rate shop, demand forecasting — tools that interpret the data and surface recommendations. Improving rapidly. The better tools here are genuinely good.</div>
+        </div>
+        <div class="layer-row">
+          <div class="layer-name">Reporting & delivery</div>
+          <div class="layer-desc">Dashboards, consolidated views, morning briefs — how the team actually sees and acts on the data. Fragmented. Most operators patch this with spreadsheets.</div>
+        </div>
+        <div class="layer-row gap">
+          <div class="layer-name">Assembly (the gap)</div>
+          <div class="layer-desc">The step between data capture, intelligence, and reporting. Nobody owns this. It's still manual at most mid-market groups — and it's where the daily time cost lives.</div>
+        </div>
+      </div>
+
+      <p>Most technology investment in the hotel industry goes into layers one and two. The assembly layer — the thing that connects them into a usable daily view — remains unowned. That's the context for everything that follows.</p>
+
+      <h2>Property Management Systems</h2>
+
+      <p>The PMS is the foundation. Everything else is downstream from it. Getting this wrong is expensive and painful to reverse, so it's worth being honest about what each tier actually delivers.</p>
+
+      <h3>Oracle OPERA Cloud</h3>
+      <p>The enterprise standard, and for large full-service and branded properties, the right choice. OPERA's depth — rate plan management, group block handling, multi-property configuration, integrations with major OTAs and GDS channels — is genuinely unmatched at scale. The implementation is expensive and takes months. The daily exports are reliable but often formatted in ways that require cleaning before they're usable downstream. For operators running 20+ full-service properties with dedicated IT, OPERA Cloud is probably the right answer and the switching cost is high enough that you shouldn't leave without a compelling reason.</p>
+      <p>For operators under that scale, the overhead of OPERA — implementation cost, training, ongoing support contracts — often exceeds the value of its more sophisticated features. The complexity that makes it powerful also makes it slow to adapt when your workflow needs change.</p>
+      <span class="verdict v-solid">Best for: branded full-service, 20+ properties, dedicated IT</span>
+
+      <h3>Mews</h3>
+      <p>The most technically modern PMS in the market right now. European-founded, expanded aggressively in the US over the last three years, and the architecture shows what's possible when a PMS is built API-first rather than retrofitted. The integration ecosystem around Mews is genuinely impressive — more open than most competitors, with well-documented APIs and a marketplace of connectors that actually work.</p>
+      <p>The limitations are real. Mews is strongest for independent, boutique, and lifestyle properties. The group block and meeting/events functionality is still maturing compared to OPERA. Reporting is improving but still lags the depth of more established competitors. If your portfolio is heavy on full-service properties with complex group business, Mews may not be the right fit yet. If you're running a collection of modern independent properties and care about having a tech stack that's actually connectable, it's the most interesting PMS option in the mid-market right now.</p>
+      <span class="verdict v-strong">Best for: independent/boutique portfolios, tech-forward operators, moderate group business</span>
+
+      <h3>Cloudbeds</h3>
+      <p>The most complete all-in-one solution for independent properties in the under-150-room tier. Cloudbeds bundles PMS, channel manager, booking engine, and a basic rate intelligence layer into a single platform — which is genuinely valuable for operators who don't want to manage multiple vendor relationships and integrations. The tradeoff is depth: each individual component is capable but not best-in-class. If you compare Cloudbeds' channel management to SiteMinder, or its revenue intelligence to Lighthouse, Cloudbeds comes up short on features. If you compare the total cost and operational overhead of running Cloudbeds versus piecing together four best-of-breed tools, Cloudbeds often wins.</p>
+      <p>The challenge at portfolio scale is that the all-in-one model that's an asset for a single property becomes a constraint when you're trying to build consistent reporting across properties with different configurations. The exports are workable but not always consistent across property types.</p>
+      <span class="verdict v-solid">Best for: independent properties under 150 rooms, operators who want simplicity over depth</span>
+
+      <h3>Maestro</h3>
+      <p>Consistently underrated in industry conversations, particularly by people who haven't used it. Maestro has one of the deepest installed bases among multi-property independent hotel groups in North America — operators who've been on the system for 10 or 15 years and stay because it handles the complexity of their specific operation well. The UI is dated. The onboarding is not smooth. The feature depth in areas like group business, spa/activities, and multi-property rate management is genuinely strong.</p>
+      <p>From an automation standpoint, Maestro's scheduled exports are reliable and consistent — which matters more than it sounds. If the morning export arrives at the same time, in the same format, every day, it's automatable. That's not universal across PMS platforms.</p>
+      <span class="verdict v-solid">Best for: established multi-property independent operators, full-service properties with complex ancillary revenue</span>
+
+      <h2>Revenue Management Systems</h2>
+
+      <p>The RMS category has had the most interesting development in the past three years. The legacy players are still the most capable, but the gap between enterprise and mid-market is closing faster than it used to.</p>
+
+      <h3>IDeaS (SAS)</h3>
+      <p>The standard-bearer. IDeaS G3 is the most sophisticated automated revenue management system available, and the ROI data across large hotel portfolios is well-documented. The system's ability to handle complex demand patterns — citywide events, compression nights, segmentation shifts — is genuinely ahead of most competitors. The price point reflects this, and so does the implementation complexity. Getting real value from IDeaS requires a revenue manager who knows how to configure and monitor it, not just someone who can read the recommendations it produces.</p>
+      <p>The honest assessment: IDeaS is the right tool for operators with the portfolio scale and revenue management sophistication to use it properly. For groups under 10 properties, or without a dedicated RM who's comfortable working at that level of configuration, you're paying enterprise prices for capabilities you'll probably underutilize.</p>
+      <span class="verdict v-strong">Best for: 10+ property groups with dedicated revenue management, sophisticated demand patterns</span>
+
+      <h3>Duetto</h3>
+      <p>Duetto occupies a distinct position in the market — particularly strong with independent hotels and resort properties where the revenue management philosophy around open pricing (rather than rate tiers) aligns with the product's design. The OpenRates approach gives revenue managers more flexibility than traditional BAR-ladder systems, which is genuinely valuable for properties with complex, variable demand. Duetto's multi-property capabilities are also strong, with portfolio-level views that IDeaS doesn't match as cleanly for independent groups.</p>
+      <p>The limitation is the same as IDeaS: this is a serious revenue management tool that requires serious revenue management investment to realize its value. The interface has improved considerably over the last two years but it still has a learning curve. Operators who treat an RMS as a set-and-forget autopilot tend to underperform regardless of which system they're on, but that's especially true with Duetto.</p>
+      <span class="verdict v-strong">Best for: sophisticated independent and resort portfolios, operators committed to open pricing strategy</span>
+
+      <h3>Atomize</h3>
+      <p>The most interesting mid-market option right now. Atomize was built from the ground up around automation — the system is designed to update rates automatically based on demand signals without requiring constant manual intervention. For operators who want a capable RMS without the configuration overhead of IDeaS or Duetto, Atomize hits a real gap in the market. It's not as sophisticated as the enterprise options in handling complex demand patterns, but for most independent properties with relatively standard transient demand mixes, it doesn't need to be.</p>
+      <p>The UI is genuinely good — probably the best in the RMS category for operators who aren't full-time revenue managers. The API is well-structured and the exports are clean. Worth serious consideration for independent portfolios in the 5–15 property range.</p>
+      <span class="verdict v-strong">Best for: 5–15 property independent groups, operators without dedicated full-time RM</span>
+
+      <h3>Pace</h3>
+      <p>The newest of the substantive RMS options, and the one I watch most closely from a technology standpoint. Pace was built with a modern data architecture from day one — no legacy codebase carrying forward 20-year-old assumptions about how hotel pricing works. The demand forecasting approach uses different methodology than traditional RMS platforms, and the early results for the properties that have adopted it are interesting. Still proving itself at scale, but the product direction and technical foundation are both more credible than most new entrants in this space.</p>
+      <span class="verdict v-watch">Worth watching: strong technical foundation, still building the track record</span>
+
+      <h2>Rate Intelligence</h2>
+
+      <p>The rate shop category has consolidated significantly, and the category leader has been expanding its ambitions considerably.</p>
+
+      <h3>Lighthouse (formerly OTA Insight)</h3>
+      <p>The dominant platform in rate intelligence for mid-market and independent hotels, and for good reason. The core product — real-time competitive rate tracking across OTA channels, forward-looking demand indicators, parity monitoring — is excellent. The data quality is high, the interface is clean, and the scheduled export functionality is reliable enough to automate around.</p>
+      <p>Where it gets more complicated is in Lighthouse's expanding ambitions. The company has been investing heavily in becoming a broader revenue intelligence platform — adding business intelligence dashboards, market demand data, and tools that start to overlap with what an RMS does. Some of this is genuinely useful. Some of it creates the impression of integration that doesn't fully deliver yet. The rate shop is the product I'd pay for with confidence. The broader analytics layer is improving but I'd evaluate it carefully against what you already have before adding it as a reporting layer.</p>
+      <span class="verdict v-strong">Best for: almost everyone who needs rate intelligence; the reliable category standard</span>
+
+      <h3>RateGain</h3>
+      <p>A comprehensive platform with a larger product suite than most operators need — rate shop, channel management, demand forecasting, reputation management, and more. The strength is breadth; the limitation is that the individual components don't always match the depth of best-in-class point solutions. For operators who value having everything in one relationship and one invoice, RateGain is worth evaluating. For operators who want the best rate shop and are willing to manage multiple vendors, Lighthouse is usually the sharper choice.</p>
+      <span class="verdict v-solid">Best for: operators who want a broad suite from a single vendor, particularly in international markets</span>
+
+      <h2>The gap nobody is solving</h2>
+
+      <p>Here's what strikes me about this stack as someone who thinks about workflow integration: every category above is doing its job reasonably well. The PMS captures and manages operating data. The RMS produces pricing recommendations. The rate shop tracks competitive positioning. The channel manager handles distribution.</p>
+
+      <p>But none of them are responsible for the step that happens every morning between their outputs and the team's working view. The PMS produces an export. The rate shop produces an export. The RMS has a dashboard somewhere. The channel manager has its own interface. And someone — usually a revenue manager or ops coordinator — opens all of those separately, combines them manually into a spreadsheet or email, and sends it out before the morning meeting.</p>
+
+      <div class="callout">
+        <p>The vendors know this gap exists. Some of them are trying to solve it by expanding their platforms — Lighthouse into BI, Actabl into consolidated operations reporting, various others into "connected hospitality" dashboards. The honest assessment of most of these expansions is that they're adding a presentation layer on top of the fragmentation rather than fixing the assembly problem underneath it.</p>
+        <p>A true integration would mean the data flows automatically from each source into a combined morning view without human intervention. That requires either a central platform that all your sources push data into — which creates vendor lock-in and significant implementation overhead — or a lightweight automation layer that works from the existing exports. The second approach is the one I build, and the reason I think it's the more practical solution for most mid-market groups is that it doesn't require replacing anything in the stack that's already working.</p>
+      </div>
+
+      <h2>What I'd actually prioritize if I were making decisions today</h2>
+
+      <p>For a multi-property independent or management company group in the 5–30 property range, the technology priorities I'd argue for are:</p>
+
+      <p><strong>Get the PMS right first.</strong> If you're on a platform that produces unreliable exports, has poor API access, or requires significant manual work to get usable data out of, fix that before investing in intelligence or reporting layers. Everything downstream depends on clean, consistent data from the PMS. Mews and Maestro are the two mid-market platforms I'd look at most closely depending on property type.</p>
+
+      <p><strong>Lighthouse for rate intelligence, full stop.</strong> The competitive rate shop is the highest-frequency, highest-impact external data input in revenue management. Lighthouse is the most reliable platform for this and the export quality is good. This is not a close call for most operators.</p>
+
+      <p><strong>Be thoughtful about RMS timing.</strong> The case for an RMS is strongest when you have consistent occupancy patterns, a revenue manager who can configure and monitor it, and enough rate decisions being made daily that automation produces a measurable return. For some operators, that's immediately. For others — particularly those whose biggest problem is that the team can't see the data they already have — the RMS investment comes after you've fixed the visibility layer.</p>
+
+      <p><strong>Don't add a reporting dashboard before fixing the assembly.</strong> Another platform that displays the same fragmented data in a different visual format doesn't solve the morning process problem. The assembly — pulling from sources, combining, delivering a usable view — is the step worth fixing first. When that's automated, the intelligence and reporting layers above it work the way they were designed to.</p>
+
+      <a class="back-link" href="/blog/">&larr; Back to all posts</a>
+
+      <div class="cta-block">
+        <h2>Not sure where your stack has gaps?</h2>
+        <p>The report stack mapper walks through your current source reports, tools, timing, and manual steps — and scores where the automation opportunities are. Most operators find the biggest gap is in the assembly layer, not the tools themselves.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="button primary" href="/report-stack-mapper/">Map your report stack</a>
+          <a class="button" style="color:#fffaf1;border:1px solid rgba(255,250,241,0.3);background:transparent" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="wrap">
+    <a href="/">Hotel Report Automation</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a>
+  </footer>
+</body>
+</html>
