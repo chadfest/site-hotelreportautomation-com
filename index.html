@@ -375,6 +375,60 @@
       </div>
     </section>
 
+    <style>#rc-igrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}#rc-ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}@media(max-width:640px){#rc-igrid,#rc-ogrid{grid-template-columns:1fr}}</style>
+    <section class="section" id="calculator">
+      <h2>How much is manual reporting costing your team?</h2>
+      <p>Enter your portfolio size and the time spent each morning. The math usually surprises people.</p>
+      <div style="margin-top:32px;max-width:860px;border:1px solid var(--line);border-radius:28px;background:rgba(255,250,241,.92);box-shadow:var(--shadow);overflow:hidden">
+        <div style="padding:32px 36px;display:grid;gap:26px">
+          <div id="rc-igrid">
+            <div>
+              <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px">Properties in portfolio</div>
+              <input type="range" id="rc-props" min="1" max="50" value="8" style="width:100%;accent-color:#174f58;margin-bottom:10px" oninput="rcCalc()">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span id="rc-pv" style="font-size:38px;font-weight:800;letter-spacing:-.02em">8</span><span style="font-size:14px;color:var(--muted)">properties</span></div>
+            </div>
+            <div>
+              <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px">Minutes per morning</div>
+              <input type="range" id="rc-mins" min="10" max="120" value="35" step="5" style="width:100%;accent-color:#174f58;margin-bottom:10px" oninput="rcCalc()">
+              <div style="display:flex;justify-content:space-between;align-items:baseline"><span id="rc-mv" style="font-size:38px;font-weight:800;letter-spacing:-.02em">35</span><span style="font-size:14px;color:var(--muted)">min / day</span></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px">Who handles the reporting?</div>
+            <div style="display:flex;flex-wrap:wrap;gap:8px">
+              <button id="rc-b0" onclick="rcRole(85000,0)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid #174f58;background:#174f58;color:#fff">Revenue Manager</button>
+              <button id="rc-b1" onclick="rcRole(120000,1)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)">Dir. of Revenue</button>
+              <button id="rc-b2" onclick="rcRole(145000,2)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)">VP / COO</button>
+              <button id="rc-b3" onclick="rcRole(0,3)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)">Skip salary</button>
+            </div>
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--line);background:#0d3037;padding:28px 36px">
+          <div id="rc-ogrid">
+            <div>
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,250,241,.4);margin-bottom:6px">Hours per year</div>
+              <div id="rc-h" style="font-size:42px;font-weight:800;letter-spacing:-.025em;line-height:1.05;color:#fffaf1">—</div>
+              <div id="rc-w" style="font-size:13px;color:rgba(255,250,241,.5);margin-top:4px"></div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,250,241,.4);margin-bottom:6px">Annual cost</div>
+              <div id="rc-c" style="font-size:42px;font-weight:800;letter-spacing:-.025em;line-height:1.05;color:#fffaf1">—</div>
+              <div id="rc-cn" style="font-size:13px;color:rgba(255,250,241,.5);margin-top:4px">select a role above</div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,250,241,.4);margin-bottom:6px">Manual operations</div>
+              <div id="rc-o" style="font-size:42px;font-weight:800;letter-spacing:-.025em;line-height:1.05;color:#fffaf1">—</div>
+              <div style="font-size:13px;color:rgba(255,250,241,.5);margin-top:4px">per year</div>
+            </div>
+          </div>
+          <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,250,241,.1);font-size:15px;color:rgba(255,250,241,.6)">All of that goes away. <a href="#book" style="color:#fffaf1;font-weight:800;text-decoration:underline;text-underline-offset:3px">Book a review to scope the pilot →</a></div>
+        </div>
+      </div>
+    </section>
+    <script>
+    !function(){var _r=85000,_ac='#174f58';function _c(){var p=+document.getElementById('rc-props').value,m=+document.getElementById('rc-mins').value;document.getElementById('rc-pv').textContent=p;document.getElementById('rc-mv').textContent=m;var h=Math.round(p*m*365/60);document.getElementById('rc-h').textContent=h.toLocaleString();document.getElementById('rc-w').textContent=(h/40).toFixed(1)+' work weeks';document.getElementById('rc-o').textContent=(p*365).toLocaleString();if(_r>0){var c=Math.round(h*(_r/2080));document.getElementById('rc-c').textContent='$'+c.toLocaleString();document.getElementById('rc-cn').textContent='at $'+Math.round(_r/2080)+'/hr';}else{document.getElementById('rc-c').textContent='—';document.getElementById('rc-cn').textContent='salary not included';}}window.rcCalc=_c;window.rcRole=function(r,i){_r=r;for(var j=0;j<4;j++){var b=document.getElementById('rc-b'+j);b.style.background='transparent';b.style.color='';b.style.borderColor='var(--line)';}var a=document.getElementById('rc-b'+i);a.style.background=_ac;a.style.color='#fff';a.style.borderColor=_ac;_c();};_c();}();
+    </script>
+
     <section class="section">
       <h2>Common questions.</h2>
       <div style="display:grid;gap:8px;margin-top:28px;max-width:860px">
