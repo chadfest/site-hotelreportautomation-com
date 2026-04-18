@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Pickup Report Template | Hotel Report Automation</title>
+  <meta name="description" content="A practical hotel pickup report template for revenue managers tracking booking pace by date. Includes a configurable table, copy and download, and guidance on what to actually look for.">
+  <link rel="canonical" href="https://hotelreportautomation.com/hotel-pickup-report-template/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hotelreportautomation.com/hotel-pickup-report-template/">
+  <meta property="og:title" content="Hotel Pickup Report Template">
+  <meta property="og:description" content="A practical pickup report template for revenue managers tracking booking pace by date. Configurable, downloadable, and annotated with what to look for.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a hotel pickup report?","acceptedAnswer":{"@type":"Answer","text":"A hotel pickup report shows how many rooms have been added to the books over a defined period — typically the last 1, 7, or 30 days — for each upcoming arrival date. It tells the revenue manager whether demand is building, stalling, or reversing on specific dates, which drives rate decisions."}},{"@type":"Question","name":"What should a pickup report include?","acceptedAnswer":{"@type":"Answer","text":"A useful pickup report should include the arrival date, current rooms on the books, occupancy percentage, 1-day pickup, 7-day pickup, ADR on the books, rate variance versus the comp set, and a flag for dates that need attention. Comparison to the same period last year adds further context."}},{"@type":"Question","name":"How often should a pickup report be reviewed?","acceptedAnswer":{"@type":"Answer","text":"Daily for the next 7–30 days is the standard practice. The pickup story changes overnight — a date that was pacing soft can accelerate quickly, and you want to catch high-demand dates before the window to adjust rate has closed."}},{"@type":"Question","name":"Can a pickup report be automated?","acceptedAnswer":{"@type":"Answer","text":"Yes. If the PMS produces a scheduled on-the-books report, the comparison step — calculating the delta from yesterday's or last week's snapshot — can be automated. The result is a pickup view that's already calculated when the team starts the morning."}}]}</script>
+  <style>
+    :root { --bg: #f6efe3; --paper: #fffaf1; --paper-strong: #fffdf8; --ink: #17221e; --muted: #5e6c64; --line: #ded1bf; --harbor: #174f58; --harbor-dark: #0d3037; --copper: #a95732; --good: #1f6f54; --risk: #8f2f23; --shadow: 0 28px 80px rgba(44, 34, 21, 0.13); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%), radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%), linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%); line-height: 1.7; }
+    a { color: var(--harbor); }
+    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 18px auto 0; padding: 13px 16px; border: 1px solid rgba(222, 209, 191, 0.9); border-radius: 999px; background: rgba(255, 250, 241, 0.82); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .navlinks { display: flex; align-items: center; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
+    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+    h1, h2, h3, p { margin-top: 0; }
+    .hero { padding: 64px 0 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
+    .eyebrow { display: inline-flex; padding: 7px 12px; border-radius: 999px; color: #743d24; background: rgba(169, 87, 50, 0.12); font-size: 12px; font-weight: 850; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 16px; }
+    h1 { font-size: clamp(28px, 3.5vw, 46px); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 16px; }
+    .lead { font-size: clamp(16px, 1.7vw, 18px); color: var(--muted); max-width: 580px; margin-bottom: 28px; }
+    .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .button, button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 999px; border: 0; text-decoration: none; font: inherit; font-size: 14px; font-weight: 800; cursor: pointer; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
+    .secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255, 250, 241, 0.76); }
+    .hero-card { border: 1px solid var(--line); border-radius: 20px; background: rgba(255, 250, 241, 0.9); box-shadow: var(--shadow); overflow: hidden; }
+    .card-head { padding: 18px 22px; color: #fffaf1; background: linear-gradient(135deg, var(--harbor-dark), var(--harbor)); }
+    .card-head strong { display: block; font-size: 17px; line-height: 1.2; letter-spacing: -0.012em; }
+    .card-head span { display: block; margin-top: 4px; color: rgba(255,250,241,0.78); font-size: 13px; }
+    .mini-table { width: 100%; border-collapse: collapse; }
+    .mini-table th { padding: 9px 11px; background: var(--harbor-dark); color: rgba(255,250,241,0.72); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; text-align: left; white-space: nowrap; }
+    .mini-table td { padding: 9px 11px; border-bottom: 1px solid var(--line); font-size: 13px; }
+    .mini-table tbody tr:last-child td { border-bottom: 0; }
+    .mini-table td.good { color: var(--good); font-weight: 800; }
+    .mini-table td.risk { color: var(--risk); font-weight: 800; }
+    .mini-table td.num { text-align: right; }
+    .tool { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 20px; padding-bottom: 72px; align-items: start; }
+    .panel { border: 1px solid var(--line); border-radius: 20px; background: rgba(255,250,241,0.92); box-shadow: var(--shadow); padding: clamp(22px, 3vw, 30px); }
+    .panel h2 { font-size: clamp(20px, 2.3vw, 28px); line-height: 1.14; letter-spacing: -0.02em; margin-bottom: 8px; }
+    .hint { color: var(--muted); font-size: 15px; margin-bottom: 22px; }
+    label { display: grid; gap: 6px; color: #2a3935; font-size: 13px; font-weight: 800; }
+    input, select { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: #fffdf8; color: var(--ink); font: inherit; font-size: 15px; padding: 11px 12px; outline: none; }
+    input:focus, select:focus { border-color: var(--harbor); box-shadow: 0 0 0 4px rgba(23,79,88,0.1); }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
+    .checks { display: grid; gap: 9px; margin-bottom: 20px; }
+    .check { display: flex; align-items: flex-start; gap: 10px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-strong); color: var(--muted); font-size: 14px; }
+    .check input { width: auto; margin-top: 3px; accent-color: var(--harbor); }
+    .preview { border: 1px solid var(--line); border-radius: 20px; background: rgba(255,250,241,0.92); box-shadow: var(--shadow); overflow: hidden; }
+    .preview-top { padding: 18px 22px; color: #fffaf1; background: #14221e; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .preview-top strong { display: block; font-size: 17px; letter-spacing: -0.012em; }
+    .preview-top span { display: block; margin-top: 4px; color: rgba(255,250,241,0.72); font-size: 13px; }
+    .pill { padding: 6px 10px; border-radius: 999px; background: rgba(255,250,241,0.14); font-size: 12px; font-weight: 900; white-space: nowrap; }
+    .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    table { width: 100%; min-width: 640px; border-collapse: collapse; }
+    th, td { padding: 10px 11px; border-bottom: 1px solid #ede6dc; text-align: left; font-size: 13px; }
+    th { color: rgba(255,250,241,0.66); background: var(--harbor-dark); text-transform: uppercase; letter-spacing: 0.05em; font-size: 11px; white-space: nowrap; }
+    td.num { text-align: right; font-weight: 750; }
+    td.good { color: var(--good); font-weight: 800; }
+    td.risk { color: var(--risk); font-weight: 800; }
+    tbody tr:nth-child(even) { background: rgba(255,253,248,0.78); }
+    .section { padding: 0 0 72px; }
+    .section h2 { font-size: clamp(22px, 2.6vw, 32px); line-height: 1.14; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .section p { font-size: 17px; color: var(--ink); max-width: 720px; margin-bottom: 18px; line-height: 1.75; }
+    .signal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0 32px; }
+    .signal { padding: 20px 22px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255,250,241,0.88); }
+    .signal h3 { font-size: 15px; color: var(--harbor); margin: 0 0 8px; letter-spacing: -0.01em; }
+    .signal p { font-size: 14px; color: var(--muted); margin: 0; line-height: 1.6; }
+    .callout { margin: 28px 0; padding: 20px 24px; border-left: 4px solid var(--harbor); border-radius: 0 14px 14px 0; background: rgba(23,79,88,0.06); }
+    .callout p { margin: 0; font-size: 16px; color: var(--muted); max-width: none; }
+    details { border: 1px solid var(--line); border-radius: 12px; background: rgba(255,250,241,0.84); overflow: hidden; margin-bottom: 8px; }
+    details summary { list-style: none; cursor: pointer; font-size: 16px; font-weight: 750; padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; }
+    details summary::-webkit-details-marker { display: none; }
+    details summary::after { content: "+"; font-size: 20px; font-weight: 300; color: var(--muted); flex-shrink: 0; margin-left: 16px; }
+    details[open] summary::after { content: "-"; }
+    details[open] summary { padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+    details p { margin: 0; padding: 14px 22px 18px; color: var(--muted); font-size: 15px; }
+    .cta { margin: 0 0 72px; padding: 34px 38px; border-radius: 22px; background: #14221e; color: #fffaf1; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .cta h2 { margin: 0 0 8px; color: #fffaf1; font-size: clamp(20px, 2.4vw, 28px); }
+    .cta p { margin: 0; color: rgba(255,250,241,0.75); max-width: 560px; }
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--harbor); }
+    @media (max-width: 860px) { .hero, .tool, .signal-grid, .cta { grid-template-columns: 1fr; } .field-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .navlinks a:not(.book) { display: none; } .cta { padding: 26px; } }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
+        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
+        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
+        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
+      </svg>
+      Hotel Report Automation
+    </a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/morning-report-workflow-audit/">Free tools</a>
+      <a href="/#pilot">Pilot</a>
+      <a class="book" href="/#book">Book a review</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Free pickup report template</div>
+        <h1>Hotel pickup report template for revenue teams.</h1>
+        <p class="lead">The pickup report is the most time-sensitive view in hotel revenue management. Configure yours below, download it as a CSV, or book a call to talk about automating the comparison step.</p>
+        <div class="actions">
+          <a class="button primary" href="#tool">Build the template</a>
+          <a class="button secondary" href="#what-to-look-for">What to look for</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Sample pickup report">
+        <div class="card-head">
+          <strong>7-day pickup view — sample property</strong>
+          <span>OTB as of this morning vs. 7 days ago</span>
+        </div>
+        <div class="table-wrap">
+          <table class="mini-table">
+            <thead>
+              <tr><th>Date</th><th>OTB</th><th>Occ.</th><th>7d PU</th><th>ADR</th><th>Flag</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Tue May 6</td><td class="num">84</td><td class="num">68%</td><td class="good">+11</td><td class="num">$192</td><td></td></tr>
+              <tr><td>Wed May 7</td><td class="num">61</td><td class="num">50%</td><td class="risk">−2</td><td class="num">$164</td><td class="risk">↓ Soft</td></tr>
+              <tr><td>Thu May 8</td><td class="num">98</td><td class="num">80%</td><td class="good">+18</td><td class="num">$219</td><td class="good">↑ Strong</td></tr>
+              <tr><td>Fri May 9</td><td class="num">112</td><td class="num">92%</td><td class="good">+22</td><td class="num">$248</td><td class="good">↑ Watch rate</td></tr>
+              <tr><td>Sat May 10</td><td class="num">107</td><td class="num">88%</td><td class="good">+14</td><td class="num">$234</td><td></td></tr>
+              <tr><td>Sun May 11</td><td class="num">54</td><td class="num">44%</td><td class="risk">+1</td><td class="num">$152</td><td class="risk">↓ Review</td></tr>
+              <tr><td>Mon May 12</td><td class="num">38</td><td class="num">31%</td><td class="risk">−4</td><td class="num">$141</td><td class="risk">↓ Soft</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </aside>
+    </section>
+
+    <section class="tool" id="tool">
+      <div class="panel">
+        <h2>Build your version.</h2>
+        <p class="hint">Configure the columns and window, then copy or download.</p>
+        <div class="field-grid">
+          <label>Properties<input id="propCount" type="number" min="1" max="50" value="1"></label>
+          <label>Pickup window<select id="pickupWindow"><option>Next 7 days</option><option>Next 14 days</option><option>Next 30 days</option></select></label>
+          <label>Comparison period<select id="compPeriod"><option>vs. 7 days ago</option><option>vs. 1 day ago</option><option>vs. 30 days ago</option><option>vs. same day LY</option></select></label>
+          <label>ADR format<select id="adrFormat"><option>ADR on the books</option><option>ADR + rate gap</option><option>ADR only</option></select></label>
+        </div>
+        <div class="checks">
+          <label class="check"><input type="checkbox" class="col-check" value="rateGap" checked> Comp set rate gap</label>
+          <label class="check"><input type="checkbox" class="col-check" value="flag" checked> Exception flag column</label>
+          <label class="check"><input type="checkbox" class="col-check" value="lyComp"> Same period last year (OTB)</label>
+          <label class="check"><input type="checkbox" class="col-check" value="notes"> Notes / action column</label>
+        </div>
+        <div class="actions">
+          <button type="button" class="primary" id="copyBtn">Copy template</button>
+          <button type="button" class="secondary" id="downloadBtn">Download CSV</button>
+          <button type="button" class="secondary" id="emailBtn">Email to Chandler</button>
+        </div>
+      </div>
+
+      <aside class="preview" aria-label="Pickup report preview">
+        <div class="preview-top">
+          <div>
+            <strong id="previewTitle">Pickup report</strong>
+            <span id="previewSub">1 property · Next 7 days · vs. 7 days ago</span>
+          </div>
+          <div class="pill" id="previewPill">7-day view</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr id="headerRow"></tr></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="what-to-look-for">
+      <h2>What to actually look for in a pickup report.</h2>
+      <p>The pickup number by itself doesn't tell you much. What matters is the rate of change relative to where you expected to be, and what the demand pattern suggests about pricing opportunity. Here are the three signals worth tracking every morning.</p>
+      <div class="signal-grid">
+        <div class="signal">
+          <h3>Acceleration on high-demand dates</h3>
+          <p>When a date is showing strong 7-day pickup and still has available rooms, the question is whether your rate is reflecting the demand. Strong pickup at a rate below the comp set midpoint is usually a missed revenue opportunity.</p>
+        </div>
+        <div class="signal">
+          <h3>Stall or reversal on key dates</h3>
+          <p>A date that was pacing well but has slowed or reversed — particularly with cancellations outpacing new bookings — is worth reviewing before the demand window closes. Rate strategy may need to adjust, or group business may be masking transient softness.</p>
+        </div>
+        <div class="signal">
+          <h3>Soft mid-week patterns</h3>
+          <p>Most properties have structural softness on Sunday and Monday nights. When Tuesday and Wednesday show weak pickup consistently, that's a different problem — demand generation rather than rate strategy. The pickup report is what surfaces this pattern before it becomes a month-end problem.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>The most common mistake with pickup reports is tracking too many dates equally. A 30-day view with every date treated as equally important dilutes attention. Most experienced revenue managers focus the daily review on the next 14 days, with deeper attention on the next 7 — where there's still time to act and the pickup signal is most reliable.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why pickup reports are still manual at most hotels.</h2>
+      <p>The pickup calculation itself is simple: today's on-the-books count minus yesterday's (or last week's) on-the-books count equals pickup. The PMS has both numbers. The challenge is that most PMS systems don't calculate the delta automatically — they produce a snapshot of current OTB, and someone has to compare it against a previous snapshot manually.</p>
+      <p>That comparison typically means: exporting today's OTB, opening yesterday's or last week's export, and calculating the difference row by row in a spreadsheet. For a single property, it takes 10–15 minutes. For a 10-property portfolio, it takes considerably longer — and the manual calculation introduces inconsistency in how dates are flagged and exceptions are identified.</p>
+      <p>When the pickup calculation is automated, the comparison is done before the team opens the report. The delta is already calculated. The exceptions are already flagged. The revenue manager starts with the signals rather than building the view that reveals them.</p>
+    </section>
+
+    <section class="section" style="padding-bottom:40px">
+      <h2>FAQ</h2>
+      <div style="max-width:760px">
+        <details><summary>What is a hotel pickup report?</summary><p>A hotel pickup report shows how many rooms have been added to the books over a defined period — typically the last 1, 7, or 30 days — for each upcoming arrival date. It tells the revenue manager whether demand is building, stalling, or reversing on specific dates, which drives rate decisions.</p></details>
+        <details><summary>What should a pickup report include?</summary><p>A useful pickup report should include the arrival date, current rooms on the books, occupancy percentage, 1-day and 7-day pickup, ADR on the books, rate variance versus the comp set, and a flag for dates that need attention. Comparison to the same period last year adds further context for seasonal patterns.</p></details>
+        <details><summary>How often should a pickup report be reviewed?</summary><p>Daily for the next 7–30 days is the standard practice. The pickup story changes overnight — a date that was pacing soft can accelerate quickly, and you want to catch high-demand dates before the window to adjust rate has closed.</p></details>
+        <details><summary>Can a pickup report be automated?</summary><p>Yes. If the PMS produces a scheduled on-the-books report, the comparison step — calculating the delta from yesterday's or last week's snapshot — can be automated. The result is a pickup view that's already calculated when the team starts the morning, with exceptions flagged by rule rather than by hand.</p></details>
+      </div>
+    </section>
+
+    <div class="cta">
+      <div>
+        <h2>Want this generated automatically each morning?</h2>
+        <p>If your PMS produces a scheduled OTB export, the pickup calculation and exception flagging can almost certainly be automated. Book a 20-minute workflow review and I'll tell you exactly how.</p>
+      </div>
+      <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a review</a>
+    </div>
+
+  </main>
+
+  <footer class="wrap">
+    <a href="/">Hotel Report Automation</a> &middot; <a href="/hotel-morning-report-template/">Morning report template</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a>
+  </footer>
+
+  <script>
+    const baseHeaders = ["Date", "Property", "OTB rooms", "Occupancy", "1-day PU", "7-day PU", "ADR"];
+    const optionalCols = {
+      rateGap: ["Comp rate", "Rate gap"],
+      flag: ["Exception"],
+      lyComp: ["LY OTB", "YOY delta"],
+      notes: ["Notes / next action"]
+    };
+    const sampleDates = ["Tue May 6","Wed May 7","Thu May 8","Fri May 9","Sat May 10","Sun May 11","Mon May 12"];
+    const sampleData = [
+      { "Date":"Tue May 6","Property":"Property 1","OTB rooms":"84","Occupancy":"68%","1-day PU":"+4","7-day PU":"+11","ADR":"$192","Comp rate":"$199","Rate gap":"-$7","Exception":"","LY OTB":"78","YOY delta":"+6","Notes / next action":"" },
+      { "Date":"Wed May 7","Property":"Property 1","OTB rooms":"61","Occupancy":"50%","1-day PU":"-1","7-day PU":"-2","ADR":"$164","Comp rate":"$171","Rate gap":"-$7","Exception":"Soft — review strategy","LY OTB":"69","YOY delta":"-8","Notes / next action":"Consider rate reduction or promotion" },
+      { "Date":"Thu May 8","Property":"Property 1","OTB rooms":"98","Occupancy":"80%","1-day PU":"+6","7-day PU":"+18","ADR":"$219","Comp rate":"$224","Rate gap":"-$5","Exception":"Strong pickup","LY OTB":"88","YOY delta":"+10","Notes / next action":"Push rate if comp set holds" },
+      { "Date":"Fri May 9","Property":"Property 1","OTB rooms":"112","Occupancy":"92%","1-day PU":"+8","7-day PU":"+22","ADR":"$248","Comp rate":"$241","Rate gap":"+$7","Exception":"Watch sellout risk","LY OTB":"105","YOY delta":"+7","Notes / next action":"Review last-room availability" },
+      { "Date":"Sat May 10","Property":"Property 1","OTB rooms":"107","Occupancy":"88%","1-day PU":"+3","7-day PU":"+14","ADR":"$234","Comp rate":"$238","Rate gap":"-$4","Exception":"","LY OTB":"98","YOY delta":"+9","Notes / next action":"" },
+      { "Date":"Sun May 11","Property":"Property 1","OTB rooms":"54","Occupancy":"44%","1-day PU":"0","7-day PU":"+1","ADR":"$152","Comp rate":"$158","Rate gap":"-$6","Exception":"Soft Sunday — expected","LY OTB":"57","YOY delta":"-3","Notes / next action":"" },
+      { "Date":"Mon May 12","Property":"Property 1","OTB rooms":"38","Occupancy":"31%","1-day PU":"-2","7-day PU":"-4","ADR":"$141","Comp rate":"$147","Rate gap":"-$6","Exception":"Soft — act before 7d window","LY OTB":"44","YOY delta":"-6","Notes / next action":"Corporate outreach or package rate" }
+    ];
+
+    const cols = () => {
+      const checks = [...document.querySelectorAll(".col-check")];
+      return checks.reduce((a, c) => c.checked ? [...a, ...optionalCols[c.value]] : a, [...baseHeaders]);
+    };
+    const csvEsc = v => { const s = String(v||""); return s.includes(",") || s.includes('"') ? `"${s.replace(/"/g,'""')}"` : s; };
+    const makeCsv = () => { const h = cols(); return [h.join(","), ...sampleData.map(r => h.map(c => csvEsc(r[c])).join(","))].join("\n"); };
+    const makeSummary = () => {
+      const pw = document.getElementById("pickupWindow").value;
+      const cp = document.getElementById("compPeriod").value;
+      return [`Hotel pickup report template`, `Properties: ${document.getElementById("propCount").value}`, `Window: ${pw}`, `Comparison: ${cp}`, `Columns: ${cols().join(", ")}`, ``, `Sample CSV:`, makeCsv()].join("\n");
+    };
+
+    function render() {
+      const pc = document.getElementById("propCount").value;
+      const pw = document.getElementById("pickupWindow").value;
+      const cp = document.getElementById("compPeriod").value;
+      document.getElementById("previewTitle").textContent = `Pickup report${pc > 1 ? ` — ${pc} properties` : ""}`;
+      document.getElementById("previewSub").textContent = `${pc} propert${pc==1?"y":"ies"} · ${pw} · ${cp}`;
+      document.getElementById("previewPill").textContent = pw.replace("Next ","").replace(" days"," day view").replace("7 day","7-day").replace("14 day","14-day").replace("30 day","30-day");
+      const headers = cols();
+      document.getElementById("headerRow").innerHTML = headers.map(h => `<th>${h}</th>`).join("");
+      document.getElementById("tableBody").innerHTML = sampleDates.map((_, i) => {
+        const row = sampleData[i] || {};
+        return `<tr>${headers.map(h => {
+          const v = row[h] || "";
+          const cls = (h.includes("PU") && v.startsWith("+")) ? "good" : (h.includes("PU") && (v.startsWith("-") || v === "0")) ? "risk" : (h === "Rate gap" && v.startsWith("-")) ? "risk" : (h === "Exception" && v) ? "risk" : ["OTB rooms","Occupancy","1-day PU","7-day PU","ADR","Comp rate","Rate gap","LY OTB","YOY delta"].includes(h) ? "num" : "";
+          return `<td class="${cls}">${v}</td>`;
+        }).join("")}</tr>`;
+      }).join("");
+    }
+
+    document.querySelectorAll("input,select").forEach(el => el.addEventListener("input", render));
+    document.querySelectorAll(".col-check").forEach(el => el.addEventListener("change", render));
+
+    document.getElementById("copyBtn").addEventListener("click", async () => {
+      try { await navigator.clipboard.writeText(makeSummary()); document.getElementById("copyBtn").textContent = "Copied!"; }
+      catch { window.prompt("Copy this:", makeSummary()); }
+      setTimeout(() => document.getElementById("copyBtn").textContent = "Copy template", 1600);
+    });
+    document.getElementById("downloadBtn").addEventListener("click", () => {
+      const blob = new Blob([makeCsv()], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a"); a.href = url; a.download = "hotel-pickup-report-template.csv";
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    });
+    document.getElementById("emailBtn").addEventListener("click", () => {
+      window.location.href = `mailto:chandler@hotelreportautomation.com?subject=${encodeURIComponent("Hotel pickup report template")}&body=${encodeURIComponent(makeSummary())}`;
+    });
+
+    render();
+  </script>
+</body>
+</html>
