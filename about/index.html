@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Chandler Mahaney | Hotel Report Automation</title>
-  <meta name="description" content="Why Hotel Report Automation exists, how Chandler Mahaney works with hotel teams, and what makes the work practical instead of generic AI consulting.">
+  <meta name="description" content="Meet Chandler Mahaney, founder of Hotel Report Automation. A practical note on how he helps hotel teams automate recurring reporting workflows without turning the first project into a giant technology rollout.">
   <link rel="canonical" href="https://hotelreportautomation.com/about/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://hotelreportautomation.com/about/">
   <meta property="og:title" content="About Chandler Mahaney | Hotel Report Automation">
-  <meta property="og:description" content="A practical note on the operator behind Hotel Report Automation and the kind of workflow problems this business is built to solve.">
+  <meta property="og:description" content="A practical, human note on the operator behind Hotel Report Automation and the daily reporting workflows this business is built to fix.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="About Chandler Mahaney">
   <meta name="twitter:description" content="Why Hotel Report Automation focuses on the manual work before the dashboard.">
@@ -26,6 +26,7 @@
       --harbor: #174f58;
       --harbor-dark: #0d3037;
       --copper: #a95732;
+      --amber: #efe2c8;
       --shadow: 0 28px 80px rgba(44, 34, 21, 0.13);
     }
     * { box-sizing: border-box; }
@@ -35,12 +36,13 @@
       color: var(--ink);
       font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif;
       background:
-        radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.15), transparent 27%),
-        radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.16), transparent 30%),
+        radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.14), transparent 27%),
+        radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.15), transparent 30%),
         linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%);
-      line-height: 1.65;
+      line-height: 1.62;
     }
     a { color: inherit; }
+    h1, h2, h3, p { margin-top: 0; }
     .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
     .nav {
       display: flex;
@@ -54,17 +56,34 @@
       background: rgba(255, 250, 241, 0.82);
       backdrop-filter: blur(16px);
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      text-decoration: none;
+      color: var(--ink);
+    }
     .navlinks { display: flex; align-items: center; gap: 18px; }
-    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
-    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
-    h1, h2, h3, p { margin-top: 0; }
+    .navlinks a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 750;
+    }
+    .navlinks .book {
+      color: #fffaf1;
+      background: var(--ink);
+      padding: 10px 15px;
+      border-radius: 999px;
+    }
     .hero {
-      padding: 78px 0 54px;
+      padding: 78px 0 42px;
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
       gap: 48px;
-      align-items: start;
+      align-items: center;
     }
     .eyebrow {
       display: inline-flex;
@@ -79,13 +98,18 @@
     }
     h1 {
       margin: 18px 0;
-      font-size: clamp(31px, 4.3vw, 56px);
+      font-size: clamp(32px, 4.1vw, 54px);
       line-height: 1.06;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.028em;
       max-width: 780px;
     }
-    .lead { font-size: clamp(16px, 1.7vw, 20px); color: var(--muted); max-width: 720px; }
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .lead {
+      color: var(--muted);
+      font-size: clamp(16px, 1.6vw, 19px);
+      max-width: 690px;
+    }
+    .lead + .lead { margin-top: 16px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
     .button {
       display: inline-flex;
       align-items: center;
@@ -96,87 +120,163 @@
       text-decoration: none;
       font-weight: 800;
     }
-    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
-    .secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255, 250, 241, 0.76); }
-    .portrait-card {
+    .primary {
+      color: #fffaf1;
+      background: linear-gradient(135deg, var(--harbor), var(--harbor-dark));
+      box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22);
+    }
+    .secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255, 250, 241, 0.78); }
+    .bio-card {
       border: 1px solid var(--line);
-      border-radius: 24px;
-      background: rgba(255, 250, 241, 0.9);
+      border-radius: 22px;
+      background: rgba(255, 250, 241, 0.92);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
-    .portrait-top {
-      padding: 28px;
+    .bio-head {
+      padding: 28px 30px;
       color: #fffaf1;
       background: linear-gradient(135deg, var(--harbor-dark), var(--harbor));
     }
-    .portrait-mark {
-      width: 72px;
-      height: 72px;
-      border-radius: 24px;
-      display: grid;
-      place-items: center;
-      margin-bottom: 18px;
-      color: #fffaf1;
-      background: rgba(255, 250, 241, 0.12);
-      font-size: 24px;
-      font-weight: 950;
-      letter-spacing: -0.04em;
+    .bio-kicker {
+      margin-bottom: 10px;
+      color: rgba(255, 250, 241, 0.72);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
-    .portrait-top strong { display: block; font-size: 24px; line-height: 1.16; letter-spacing: -0.02em; }
-    .portrait-top span { display: block; margin-top: 8px; color: rgba(255, 250, 241, 0.78); }
-    .proof-list { padding: 22px 24px 24px; display: grid; gap: 12px; }
-    .proof-item {
+    .bio-head strong {
+      display: block;
+      font-size: clamp(22px, 2.5vw, 30px);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+    .bio-head span {
+      display: block;
+      margin-top: 10px;
+      color: rgba(255, 250, 241, 0.82);
+      font-size: 15px;
+    }
+    .bio-body { padding: 24px; display: grid; gap: 14px; }
+    .bio-row {
+      display: grid;
+      gap: 7px;
       padding: 16px;
       border: 1px solid var(--line);
       border-radius: 14px;
       background: var(--paper-strong);
     }
-    .proof-item b { display: block; margin-bottom: 5px; font-size: 14px; color: var(--harbor); }
-    .proof-item span { color: var(--muted); font-size: 14px; }
-    .section { padding: 68px 0; }
-    .section h2 { margin-bottom: 14px; font-size: clamp(24px, 3vw, 38px); line-height: 1.12; letter-spacing: -0.025em; max-width: 820px; }
+    .bio-row b {
+      color: var(--harbor);
+      font-size: 13px;
+      letter-spacing: 0.035em;
+      text-transform: uppercase;
+    }
+    .bio-row span { color: var(--muted); font-size: 14px; }
+    .section { padding: 66px 0; }
+    .section h2 {
+      margin-bottom: 14px;
+      font-size: clamp(24px, 3vw, 38px);
+      line-height: 1.12;
+      letter-spacing: -0.026em;
+      max-width: 850px;
+    }
     .section > p { color: var(--muted); font-size: 17px; max-width: 780px; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
-    .card {
-      min-height: 220px;
-      padding: 24px;
+    .story {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 28px;
+    }
+    .story-card,
+    .plain-card,
+    .note {
       border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255, 250, 241, 0.86);
+      border-radius: 20px;
+      background: rgba(255, 250, 241, 0.88);
       box-shadow: 0 16px 42px rgba(44, 34, 21, 0.07);
     }
-    .card h3 { margin-bottom: 9px; font-size: 17px; line-height: 1.22; letter-spacing: -0.015em; }
-    .card p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
-    .note {
-      padding: 34px 38px;
-      border: 1px solid rgba(23, 79, 88, 0.24);
-      border-radius: 22px;
-      background: linear-gradient(140deg, rgba(23, 79, 88, 0.08), rgba(255, 250, 241, 0.94));
+    .story-card { padding: 30px; }
+    .story-card h3,
+    .plain-card h3 { margin-bottom: 10px; font-size: 19px; line-height: 1.25; letter-spacing: -0.02em; }
+    .story-card p,
+    .plain-card p { color: var(--muted); }
+    .story-card p:last-child,
+    .plain-card p:last-child { margin-bottom: 0; }
+    .quote-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 32px;
+      border-radius: 20px;
+      color: #fffaf1;
+      background: #14221e;
+      box-shadow: var(--shadow);
     }
-    .note p { color: var(--muted); font-size: 17px; max-width: 860px; }
-    .quote {
-      margin: 0;
-      color: var(--ink);
-      font-size: clamp(22px, 2.5vw, 34px);
-      line-height: 1.22;
+    .quote-card p {
+      margin-bottom: 0;
+      color: rgba(255, 250, 241, 0.88);
+      font-size: clamp(21px, 2.6vw, 31px);
+      line-height: 1.25;
       letter-spacing: -0.025em;
+    }
+    .quote-card small {
+      display: block;
+      margin-top: 18px;
+      color: rgba(255, 250, 241, 0.6);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
+    .plain-card { padding: 24px; min-height: 225px; }
+    .plain-card .label {
+      display: inline-flex;
+      margin-bottom: 14px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: #743d24;
+      background: rgba(169, 87, 50, 0.1);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .method {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px;
       max-width: 900px;
     }
-    .process { display: grid; gap: 14px; margin-top: 30px; max-width: 900px; }
     .step {
       display: grid;
       grid-template-columns: 48px 1fr;
       gap: 16px;
+      align-items: start;
       padding: 20px;
       border: 1px solid var(--line);
-      border-radius: 14px;
+      border-radius: 15px;
       background: var(--paper);
     }
-    .num { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; color: #fffaf1; background: var(--copper); font-weight: 950; }
-    .step p { margin: 4px 0 0; color: var(--muted); }
+    .num {
+      width: 48px;
+      height: 48px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      color: #fffaf1;
+      background: var(--copper);
+      font-weight: 950;
+    }
+    .step strong { display: block; line-height: 1.25; }
+    .step p { margin: 5px 0 0; color: var(--muted); }
+    .note {
+      margin-top: 30px;
+      padding: 28px 30px;
+      background: linear-gradient(140deg, rgba(23, 79, 88, 0.08), rgba(255, 250, 241, 0.94));
+    }
+    .note p { margin-bottom: 0; color: var(--muted); font-size: 16px; max-width: 880px; }
     .booking {
-      margin: 36px 0 0;
+      margin: 28px 0 0;
       padding: 34px 38px;
       border-radius: 22px;
       background: #14221e;
@@ -192,15 +292,24 @@
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--harbor); }
     @media (max-width: 900px) {
-      .hero, .grid, .booking { grid-template-columns: 1fr; }
+      .hero,
+      .story,
+      .grid,
+      .booking { grid-template-columns: 1fr; }
       .hero { padding-top: 58px; }
+      .quote-card { min-height: 260px; }
     }
     @media (max-width: 620px) {
       .wrap { width: min(100% - 24px, 1060px); }
       .nav { border-radius: 22px; align-items: flex-start; }
       .brand { align-items: flex-start; }
       .navlinks a:not(.book) { display: none; }
-      .note, .booking { padding: 26px; }
+      .bio-row,
+      .step { grid-template-columns: 1fr; }
+      .story-card,
+      .quote-card,
+      .note,
+      .booking { padding: 24px; }
     }
   </style>
 </head>
@@ -217,7 +326,7 @@
     <div class="navlinks">
       <a href="/hotel-morning-report-template/">Template</a>
       <a href="/report-stack-mapper/">Mapper</a>
-      <a href="/automate-hotel-revenue-reporting/">Guide</a>
+      <a href="/blog/">Blog</a>
       <a class="book" href="/#book">Book a review</a>
     </div>
   </nav>
@@ -226,57 +335,137 @@
     <section class="hero">
       <div>
         <div class="eyebrow">About Chandler Mahaney</div>
-        <h1>My background is software. Hotel operations is where I'm applying it.</h1>
-        <p class="lead">Most of my career was in enterprise software — early-stage startups, cloud infrastructure, AI. I built a vertical SaaS company in the construction trades. A few years ago I started consulting with hotel companies on AI, and I kept running into the same thing: the teams with the most to gain from AI were spending 45 minutes every morning doing things by hand that a script could handle.</p>
-        <p class="lead" style="margin-top:16px">The problem wasn't AI adoption. It was that nobody with an engineering mindset had ever looked at their daily workflow and asked why a person was doing it. That's the gap I'm trying to close.</p>
+        <h1>Hi, I'm Chandler. I help hotel teams turn the morning reporting grind into a workflow that runs on time.</h1>
+        <p class="lead">I'm a software builder working in hotel operations and reporting. The practical version: I help teams take the reports, exports, spreadsheets, emails, and manual checks they already rely on, then turn that scattered process into a cleaner daily output.</p>
+        <p class="lead">I do not think every problem needs a big new platform. A lot of the best work starts smaller: one recurring workflow, one useful output, and a careful build that removes the manual assembly before layering AI on top.</p>
         <div class="actions">
           <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
           <a class="button secondary" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20workflow%20review">Email me</a>
           <a class="button secondary" href="https://www.linkedin.com/in/dcmahaney/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
-      <aside class="portrait-card" aria-label="Chandler Mahaney background">
-        <div class="portrait-top">
-          <div class="portrait-mark">CM</div>
-          <strong>Builder, not a slide-deck consultant.</strong>
-          <span>I come from a world where you ship the thing, not describe how it could theoretically work.</span>
+
+      <aside class="bio-card" aria-label="Chandler Mahaney bio summary">
+        <div class="bio-head">
+          <div class="bio-kicker">Quick version</div>
+          <strong>Software background. Hotel workflow focus. Practical automation first.</strong>
+          <span>I am usually most useful where a team already has the data, but too much human effort sits between the source reports and the view people actually need.</span>
         </div>
-        <div class="proof-list">
-          <div class="proof-item"><b>Background</b><span>Enterprise software, cloud, AI — mostly early-stage startups where you figure things out as you go.</span></div>
-          <div class="proof-item"><b>Also built</b><span>A vertical SaaS company in the construction trades. Different industry, same underlying problem: companies drowning in manual work they don't have to do.</span></div>
-          <div class="proof-item"><b>Now</b><span>Helping hotel management companies automate the daily reporting workflows their teams are still building by hand every morning.</span></div>
+        <div class="bio-body">
+          <div class="bio-row"><b>Background</b><span>Enterprise software, cloud infrastructure, AI, early-stage startups, and a vertical SaaS company I built in the construction trades.</span></div>
+          <div class="bio-row"><b>Now</b><span>Working with hotel teams on reporting, accounting, revenue, and operations automations, with a special focus on daily reporting workflows.</span></div>
+          <div class="bio-row"><b>Style</b><span>Map what is really happening, automate the repeatable pieces, keep the output readable, and be honest when a workflow is not a good fit.</span></div>
         </div>
       </aside>
     </section>
 
-    <section class="section" style="padding-top:20px">
-      <div class="note">
-        <p class="quote">Engineers automate repetitive work by default. Most hotel teams have never had one in the room who looked at their morning routine and asked why a person was doing it.</p>
-        <p style="margin:18px 0 0">That's the whole idea here. The scripts, the scheduled jobs, the data pipelines — these are basic infrastructure in any software team. They're invisible in most hotel operations. Bringing those tools into the daily reporting workflow doesn't require a big technology project. It requires someone who knows how to do it and cares about getting it right. Once the assembly is automated, the AI layer on top of it actually becomes useful instead of aspirationally useful.</p>
+    <section class="section" style="padding-top:22px">
+      <h2>Why I ended up here.</h2>
+      <div class="story">
+        <div class="story-card">
+          <h3>I came into hotel work through automation, not hospitality school.</h3>
+          <p>That is probably worth saying plainly. I am not pretending to be a lifelong hotel operator. My background is building software and systems, then using that lens inside messy real-world workflows.</p>
+          <p>When I started doing consulting work with hotel teams, I expected more of the work to be "AI." Some of it is. But the recurring theme was more basic and more important: smart people were still spending too much time assembling the same reports by hand.</p>
+        </div>
+        <div class="quote-card">
+          <p>The useful question usually is not "how do we add AI?" It is "why is a person still rebuilding this same operating view every morning?"</p>
+          <small>That question is where most of my best projects start.</small>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <h2>How I work with a team.</h2>
-      <p>The first project is always narrow — one workflow, one output, done fast enough that the team can see it working before they have to take it on faith.</p>
-      <div class="process">
-        <div class="step"><div class="num">1</div><div><strong>Map the actual workflow, not the ideal one.</strong><p>What reports exist, who pulls them, what format they come in, what manual steps happen between the source and the finished output, and who uses it.</p></div></div>
-        <div class="step"><div class="num">2</div><div><strong>Automate the assembly — work from what already exists.</strong><p>Most of this starts from scheduled exports the team is already producing. No new systems required, no IT project, no PMS API negotiation.</p></div></div>
-        <div class="step"><div class="num">3</div><div><strong>Once the output is reliable, add the intelligence layer.</strong><p>A clean, consistent, on-time data feed is what makes AI interpretation actually work. Get that first. Then it's worth building on top of.</p></div></div>
+      <h2>What I am actually looking for.</h2>
+      <p>Most hotel teams already have plenty of data. The harder part is getting from the source reports to the morning view consistently, cleanly, and early enough for the team to use it.</p>
+      <div class="grid">
+        <div class="plain-card">
+          <span class="label">Manual assembly</span>
+          <h3>The repeated steps between source reports and the finished view.</h3>
+          <p>Pulling exports, copying numbers, cleaning files, updating tabs, checking exceptions, saving versions, and sending the summary. This is often where the time leak lives.</p>
+        </div>
+        <div class="plain-card">
+          <span class="label">Useful output</span>
+          <h3>The format the team will actually use.</h3>
+          <p>Sometimes that is a dashboard. Sometimes it is a Google Sheet, a morning email, a file dropped into the right folder, or a brief that tells the team what to review first.</p>
+        </div>
+        <div class="plain-card">
+          <span class="label">AI after the basics</span>
+          <h3>Interpretation works better after the workflow is reliable.</h3>
+          <p>AI can help summarize changes, flag exceptions, and point people to the right questions. But it works best when the underlying reporting workflow is already consistent.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>How a first project usually works.</h2>
+      <p>I try to keep the first engagement narrow enough that everyone can see value quickly. The goal is not to boil the ocean. It is to prove the workflow can run without someone rebuilding it by hand every morning.</p>
+      <div class="method">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <strong>We map the actual workflow, including the awkward parts.</strong>
+            <p>Which reports exist, where they come from, who pulls them, what gets copied or cleaned, what breaks, and who depends on the final output.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <strong>We automate the assembly from what already exists.</strong>
+            <p>Exports, spreadsheets, scheduled emails, folders, and existing reports are usually enough to start. Direct PMS access is not usually required for the first useful version.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <strong>We make the output boringly reliable.</strong>
+            <p>The right win is an output that shows up on time, in the right format, with the numbers and exceptions the team expects to see.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div>
+            <strong>Then we add interpretation where it helps.</strong>
+            <p>Once the operating view is clean, AI can help explain what changed, what looks unusual, and what the team should review first.</p>
+          </div>
+        </div>
+      </div>
+      <div class="note">
+        <p>A good first project should feel practical. If I do not think there is a fast, useful automation opportunity in the workflow you show me, I would rather say that early than sell you a project that turns into a science fair.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>A few honest notes.</h2>
+      <div class="grid">
+        <div class="plain-card">
+          <span class="label">Not magic</span>
+          <h3>I do not sell AI as a shortcut around understanding the workflow.</h3>
+          <p>The workflow has to be mapped. The source reports have to be understood. The output has to match how the team actually works.</p>
+        </div>
+        <div class="plain-card">
+          <span class="label">Not precious</span>
+          <h3>I am happy when the best output is simple.</h3>
+          <p>If an automated email or updated spreadsheet solves the problem better than a custom app, that is the answer. Adoption matters more than polish for its own sake.</p>
+        </div>
+        <div class="plain-card">
+          <span class="label">Not theoretical</span>
+          <h3>I like building the first working version quickly.</h3>
+          <p>It is easier to improve a real workflow than debate a hypothetical one. Start narrow, make it work, then decide what deserves to be expanded.</p>
+        </div>
       </div>
     </section>
 
     <section class="booking">
       <div>
-        <h2>Start with one workflow.</h2>
-        <p>Tell me what you're building by hand every morning, who uses the output, and where the pain is. I'll tell you honestly whether there's a fast win and what it looks like.</p>
+        <h2>Start with the workflow your team keeps rebuilding.</h2>
+        <p>Tell me what gets pulled, cleaned, copied, checked, or summarized every morning. I will tell you honestly whether it looks like a good fit for a focused automation pilot.</p>
       </div>
       <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a 20-minute review</a>
     </section>
   </main>
 
   <footer class="wrap">
-    <a href="/">Hotel Report Automation</a> &middot; <a href="https://www.linkedin.com/in/dcmahaney/" target="_blank" rel="noopener">Chandler on LinkedIn</a> &middot; <a href="/hotel-morning-report-template/">Morning report template</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a>
+    <a href="/">Hotel Report Automation</a> &middot; <a href="https://www.linkedin.com/in/dcmahaney/" target="_blank" rel="noopener">Chandler on LinkedIn</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/hotel-morning-report-template/">Morning report template</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a>
   </footer>
 </body>
 </html>
