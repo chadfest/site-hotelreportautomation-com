@@ -277,6 +277,29 @@
       </div>
     </section>
 
+    <section class="section" style="padding-top:0">
+      <h2>Four questions that reveal the most about reliability risk.</h2>
+      <p>These come up in every useful workflow review. Worth thinking about before the call — even rough answers surface the part of the workflow that breaks first.</p>
+      <div class="checklist">
+        <article class="item" style="border-left:3px solid var(--copper)">
+          <div class="item-top"><div class="num" style="background:var(--harbor)">A</div><h3>What happens when a source report doesn't arrive?</h3></div>
+          <p>Does the brief go out late? Does someone manually pull a backup? Does it go out with yesterday's numbers and nobody notices? There is usually an answer — it just hasn't been written down.</p>
+        </article>
+        <article class="item" style="border-left:3px solid var(--copper)">
+          <div class="item-top"><div class="num" style="background:var(--harbor)">B</div><h3>Has the brief ever shown data from the wrong date?</h3></div>
+          <p>The business date in the report versus the date the file arrived are often different — and most manual workflows don't check. If this has happened and went unnoticed for a day or more, that's worth knowing.</p>
+        </article>
+        <article class="item" style="border-left:3px solid var(--copper)">
+          <div class="item-top"><div class="num" style="background:var(--harbor)">C</div><h3>If an input is missing, does the output go blank or stay stale?</h3></div>
+          <p>Stale numbers that look current are the worst failure mode — the team trusts the brief and the brief is wrong. Blank cells are obvious. Stale cells are invisible.</p>
+        </article>
+        <article class="item" style="border-left:3px solid var(--copper)">
+          <div class="item-top"><div class="num" style="background:var(--harbor)">D</div><h3>Who checks that the automation ran correctly before the team reads it?</h3></div>
+          <p>For some teams the answer is nobody — the brief goes out and someone catches errors at the standup. For others there's a quick scan. Either way, understanding this shapes how much reliability infrastructure the first pilot needs.</p>
+        </article>
+      </div>
+    </section>
+
     <section class="section" id="email-template">
       <h2>If you want to send something before the call, use this.</h2>
       <p>No need to overthink it. The rough version is better than the corporate version.</p>
@@ -295,6 +318,11 @@ Source reports involved:
 What is manual today:
 What the finished output should look like:
 What would make this worth automating first:
+
+Reliability notes (optional but useful):
+- What happens when a source report doesn't arrive on time:
+- Whether the brief has ever shown data from the wrong date:
+- What the output does when an input is missing (blanks / stays stale / other):
 
 I can send screenshots, sample exports, or walk through it live.</pre>
       </div>
