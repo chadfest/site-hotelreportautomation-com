@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Software Vendors and API Access: What I Learned the Hard Way | Hotel Report Automation</title>
+  <meta name="description" content="I spent months trying to get API access from hotel software vendors. Most of them said no. Here's what I learned about working with the data you actually have access to.">
+  <link rel="canonical" href="https://hotelreportautomation.com/blog/hotel-vendor-api-access/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hotelreportautomation.com/blog/hotel-vendor-api-access/">
+  <meta property="og:title" content="Hotel Software Vendors and API Access: What I Learned the Hard Way">
+  <meta property="og:description" content="I spent months trying to get API access from hotel software vendors. Most said no. Here's what actually works.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Hotel Software Vendors and API Access: What I Learned the Hard Way","author":{"@type":"Person","name":"Chandler Mahaney"},"publisher":{"@type":"Organization","name":"Hotel Report Automation"},"datePublished":"2026-04-18","url":"https://hotelreportautomation.com/blog/hotel-vendor-api-access/"}</script>
+  <style>
+    :root { --bg: #f6efe3; --paper: #fffaf1; --ink: #17221e; --muted: #5e6c64; --line: #ded1bf; --harbor: #174f58; --harbor-dark: #0d3037; --copper: #a95732; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%), radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%), linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%); line-height: 1.7; }
+    a { color: var(--harbor); }
+    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    .article-wrap { width: min(720px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 18px auto 0; padding: 13px 16px; border: 1px solid rgba(222, 209, 191, 0.9); border-radius: 999px; background: rgba(255, 250, 241, 0.82); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .navlinks { display: flex; align-items: center; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
+    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+    .article { padding: 56px 0 80px; }
+    .breadcrumb { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--harbor); }
+    .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .cat { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(169, 87, 50, 0.12); color: #743d24; }
+    .read-time, .byline { font-size: 14px; color: var(--muted); }
+    h1 { font-size: clamp(30px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 22px; }
+    .lede { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 32px; line-height: 1.6; }
+    h2 { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.18; letter-spacing: -0.018em; margin: 44px 0 14px; }
+    p { font-size: 17px; line-height: 1.78; margin: 0 0 20px; color: var(--ink); }
+    .callout { margin: 32px 0; padding: 22px 26px; border-left: 4px solid var(--harbor); border-radius: 0 14px 14px 0; background: rgba(23, 79, 88, 0.06); }
+    .callout p { margin: 0; font-size: 16px; color: var(--muted); }
+    .callout.copper { border-left-color: var(--copper); background: rgba(169,87,50,0.06); }
+    .workaround-list { display: flex; flex-direction: column; gap: 0; margin: 28px 0 36px; }
+    .workaround { display: flex; gap: 18px; padding: 20px 0; border-bottom: 1px solid var(--line); align-items: flex-start; }
+    .workaround:last-child { border-bottom: none; }
+    .w-num { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: rgba(23,79,88,0.12); color: var(--harbor); display: flex; align-items: center; justify-content: center; font-size: 15px; font-weight: 900; margin-top: 2px; }
+    .w-body h4 { margin: 0 0 6px; font-size: 16px; letter-spacing: -0.01em; }
+    .w-body p { margin: 0; font-size: 15px; color: var(--muted); line-height: 1.6; }
+    .cta-block { margin: 52px 0 0; padding: 36px 40px; border-radius: 22px; background: #14221e; color: #fffaf1; }
+    .cta-block h2 { color: #fffaf1; margin: 0 0 10px; font-size: clamp(20px, 2.4vw, 28px); }
+    .cta-block p { color: rgba(255, 250, 241, 0.75); margin-bottom: 20px; font-size: 16px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); text-decoration: none; margin-top: 40px; }
+    .back-link:hover { color: var(--harbor); }
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--harbor); }
+    @media (max-width: 600px) { .navlinks a:not(.book) { display: none; } .cta-block { padding: 26px; } }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
+        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
+        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
+        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
+      </svg>
+      Hotel Report Automation
+    </a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/morning-report-workflow-audit/">Free tools</a>
+      <a href="/#pilot">Pilot</a>
+      <a class="book" href="/#book">Book a review</a>
+    </div>
+  </nav>
+
+  <main class="article-wrap">
+    <article class="article">
+      <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Consulting</div>
+
+      <div class="post-meta">
+        <span class="cat">Consulting</span>
+        <span class="read-time">7 min read</span>
+        <span class="byline">by Chandler Mahaney &middot; April 18, 2026</span>
+      </div>
+
+      <h1>Hotel Software Vendors and API Access: What I Learned the Hard Way</h1>
+
+      <p class="lede">When I started building automation for hotel reporting workflows, I assumed that accessing the underlying data would be the easy part. The hard part would be the automation logic — building something that actually works reliably at 5:30am every day. I was wrong about which part would be hard.</p>
+
+      <p>The hard part was getting the data out of the systems in the first place.</p>
+
+      <h2>The API access problem, honestly described</h2>
+
+      <p>Here's the situation I ran into repeatedly: I'd be working with a hotel management company that used a particular PMS or rate intelligence tool. The automation I was building needed to pull daily figures from that system. The obvious path was an API — most modern software has one, and connecting to it programmatically is standard practice in any software integration project.</p>
+
+      <p>What I found in hotel tech was something I hadn't encountered in quite the same form before. API access existed, but getting to it required navigating a process that ranged from "slow and bureaucratic" to "we don't do that for external consultants" to a flat no. In some cases, API access was limited to specific certified integration partners — a list of companies that had gone through a formal vetting process and paid a fee to be on it. In others, the documentation existed but the actual access required a support ticket, multiple calls, and eventually an enterprise contract conversation that wasn't going anywhere.</p>
+
+      <p>I want to be precise here. I'm not saying these vendors were being deliberately obstructive. Some of the restrictions have real reasons behind them — liability for data accuracy, security concerns about third-party access, and in some cases, competitive protection of data that vendors consider proprietary. I understand the logic. But the practical effect, from the perspective of someone trying to build an automation that benefits the hotel's own team using the hotel's own data, is that the straightforward path isn't actually available.</p>
+
+      <div class="callout copper">
+        <p>There's an irony in this worth naming: the data I was trying to access belonged to the hotel. The hotel was paying the vendor for the software. The hotel wanted the automation. But access to their own data, in a form that could be used programmatically, required permissions from the vendor that the vendor wasn't inclined to grant.</p>
+      </div>
+
+      <h2>What I did instead — and what actually works</h2>
+
+      <p>After enough time spent on the API access path, I shifted my approach. Instead of trying to pull data directly from vendor systems, I started working from what I've come to think of as the "export layer" — the scheduled reports, file drops, and email exports that every hotel system produces, regardless of whether API access is available.</p>
+
+      <p>Almost every PMS, rate intelligence tool, and channel manager has some version of this. You can configure it to generate a daily export at a specified time and deliver it to an email address or a folder. The format is usually CSV or Excel, sometimes PDF (which adds a parsing step). The data is the same data you'd get from an API call — it's just packaged differently and delivered on a schedule rather than on demand.</p>
+
+      <p>This approach has real limitations. You're working from yesterday's data rather than live data. If you want to update the report intra-day, you can't. And if the export doesn't run for some reason — the vendor's delivery system hiccupped, someone changed a setting — your automation has nothing to process and needs to handle that gracefully.</p>
+
+      <p>But for a hotel morning report workflow, the limitations mostly don't matter. The whole point of the morning report is to start the day with a clear view of where things stand. Yesterday's close and this morning's pickup data — delivered on schedule — is exactly what the workflow needs. The report doesn't need live data; it needs reliable data, delivered consistently, before the team sits down.</p>
+
+      <div class="callout">
+        <p>I've built more automation on top of scheduled exports than on top of APIs, and in the hotel context the export approach is often more robust — not less. APIs can break when vendors push updates. Export formats are usually more stable, and when they do change, the failure is immediately obvious rather than silently returning wrong data.</p>
+      </div>
+
+      <h2>The practical workarounds, in order of reliability</h2>
+
+      <div class="workaround-list">
+        <div class="workaround">
+          <div class="w-num">1</div>
+          <div class="w-body">
+            <h4>Configure scheduled exports from the source system</h4>
+            <p>This is always the first move. Almost every hotel system can be configured to generate a daily export automatically. Set up an email delivery to a dedicated inbox or a folder drop to a shared drive. Once this is running reliably, you have a consistent data source for automation to work from.</p>
+          </div>
+        </div>
+        <div class="workaround">
+          <div class="w-num">2</div>
+          <div class="w-body">
+            <h4>Use the vendor's own reporting tool to produce the right format</h4>
+            <p>Many PMS platforms have a report builder that lets you configure exactly which fields get exported and in which order. Taking the time upfront to build the right report template — rather than using a default export and parsing around missing fields — pays off significantly when you're processing the same file every day.</p>
+          </div>
+        </div>
+        <div class="workaround">
+          <div class="w-num">3</div>
+          <div class="w-body">
+            <h4>Work with certified integration partners where the client already has relationships</h4>
+            <p>Some vendors will grant API access if the hotel's existing technology partner — their IT consultant, their revenue management service provider — is already a certified partner. If you're working on behalf of a hotel that has those relationships, it's worth checking whether access is available through that channel before giving up on the API path entirely.</p>
+          </div>
+        </div>
+        <div class="workaround">
+          <div class="w-num">4</div>
+          <div class="w-body">
+            <h4>Use browser automation only as a last resort</h4>
+            <p>Some teams resort to browser automation — scripting the login-and-download process — when no export or API option exists. I've seen this work in production. I'd rather not recommend it: vendor UI changes break it unpredictably, it's sensitive to authentication changes, and some vendors explicitly prohibit it in their terms. But if you're genuinely stuck and the alternative is 45 minutes of manual work every morning, it's a decision to make with eyes open.</p>
+          </div>
+        </div>
+      </div>
+
+      <h2>What this means for the industry</h2>
+
+      <p>The API access problem in hotel tech is, in some ways, a symptom of how the industry evolved. The large PMS vendors built their systems at a time when open integration wasn't the norm — when data was competitive moat, not commodity infrastructure. Some of that thinking has persisted longer than it should have.</p>
+
+      <p>The newer players — Mews, Cloudbeds, and a few others — took a different approach. Their APIs are better documented, more accessible, and in some cases genuinely open for development. I don't think that's coincidental. It reflects a different set of assumptions about where the industry is going: toward open ecosystems where the PMS is a platform, not a walled garden.</p>
+
+      <p>But mid-market hotel management companies are often running older systems — OPERA, legacy PMS platforms that have been in place for 10 years — and the data access situation with those systems is what it is. The export layer is still there. It still works. And for the hotel morning report workflow, it's sufficient.</p>
+
+      <p>The honest takeaway from my experience: build your automation to work with what you can reliably access, not with what would be elegant if everything were perfectly open. The scheduled export isn't the dream architecture. It's the architecture that works at 5:30am every day without requiring a vendor relationship conversation.</p>
+
+      <a class="back-link" href="/blog/">&larr; Back to all posts</a>
+
+      <div class="cta-block">
+        <h2>Working with a system that doesn't have easy API access?</h2>
+        <p>The report stack mapper helps document what exports are currently available, what format they arrive in, and how they connect to your current morning workflow — which is the starting point for figuring out what can be automated from the export layer.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="button primary" href="/report-stack-mapper/">Map your report stack</a>
+          <a class="button" style="color:#fffaf1;border:1px solid rgba(255,250,241,0.3);background:transparent" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="wrap">
+    <a href="/">Hotel Report Automation</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a> &middot; <a href="/hotel-morning-report-template/">Morning report template</a> &middot; <a href="/hotel-pickup-report-template/">Pickup report template</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a>
+  </footer>
+</body>
+</html>
