@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Hotel Industry Has a Data Integration Problem, Not a Data Problem | Hotel Report Automation</title>
+  <meta name="description" content="Hotels have more data than ever. The issue isn't the data — it's that nobody has connected the sources. A software lens on why hotel reporting is still manual in 2026.">
+  <link rel="canonical" href="https://hotelreportautomation.com/blog/data-integration-problem/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hotelreportautomation.com/blog/data-integration-problem/">
+  <meta property="og:title" content="The Hotel Industry Has a Data Integration Problem, Not a Data Problem">
+  <meta property="og:description" content="Hotels have more data than ever. The issue isn't the data — it's that nobody has connected the sources.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"The Hotel Industry Has a Data Integration Problem, Not a Data Problem","author":{"@type":"Person","name":"Chandler Mahaney"},"publisher":{"@type":"Organization","name":"Hotel Report Automation"},"datePublished":"2026-04-18","url":"https://hotelreportautomation.com/blog/data-integration-problem/"}</script>
+  <style>
+    :root { --bg: #f6efe3; --paper: #fffaf1; --ink: #17221e; --muted: #5e6c64; --line: #ded1bf; --harbor: #174f58; --harbor-dark: #0d3037; --copper: #a95732; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%), radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%), linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%); line-height: 1.7; }
+    a { color: var(--harbor); }
+    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    .article-wrap { width: min(720px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 18px auto 0; padding: 13px 16px; border: 1px solid rgba(222, 209, 191, 0.9); border-radius: 999px; background: rgba(255, 250, 241, 0.82); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .navlinks { display: flex; align-items: center; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
+    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+    .article { padding: 56px 0 80px; }
+    .breadcrumb { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--harbor); }
+    .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .cat { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(169, 87, 50, 0.12); color: #743d24; }
+    .read-time, .byline { font-size: 14px; color: var(--muted); }
+    h1 { font-size: clamp(30px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 22px; }
+    .lede { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 32px; line-height: 1.6; }
+    h2 { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.18; letter-spacing: -0.018em; margin: 44px 0 14px; }
+    p { font-size: 17px; line-height: 1.78; margin: 0 0 20px; color: var(--ink); }
+    .callout { margin: 32px 0; padding: 22px 26px; border-left: 4px solid var(--harbor); border-radius: 0 14px 14px 0; background: rgba(23, 79, 88, 0.06); }
+    .callout p { margin: 0; font-size: 16px; color: var(--muted); }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0 36px; }
+    .compare-card { padding: 22px 24px; border-radius: 14px; border: 1px solid var(--line); background: rgba(255, 250, 241, 0.88); }
+    .compare-card h3 { font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; margin: 0 0 14px; color: var(--muted); }
+    .compare-card ul { margin: 0; padding-left: 18px; }
+    .compare-card ul li { font-size: 15px; color: var(--ink); margin-bottom: 8px; line-height: 1.55; }
+    .compare-card.wrong { border-color: rgba(169, 87, 50, 0.25); background: rgba(169, 87, 50, 0.04); }
+    .compare-card.wrong h3 { color: #743d24; }
+    .compare-card.right { border-color: rgba(23, 79, 88, 0.25); background: rgba(23, 79, 88, 0.04); }
+    .compare-card.right h3 { color: var(--harbor); }
+    .cta-block { margin: 52px 0 0; padding: 36px 40px; border-radius: 22px; background: #14221e; color: #fffaf1; }
+    .cta-block h2 { color: #fffaf1; margin: 0 0 10px; font-size: clamp(20px, 2.4vw, 28px); }
+    .cta-block p { color: rgba(255, 250, 241, 0.75); margin-bottom: 20px; font-size: 16px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); text-decoration: none; margin-top: 40px; }
+    .back-link:hover { color: var(--harbor); }
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--harbor); }
+    @media (max-width: 600px) { .navlinks a:not(.book) { display: none; } .cta-block { padding: 26px; } .compare-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
+        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
+        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
+        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
+      </svg>
+      Hotel Report Automation
+    </a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/morning-report-workflow-audit/">Free tools</a>
+      <a href="/#pilot">Pilot</a>
+      <a class="book" href="/#book">Book a review</a>
+    </div>
+  </nav>
+
+  <main class="article-wrap">
+    <article class="article">
+      <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; AI in Hotels</div>
+
+      <div class="post-meta">
+        <span class="cat">AI in Hotels</span>
+        <span class="read-time">7 min read</span>
+        <span class="byline">by Chandler Mahaney &middot; April 18, 2026</span>
+      </div>
+
+      <h1>The Hotel Industry Has a Data Integration Problem, Not a Data Problem</h1>
+
+      <p class="lede">A hotel management company running 15 properties today has access to more operating data than its counterpart from 20 years ago could have imagined. The PMS captures every reservation, rate change, and room night in real time. The rate intelligence tool tracks competitor pricing across every OTA channel daily. The channel manager logs every booking source. None of this data is missing. The problem is that almost none of it talks to anything else.</p>
+
+      <p>When I came to the hotel industry from a software background, this was the thing that surprised me most. Not the complexity of revenue management — that's genuinely hard and interesting. But the gap between "all this data exists" and "someone can see it together" was wider than I expected, and it was being filled entirely by manual labor every single morning.</p>
+
+      <p>In software, there's a name for this kind of problem. It's called a data integration problem. And once you see it through that lens, the solution becomes a lot clearer — and a lot more achievable than most hotel operators realize.</p>
+
+      <h2>What a data integration problem actually is</h2>
+
+      <p>In the software world, data integration refers to the challenge of connecting systems that store data in different places, in different formats, on different schedules, so that the data can be used together. It's one of the oldest unsolved problems in enterprise technology, and every large organization deals with some version of it.</p>
+
+      <p>The classic approach — and the one most large enterprises still use — is to build a data warehouse. You pull data from all your source systems into a central repository, clean and normalize it, and then build reports and dashboards on top of that unified layer. This is how companies like Marriott, Hilton, and Hyatt handle multi-property reporting. It works well at scale. It also requires a data engineering team, meaningful infrastructure, and ongoing maintenance.</p>
+
+      <p>For a hotel management company running 8 to 30 properties, that infrastructure is almost always out of reach. The budget isn't there, the technical team isn't there, and the implementation timeline is measured in quarters, not weeks. So instead, the integration happens manually. Someone pulls the exports and combines them every morning. The person is the integration layer.</p>
+
+      <div class="callout">
+        <p>This is what I mean when I say hotels have a data integration problem and not a data problem. The PMS export is accurate. The rate shop data is current. The forecast spreadsheet has the right numbers. The issue is the step between those sources and a single view — and right now, that step has a human in it who shouldn't need to be there.</p>
+      </div>
+
+      <h2>Why the industry keeps trying to solve this wrong</h2>
+
+      <p>The most common response to this problem in the hotel tech market has been to add another layer on top of the fragmentation — a dashboard, a business intelligence tool, a consolidated reporting platform. The pitch is usually some version of: "connect all your systems to our platform and see everything in one place."</p>
+
+      <p>This approach has a fundamental issue. It tries to solve an integration problem at the presentation layer instead of the data layer. You're still asking the PMS, the rate shop, and the channel manager to send data somewhere new. That requires integration work, API access or scheduled feeds, format normalization, and ongoing maintenance when any source system changes.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card wrong">
+          <h3>Presentation-layer approach</h3>
+          <ul>
+            <li>Add a new dashboard platform</li>
+            <li>Connect all source systems via API</li>
+            <li>Maintain integrations as systems change</li>
+            <li>IT involvement required</li>
+            <li>6–18 month implementation</li>
+            <li>Ongoing subscription cost</li>
+          </ul>
+        </div>
+        <div class="compare-card right">
+          <h3>Data-layer approach</h3>
+          <ul>
+            <li>Work from existing scheduled exports</li>
+            <li>Automate the file pickup and combination</li>
+            <li>Deliver to wherever the team already looks</li>
+            <li>No new systems required</li>
+            <li>2–4 week implementation</li>
+            <li>No ongoing platform dependency</li>
+          </ul>
+        </div>
+      </div>
+
+      <p>For most mid-market hotel groups, the practical alternative isn't a new platform. It's automating the layer that already exists — the scheduled exports and file drops that the team is already working from — and removing the human assembly step from between them.</p>
+
+      <h2>What the software world learned about this problem</h2>
+
+      <p>In software engineering, there's a well-established principle that applies directly here: don't fight your existing data architecture. Work with it.</p>
+
+      <p>Most production systems — whether they're PMS platforms, rate intelligence tools, or channel managers — produce outputs. Scheduled reports, file exports, email attachments, API feeds. Those outputs are designed to be consumed. The question is whether you consume them manually or automatically.</p>
+
+      <p>The pattern that works at smaller scale isn't a data warehouse. It's a lightweight automation layer that sits between the existing outputs and the team's morning view. Pull the exports automatically. Clean and normalize the formats. Combine into the target output. Deliver on schedule. The source systems don't change. The team's workflow doesn't change. The assembly step disappears.</p>
+
+      <p>This is conceptually similar to what's now called an ELT pipeline in modern data engineering — Extract, Load, Transform — except the scale is much smaller and the tooling doesn't need to be enterprise-grade. The underlying logic is the same: meet the data where it already exists, move it, shape it, make it useful.</p>
+
+      <h2>Why this matters for how you think about technology investment</h2>
+
+      <p>When you reframe the problem as data integration rather than data collection or data visualization, a few things become clearer about where to spend time and money.</p>
+
+      <p>First, you probably don't have a reporting format problem. The format of most hotel morning briefs is fine — occupancy, pickup, rate position, exceptions, next moves. What's broken is the assembly, not the design. Spending on a new dashboard to display data that's still being manually assembled doesn't fix the bottleneck.</p>
+
+      <p>Second, the investment required to fix the integration layer is much smaller than most operators assume. You don't need a new platform. You don't need PMS API access. You don't need an IT project. You need someone who understands how to connect the existing outputs — the files and exports that are already being produced — and automate the combination step. That's a workflow engineering problem, not an infrastructure problem.</p>
+
+      <p>Third, this is the thing worth fixing before adding AI. The AI tools in hotel revenue management are genuinely improving. Some of them are quite good. But an AI layer that reads manually assembled data is still constrained by the manual assembly step. Fix the integration, and suddenly the AI has a reliable, consistent, timely feed to work from. That's when the interpretation layer becomes genuinely useful rather than aspirationally useful.</p>
+
+      <p>The data has been there for years. The integration is what's been missing. And unlike most enterprise technology problems, this one is actually solvable without enterprise resources — if you approach it the right way.</p>
+
+      <a class="back-link" href="/blog/">&larr; Back to all posts</a>
+
+      <div class="cta-block">
+        <h2>Want to see what the integration layer looks like for your portfolio?</h2>
+        <p>The report stack mapper walks through your source reports, formats, timing, and manual steps — and identifies which parts of the assembly can be automated first. Takes about 5 minutes.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="button primary" href="/report-stack-mapper/">Open the mapper</a>
+          <a class="button" style="color:#fffaf1;border:1px solid rgba(255,250,241,0.3);background:transparent" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="wrap">
+    <a href="/">Hotel Report Automation</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a>
+  </footer>
+</body>
+</html>
