@@ -36,20 +36,20 @@
     .mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); position: relative; flex: 0 0 auto; }
     .mark:after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 9px; height: 3px; border-radius: 99px; background: #fffaf1; box-shadow: 6px -7px 0 #fffaf1, 13px -15px 0 #fffaf1; }
     .nav a { color: var(--muted); text-decoration: none; font-weight: 750; font-size: 14px; }
-    .hero { padding: 74px 0 42px; display: grid; grid-template-columns: 1.04fr .96fr; gap: 44px; align-items: center; }
+    .hero { padding: 74px 0 42px; display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start; }
     .eyebrow { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(169,87,50,.12); color: #74491e; font-size: 12px; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
-    h1 { margin: 18px 0; font-size: clamp(38px, 5.4vw, 64px); line-height: 1.08; letter-spacing: -.024em; }
-    h2 { margin: 0 0 12px; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -.02em; }
-    h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.22; letter-spacing: -.012em; }
+    h1 { margin: 18px 0; font-size: clamp(28px, 3.5vw, 46px); line-height: 1.08; letter-spacing: -.024em; }
+    h2 { margin: 0 0 12px; font-size: clamp(20px, 2.4vw, 32px); line-height: 1.15; letter-spacing: -.02em; }
+    h3 { margin: 0 0 8px; font-size: 17px; line-height: 1.22; letter-spacing: -.012em; }
     p { margin-top: 0; color: var(--muted); }
-    .lead { font-size: clamp(18px, 2vw, 21px); max-width: 720px; }
+    .lead { font-size: clamp(16px, 1.6vw, 18px); max-width: 720px; }
     .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
     .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 18px; border-radius: 999px; text-decoration: none; font-weight: 800; }
     .primary { color: #fffaf1; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); box-shadow: 0 16px 36px rgba(16,47,54,.22); }
     .secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255,250,241,.78); }
-    .panel { border: 1px solid var(--line); border-radius: 30px; background: rgba(255,250,241,.9); box-shadow: var(--shadow); overflow: hidden; }
+    .panel { border: 1px solid var(--line); border-radius: 20px; background: rgba(255,250,241,.9); box-shadow: var(--shadow); overflow: hidden; }
     .panel-head { padding: 22px 24px; color: #fffaf1; background: linear-gradient(135deg, var(--accent-dark), var(--accent)); }
-    .panel-head strong { display: block; font-size: 23px; line-height: 1.2; letter-spacing: -.015em; }
+    .panel-head strong { display: block; font-size: 18px; line-height: 1.2; letter-spacing: -.015em; }
     .panel-head span { display: block; margin-top: 3px; color: rgba(255,250,241,.86); font-size: 15px; }
     .metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
     .metric { padding: 18px 16px; border-right: 1px solid var(--line); background: var(--paper-strong); }
@@ -58,11 +58,11 @@
     .metric b { display: block; margin-top: 5px; font-size: 25px; letter-spacing: -.01em; }
     .insight { padding: 22px 24px; }
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 32px 0 0; }
-    .card { padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,250,241,.84); box-shadow: 0 16px 42px rgba(44,34,21,.07); }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,241,.84); box-shadow: 0 16px 42px rgba(44,34,21,.07); }
     .card ul { margin: 0; padding-left: 20px; color: var(--muted); }
     .section { padding: 54px 0; }
     .disclaimer { padding: 16px 18px; border: 1px solid rgba(169,87,50,.28); border-radius: 18px; background: rgba(169,87,50,.08); color: #74491e; font-size: 14px; }
-    .booking { margin: 38px 0 0; padding: 34px; border-radius: 30px; background: #14221e; color: #fffaf1; display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: center; }
+    .booking { margin: 38px 0 0; padding: 34px; border-radius: 22px; background: #14221e; color: #fffaf1; display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: center; }
     .booking p { color: rgba(255,250,241,.82); margin-bottom: 0; }
     footer { padding: 30px 0 44px; color: var(--muted); font-size: 14px; }
     @media (max-width: 900px) { .hero, .grid, .booking { grid-template-columns: 1fr; } .hero { padding-top: 54px; } .metrics { grid-template-columns: repeat(2, 1fr); } .metric:nth-child(2) { border-right: 0; } }
