@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Source Report Inventory | Hotel Report Automation</title>
+  <meta name="description" content="Document every scheduled report your hotel morning workflow depends on — what it is, how it arrives, what format it's in, and what happens when it doesn't show up. Free tool for hotel management companies.">
+  <link rel="canonical" href="https://hotelreportautomation.com/source-report-inventory/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Hotel Source Report Inventory","description":"Document every scheduled report your morning workflow depends on and identify reliability risks before they become morning crises.","url":"https://hotelreportautomation.com/source-report-inventory/","applicationCategory":"BusinessApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <style>
+    :root { --bg: #f6efe3; --paper: #fffaf1; --ink: #17221e; --muted: #5e6c64; --line: #ded1bf; --harbor: #174f58; --harbor-dark: #0d3037; --copper: #a95732; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%), radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%), linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%); line-height: 1.7; }
+    a { color: var(--harbor); }
+    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 18px auto 0; padding: 13px 16px; border: 1px solid rgba(222, 209, 191, 0.9); border-radius: 999px; background: rgba(255, 250, 241, 0.82); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .navlinks { display: flex; align-items: center; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
+    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+
+    .hero { padding: 64px 0 40px; max-width: 680px; }
+    .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--harbor); margin-bottom: 20px; background: rgba(23,79,88,0.08); padding: 5px 12px; border-radius: 999px; }
+    .hero h1 { font-size: clamp(28px, 3.8vw, 46px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 18px; }
+    .hero p { font-size: clamp(16px, 1.8vw, 19px); color: var(--muted); margin: 0; line-height: 1.65; }
+
+    .tool-area { padding: 0 0 80px; }
+
+    /* Row builder */
+    .builder { margin: 40px 0 28px; padding: 28px 30px; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,250,241,0.9); }
+    .builder h2 { font-size: 18px; letter-spacing: -0.015em; margin: 0 0 22px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-grid.three { grid-template-columns: 1fr 1fr 1fr; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: 12px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+    input, select, textarea { width: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 9px; background: #fff; font-family: inherit; font-size: 14px; color: var(--ink); outline: none; transition: border-color 0.12s; }
+    input:focus, select:focus, textarea:focus { border-color: var(--harbor); }
+    textarea { resize: vertical; min-height: 60px; }
+    .add-btn { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 12px 22px; border-radius: 999px; background: var(--harbor); color: #fffaf1; font-family: inherit; font-size: 14px; font-weight: 800; border: none; cursor: pointer; transition: background 0.12s; }
+    .add-btn:hover { background: var(--harbor-dark); }
+
+    /* Inventory table */
+    .inventory-section { margin: 0 0 28px; }
+    .inventory-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px; }
+    .inventory-header h2 { font-size: 18px; letter-spacing: -0.015em; margin: 0; }
+    .count-badge { font-size: 13px; font-weight: 800; color: var(--harbor); background: rgba(23,79,88,0.08); padding: 4px 10px; border-radius: 999px; }
+    .empty-state { padding: 40px 24px; text-align: center; border: 2px dashed var(--line); border-radius: 14px; color: var(--muted); font-size: 15px; }
+    .inv-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .inv-table th { text-align: left; padding: 10px 12px; background: var(--ink); color: #fffaf1; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
+    .inv-table th:first-child { border-radius: 10px 0 0 0; }
+    .inv-table th:last-child { border-radius: 0 10px 0 0; text-align: right; }
+    .inv-table td { padding: 11px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    .inv-table tr:last-child td { border-bottom: none; }
+    .inv-table tr:nth-child(even) td { background: rgba(255,250,241,0.5); }
+    .badge { display: inline-block; font-size: 11px; font-weight: 800; padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
+    .badge-required { color: #743d24; background: rgba(169,87,50,0.12); }
+    .badge-optional { color: var(--muted); background: rgba(23,33,30,0.07); }
+    .badge-email { color: var(--harbor); background: rgba(23,79,88,0.1); }
+    .badge-sftp { color: #1a5c30; background: rgba(26,92,48,0.1); }
+    .badge-manual { color: var(--copper); background: rgba(169,87,50,0.1); }
+    .badge-api { color: #3a2870; background: rgba(58,40,112,0.1); }
+    .del-btn { background: none; border: none; cursor: pointer; color: var(--muted); font-size: 16px; padding: 2px 6px; border-radius: 6px; transition: color 0.12s, background 0.12s; }
+    .del-btn:hover { color: var(--copper); background: rgba(169,87,50,0.08); }
+
+    /* Risk analysis */
+    .risk-section { margin: 36px 0; padding: 26px 28px; border-radius: 16px; border: 1px solid rgba(169,87,50,0.2); background: rgba(169,87,50,0.04); display: none; }
+    .risk-section.visible { display: block; }
+    .risk-section h2 { font-size: 18px; letter-spacing: -0.015em; margin: 0 0 16px; }
+    .risk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 16px; }
+    .risk-card { padding: 16px 18px; border-radius: 12px; border: 1px solid var(--line); background: rgba(255,250,241,0.9); }
+    .risk-card .rc-label { font-size: 11px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .risk-card .rc-val { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+    .risk-card.warn .rc-val { color: var(--copper); }
+    .risk-card.ok .rc-val { color: var(--harbor); }
+    .risk-findings { display: flex; flex-direction: column; gap: 8px; }
+    .risk-finding { display: flex; gap: 10px; padding: 12px 14px; border-radius: 10px; background: rgba(255,250,241,0.9); border: 1px solid var(--line); font-size: 14px; align-items: flex-start; line-height: 1.5; }
+    .rf-icon { flex-shrink: 0; }
+
+    /* Export */
+    .export-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 24px 0; }
+    .export-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font-family: inherit; font-size: 14px; font-weight: 800; border: none; cursor: pointer; transition: background 0.12s, color 0.12s; }
+    .export-csv { background: var(--harbor); color: #fffaf1; }
+    .export-csv:hover { background: var(--harbor-dark); }
+    .export-copy { background: rgba(23,33,30,0.08); color: var(--ink); }
+    .export-copy:hover { background: rgba(23,33,30,0.14); }
+    .copy-confirm { font-size: 13px; color: var(--harbor); font-weight: 800; display: none; }
+    .copy-confirm.show { display: inline; }
+
+    /* CTA */
+    .cta-block { margin: 52px 0 80px; padding: 36px 40px; border-radius: 22px; background: #14221e; color: #fffaf1; }
+    .cta-block h2 { color: #fffaf1; margin: 0 0 10px; font-size: clamp(20px, 2.4vw, 28px); }
+    .cta-block p { color: rgba(255, 250, 241, 0.75); margin-bottom: 20px; font-size: 16px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
+
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--harbor); }
+    @media (max-width: 680px) {
+      .navlinks a:not(.book) { display: none; }
+      .form-grid, .form-grid.three { grid-template-columns: 1fr; }
+      .risk-grid { grid-template-columns: 1fr 1fr; }
+      .cta-block { padding: 26px; }
+      .inv-table { font-size: 12px; }
+      .inv-table th, .inv-table td { padding: 9px 8px; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
+        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
+        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
+        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
+      </svg>
+      Hotel Report Automation
+    </a>
+    <div class="navlinks">
+      <a href="/start-here/">Start here</a>
+      <a href="/blog/">Blog</a>
+      <a href="/morning-report-workflow-audit/">Free tools</a>
+      <a href="/#pilot">Pilot</a>
+      <a class="book" href="/#book">Book a review</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <div class="hero">
+      <div class="hero-eyebrow">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true"><rect x="1" y="1" width="11" height="11" rx="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 6.5h5M4 4.5h5M4 8.5h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Free tool
+      </div>
+      <h1>Source Report Inventory</h1>
+      <p>Document every scheduled report your morning workflow depends on — what it is, how it arrives, when it's expected, and what your team does when it doesn't show up. The completed inventory is the starting point for any automation project, and the fastest way to see where your reliability risks actually are.</p>
+    </div>
+
+    <div class="tool-area">
+
+      <!-- Row builder form -->
+      <div class="builder">
+        <h2>Add a source report</h2>
+        <div class="form-grid">
+          <div class="field">
+            <label for="rpt-name">Report name</label>
+            <input id="rpt-name" type="text" placeholder="e.g. Daily Close — Property A">
+          </div>
+          <div class="field">
+            <label for="rpt-system">Source system</label>
+            <input id="rpt-system" type="text" placeholder="e.g. Mews, IDeaS, ProfitSword">
+          </div>
+          <div class="field">
+            <label for="rpt-delivery">Delivery method</label>
+            <select id="rpt-delivery">
+              <option value="">Select…</option>
+              <option value="email">Email attachment</option>
+              <option value="sftp">SFTP / file drop</option>
+              <option value="manual">Manual export / download</option>
+              <option value="api">API / webhook</option>
+              <option value="drive">Shared Drive / folder</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="rpt-time">Expected arrival</label>
+            <input id="rpt-time" type="text" placeholder="e.g. 5:30am daily">
+          </div>
+          <div class="field">
+            <label for="rpt-format">File format</label>
+            <select id="rpt-format">
+              <option value="">Select…</option>
+              <option value="CSV">CSV</option>
+              <option value="Excel">Excel (.xlsx / .xls)</option>
+              <option value="PDF">PDF</option>
+              <option value="Google Sheet">Google Sheet</option>
+              <option value="JSON">JSON / API response</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="rpt-required">Required or optional?</label>
+            <select id="rpt-required">
+              <option value="Required">Required — brief can't run without it</option>
+              <option value="Optional">Optional — nice to have</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label for="rpt-missing">What happens when it doesn't arrive?</label>
+            <textarea id="rpt-missing" placeholder="e.g. Someone manually pulls it. The brief goes out late. Nobody notices until the standup."></textarea>
+          </div>
+        </div>
+        <button class="add-btn" onclick="addReport()">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M7 4v6M4 7h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Add to inventory
+        </button>
+      </div>
+
+      <!-- Inventory table -->
+      <div class="inventory-section">
+        <div class="inventory-header">
+          <h2>Your inventory</h2>
+          <span class="count-badge" id="count-badge">0 reports</span>
+        </div>
+        <div id="empty-state" class="empty-state">No reports added yet. Add your first source report above.</div>
+        <div id="inv-table-wrap" style="display:none;overflow-x:auto">
+          <table class="inv-table" id="inv-table">
+            <thead>
+              <tr>
+                <th>Report</th>
+                <th>System</th>
+                <th>Delivery</th>
+                <th>Expected</th>
+                <th>Format</th>
+                <th>Priority</th>
+                <th>If missing</th>
+                <th style="text-align:right">Remove</th>
+              </tr>
+            </thead>
+            <tbody id="inv-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Risk analysis -->
+      <div class="risk-section" id="risk-section">
+        <h2>What your inventory reveals</h2>
+        <div class="risk-grid">
+          <div class="risk-card" id="rc-total">
+            <div class="rc-label">Total sources</div>
+            <div class="rc-val" id="rc-total-val">0</div>
+          </div>
+          <div class="risk-card warn" id="rc-manual">
+            <div class="rc-label">Manual steps</div>
+            <div class="rc-val" id="rc-manual-val">0</div>
+          </div>
+          <div class="risk-card warn" id="rc-required">
+            <div class="rc-label">Required sources</div>
+            <div class="rc-val" id="rc-required-val">0</div>
+          </div>
+        </div>
+        <div class="risk-findings" id="risk-findings"></div>
+      </div>
+
+      <!-- Export -->
+      <div class="export-row" id="export-row" style="display:none">
+        <button class="export-btn export-csv" onclick="exportCSV()">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v8M4 6l3 3 3-3M2 10v2a1 1 0 001 1h8a1 1 0 001-1v-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Download CSV
+        </button>
+        <button class="export-btn export-copy" onclick="copyText()">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><rect x="1" y="4" width="9" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M4 4V3a1 1 0 011-1h5a1 1 0 011 1v5a1 1 0 01-1 1h-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Copy as text
+        </button>
+        <span class="copy-confirm" id="copy-confirm">Copied to clipboard</span>
+      </div>
+
+      <div class="cta-block">
+        <h2>Ready to turn this inventory into an automation plan?</h2>
+        <p>Bring this list to a workflow review and we'll map which sources are worth automating first, what the reliability layer needs to look like, and what a realistic pilot scope is given your specific stack.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+          <a class="button" style="color:#fffaf1;border:1px solid rgba(255,250,241,0.3);background:transparent" href="/morning-report-workflow-audit/">Run the workflow audit first</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="wrap">
+    <a href="/">Hotel Report Automation</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a> &middot; <a href="/hotel-morning-report-template/">Morning report template</a> &middot; <a href="/hotel-pickup-report-template/">Pickup report template</a> &middot; <a href="/start-here/">Start here</a>
+  </footer>
+
+  <script>
+    const reports = [];
+
+    function deliveryBadge(d) {
+      const map = { email: ['badge-email', 'Email'], sftp: ['badge-sftp', 'SFTP'], manual: ['badge-manual', 'Manual'], api: ['badge-api', 'API'], drive: ['badge-email', 'Drive'] };
+      const [cls, label] = map[d] || ['', d];
+      return `<span class="badge ${cls}">${label}</span>`;
+    }
+
+    function addReport() {
+      const name = document.getElementById('rpt-name').value.trim();
+      const system = document.getElementById('rpt-system').value.trim();
+      const delivery = document.getElementById('rpt-delivery').value;
+      const time = document.getElementById('rpt-time').value.trim();
+      const format = document.getElementById('rpt-format').value;
+      const required = document.getElementById('rpt-required').value;
+      const missing = document.getElementById('rpt-missing').value.trim();
+
+      if (!name || !system) { alert('Report name and source system are required.'); return; }
+
+      reports.push({ name, system, delivery, time, format, required, missing });
+      renderTable();
+      renderRisk();
+
+      document.getElementById('rpt-name').value = '';
+      document.getElementById('rpt-system').value = '';
+      document.getElementById('rpt-delivery').value = '';
+      document.getElementById('rpt-time').value = '';
+      document.getElementById('rpt-format').value = '';
+      document.getElementById('rpt-required').value = 'Required';
+      document.getElementById('rpt-missing').value = '';
+    }
+
+    function removeReport(i) {
+      reports.splice(i, 1);
+      renderTable();
+      renderRisk();
+    }
+
+    function renderTable() {
+      const badge = n => `<span class="badge ${n === 'Required' ? 'badge-required' : 'badge-optional'}">${n}</span>`;
+      document.getElementById('count-badge').textContent = `${reports.length} report${reports.length !== 1 ? 's' : ''}`;
+      document.getElementById('empty-state').style.display = reports.length ? 'none' : '';
+      const wrap = document.getElementById('inv-table-wrap');
+      wrap.style.display = reports.length ? '' : 'none';
+      document.getElementById('export-row').style.display = reports.length ? '' : 'none';
+
+      const tbody = document.getElementById('inv-body');
+      tbody.innerHTML = reports.map((r, i) => `
+        <tr>
+          <td><strong>${r.name}</strong></td>
+          <td>${r.system}</td>
+          <td>${r.delivery ? deliveryBadge(r.delivery) : '—'}</td>
+          <td style="white-space:nowrap">${r.time || '—'}</td>
+          <td>${r.format || '—'}</td>
+          <td>${badge(r.required)}</td>
+          <td style="max-width:200px;color:var(--muted)">${r.missing || '—'}</td>
+          <td style="text-align:right"><button class="del-btn" onclick="removeReport(${i})" title="Remove">✕</button></td>
+        </tr>`).join('');
+    }
+
+    function renderRisk() {
+      const sec = document.getElementById('risk-section');
+      if (!reports.length) { sec.classList.remove('visible'); return; }
+      sec.classList.add('visible');
+
+      const manual = reports.filter(r => r.delivery === 'manual').length;
+      const required = reports.filter(r => r.required === 'Required').length;
+      const noMissingPlan = reports.filter(r => r.required === 'Required' && !r.missing.trim()).length;
+      const noTime = reports.filter(r => r.required === 'Required' && !r.time.trim()).length;
+      const pdf = reports.filter(r => r.format === 'PDF').length;
+
+      document.getElementById('rc-total-val').textContent = reports.length;
+      document.getElementById('rc-manual-val').textContent = manual;
+      document.getElementById('rc-required-val').textContent = required;
+
+      const findings = [];
+      if (manual > 0) findings.push({ icon: '⚠️', text: `${manual} source${manual > 1 ? 's' : ''} require${manual === 1 ? 's' : ''} a manual export or download every morning — each one is a step that can be eliminated.` });
+      if (noMissingPlan > 0) findings.push({ icon: '🔴', text: `${noMissingPlan} required source${noMissingPlan > 1 ? 's' : ''} ${noMissingPlan === 1 ? 'has' : 'have'} no defined behavior if missing — stale data or silent failures are likely.` });
+      if (noTime > 0) findings.push({ icon: '⚠️', text: `${noTime} required source${noTime > 1 ? 's' : ''} ${noTime === 1 ? 'has' : 'have'} no expected arrival time — without a schedule, late arrivals can't be detected automatically.` });
+      if (pdf > 0) findings.push({ icon: '⚠️', text: `${pdf} source${pdf > 1 ? 's' : ''} deliver${pdf === 1 ? 's' : ''} as PDF — PDFs are difficult to parse programmatically. Request a CSV or Excel version from the vendor.` });
+      if (required > 5) findings.push({ icon: '📋', text: `${required} required sources is a complex dependency chain. Prioritize the 2–3 highest-friction ones for the first automation pilot.` });
+      if (!findings.length) findings.push({ icon: '✅', text: 'No major reliability risks detected in this inventory. Good starting point for an automation project.' });
+
+      document.getElementById('risk-findings').innerHTML = findings.map(f => `<div class="risk-finding"><span class="rf-icon">${f.icon}</span><span>${f.text}</span></div>`).join('');
+    }
+
+    function exportCSV() {
+      const headers = ['Report Name', 'Source System', 'Delivery Method', 'Expected Arrival', 'Format', 'Required', 'If Missing'];
+      const rows = reports.map(r => [r.name, r.system, r.delivery, r.time, r.format, r.required, r.missing].map(v => `"${(v||'').replace(/"/g,'""')}"`).join(','));
+      const csv = [headers.join(','), ...rows].join('\n');
+      const a = document.createElement('a');
+      a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+      a.download = 'source-report-inventory.csv';
+      a.click();
+    }
+
+    function copyText() {
+      const lines = reports.map(r => `${r.name} | ${r.system} | ${r.delivery || 'unknown'} | ${r.time || 'no schedule'} | ${r.format || '?'} | ${r.required} | Missing: ${r.missing || 'no plan'}`);
+      const text = ['SOURCE REPORT INVENTORY', '---', ...lines].join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        const el = document.getElementById('copy-confirm');
+        el.classList.add('show');
+        setTimeout(() => el.classList.remove('show'), 2500);
+      });
+    }
+  </script>
+</body>
+</html>
