@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Report Automation - Charlestowne Hotels sample workflow</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Illustrative sample hotel reporting workflow for Charlestowne Hotels.">
+  <style>
+    :root {
+      --bg: #f5efe4;
+      --paper: #fffaf1;
+      --paper-strong: #fffdf8;
+      --ink: #17221e;
+      --muted: #607066;
+      --line: #ded2c0;
+      --accent: #174f58;
+      --accent-dark: #102f36;
+      --warm: #a95732;
+      --shadow: 0 28px 80px rgba(44, 34, 21, 0.13);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(169, 87, 50, 0.14), transparent 26%),
+        radial-gradient(circle at 86% 16%, rgba(23, 79, 88, 0.16), transparent 30%),
+        linear-gradient(180deg, #fbf6ec, var(--bg));
+      line-height: 1.6;
+    }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .nav { margin-top: 18px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,250,241,.84); display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; }
+    .mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); position: relative; flex: 0 0 auto; }
+    .mark:after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 9px; height: 3px; border-radius: 99px; background: #fffaf1; box-shadow: 6px -7px 0 #fffaf1, 13px -15px 0 #fffaf1; }
+    .nav a { color: var(--muted); text-decoration: none; font-weight: 750; font-size: 14px; }
+    .hero { padding: 74px 0 42px; display: grid; grid-template-columns: 1.04fr .96fr; gap: 44px; align-items: center; }
+    .eyebrow { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(169,87,50,.12); color: #74491e; font-size: 12px; font-weight: 850; letter-spacing: .05em; text-transform: uppercase; }
+    h1 { margin: 18px 0; font-size: clamp(38px, 5.4vw, 64px); line-height: 1.08; letter-spacing: -.024em; }
+    h2 { margin: 0 0 12px; font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; letter-spacing: -.02em; }
+    h3 { margin: 0 0 8px; font-size: 22px; line-height: 1.22; letter-spacing: -.012em; }
+    p { margin-top: 0; color: var(--muted); }
+    .lead { font-size: clamp(18px, 2vw, 21px); max-width: 720px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; padding: 0 18px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); box-shadow: 0 16px 36px rgba(16,47,54,.22); }
+    .secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255,250,241,.78); }
+    .panel { border: 1px solid var(--line); border-radius: 30px; background: rgba(255,250,241,.9); box-shadow: var(--shadow); overflow: hidden; }
+    .panel-head { padding: 22px 24px; color: #fffaf1; background: linear-gradient(135deg, var(--accent-dark), var(--accent)); }
+    .panel-head strong { display: block; font-size: 23px; line-height: 1.2; letter-spacing: -.015em; }
+    .panel-head span { display: block; margin-top: 3px; color: rgba(255,250,241,.86); font-size: 15px; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
+    .metric { padding: 18px 16px; border-right: 1px solid var(--line); background: var(--paper-strong); }
+    .metric:last-child { border-right: 0; }
+    .metric span { display: block; color: var(--muted); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .035em; }
+    .metric b { display: block; margin-top: 5px; font-size: 25px; letter-spacing: -.01em; }
+    .insight { padding: 22px 24px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 32px 0 0; }
+    .card { padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,250,241,.84); box-shadow: 0 16px 42px rgba(44,34,21,.07); }
+    .card ul { margin: 0; padding-left: 20px; color: var(--muted); }
+    .section { padding: 54px 0; }
+    .disclaimer { padding: 16px 18px; border: 1px solid rgba(169,87,50,.28); border-radius: 18px; background: rgba(169,87,50,.08); color: #74491e; font-size: 14px; }
+    .booking { margin: 38px 0 0; padding: 34px; border-radius: 30px; background: #14221e; color: #fffaf1; display: grid; grid-template-columns: 1fr auto; gap: 22px; align-items: center; }
+    .booking p { color: rgba(255,250,241,.82); margin-bottom: 0; }
+    footer { padding: 30px 0 44px; color: var(--muted); font-size: 14px; }
+    @media (max-width: 900px) { .hero, .grid, .booking { grid-template-columns: 1fr; } .hero { padding-top: 54px; } .metrics { grid-template-columns: repeat(2, 1fr); } .metric:nth-child(2) { border-right: 0; } }
+    @media (max-width: 560px) { .nav { border-radius: 22px; align-items: flex-start; } .metrics { grid-template-columns: 1fr; } .metric { border-right: 0; } .booking { padding: 24px; } }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <div class="brand"><span class="mark" aria-hidden="true"></span><span>Hotel Report Automation</span></div>
+    <a href="/">Main site</a>
+  </nav>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Illustrative workflow sample</div>
+        <h1>A sample report automation pilot for Charlestowne Hotels</h1>
+        <p class="lead">For a 60-property portfolio, the value is a consistent morning view without manual report assembly.</p>
+        <div class="actions">
+          <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a reporting workflow review</a>
+          <a class="button secondary" href="#workflow">See the workflow</a>
+        </div>
+      </div>
+      <aside class="panel" aria-label="Sample daily brief">
+        <div class="panel-head"><strong>Sample daily brief for a multi-property team</strong><span>Automatically assembled from recurring report inputs</span></div>
+        <div class="metrics">
+          <div class="metric"><span>Occ.</span><b>84.4%</b></div>
+          <div class="metric"><span>ADR</span><b>$209</b></div>
+          <div class="metric"><span>Pickup</span><b>+19 rooms</b></div>
+          <div class="metric"><span>Flags</span><b>2</b></div>
+        </div>
+        <div class="insight"><h3>Underpriced high-demand dates, pickup changes, and forecast gaps move to the top of the morning review.</h3><p>Instead of waiting for someone to assemble the report, the team starts with the exceptions, dates, and properties that need review first.</p></div>
+      </aside>
+    </section>
+    <div class="disclaimer"><strong>Important:</strong> Illustrative sample only. Property names may come from public sources; operating metrics are assumed sample data unless real client data is provided.</div>
+    <section class="section" id="workflow">
+      <h2>What the automated daily update could include</h2>
+      <div class="grid">
+        <div class="card"><h3>Public context</h3><p>Public property names still need manual review, so this sample uses generic property labels.</p></div>
+        <div class="card"><h3>Operations view</h3><p>Portfolio reporting across 60+ hotels; remove recurring morning assembly for ops leaders.</p></div>
+        <div class="card"><h3>Revenue view</h3><p>Daily revenue pulse: pickup, ADR, RevPAR, rate-shop gaps, forecast risk, and underpriced dates surfaced first.</p></div>
+      </div>
+    </section>
+    <section class="booking">
+      <div><h2>Review one workflow first.</h2><p>Send the recurring reports, who uses the output, and what still happens manually. The first pilot should be narrow, useful, and easy for the team to adopt.</p></div>
+      <div class="actions">
+        <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a time</a>
+        <a class="button secondary" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20workflow%20review%20-%20Charlestowne%20Hotels&body=Hi%20Chandler,%0A%0AI'd%20like%20to%20review%20a%20hotel%20reporting%20workflow%20for%20Charlestowne%20Hotels.%0A%0AReports%20involved:%0AWho%20uses%20the%20output:%0AWhat%20is%20manual%20today:%0ATwo%20times%20that%20work:%0A">Email instead</a>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap">Hotel Report Automation - sample workflow page for Charlestowne Hotels.</footer>
+</body>
+</html>
