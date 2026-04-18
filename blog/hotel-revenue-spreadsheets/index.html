@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Why Hotel Revenue Teams Spend Too Much Time in Spreadsheets | Hotel Report Automation</title>
+  <meta name="description" content="The spreadsheet isn't the problem. It's the bridge between systems that don't talk to each other — and nobody has put that bridge on their product roadmap.">
+  <link rel="canonical" href="https://hotelreportautomation.com/blog/hotel-revenue-spreadsheets/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hotelreportautomation.com/blog/hotel-revenue-spreadsheets/">
+  <meta property="og:title" content="Why Hotel Revenue Teams Spend Too Much Time in Spreadsheets">
+  <meta property="og:description" content="The spreadsheet isn't the problem. It's the bridge between systems that don't talk to each other — and nobody has put that bridge on their product roadmap.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Why Hotel Revenue Teams Spend Too Much Time in Spreadsheets","author":{"@type":"Person","name":"Chandler Mahaney"},"publisher":{"@type":"Organization","name":"Hotel Report Automation"},"datePublished":"2026-04-18","url":"https://hotelreportautomation.com/blog/hotel-revenue-spreadsheets/"}</script>
+  <style>
+    :root { --bg: #f6efe3; --paper: #fffaf1; --ink: #17221e; --muted: #5e6c64; --line: #ded1bf; --harbor: #174f58; --harbor-dark: #0d3037; --copper: #a95732; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%), radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%), linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%); line-height: 1.7; }
+    a { color: var(--harbor); }
+    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    .article-wrap { width: min(720px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 18px auto 0; padding: 13px 16px; border: 1px solid rgba(222, 209, 191, 0.9); border-radius: 999px; background: rgba(255, 250, 241, 0.82); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .navlinks { display: flex; align-items: center; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
+    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+    .article { padding: 56px 0 80px; }
+    .breadcrumb { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--harbor); }
+    .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .cat { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(23, 79, 88, 0.1); color: var(--harbor); }
+    .read-time, .byline { font-size: 14px; color: var(--muted); }
+    h1 { font-size: clamp(30px, 4vw, 50px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 22px; }
+    .lede { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 32px; line-height: 1.6; }
+    h2 { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.18; letter-spacing: -0.018em; margin: 44px 0 14px; }
+    p { font-size: 17px; line-height: 1.78; margin: 0 0 20px; color: var(--ink); }
+    .callout { margin: 32px 0; padding: 22px 26px; border-left: 4px solid var(--harbor); border-radius: 0 14px 14px 0; background: rgba(23, 79, 88, 0.06); }
+    .callout p { margin: 0; font-size: 16px; color: var(--muted); }
+    .math-block { margin: 28px 0; padding: 24px 28px; border-radius: 16px; background: rgba(23, 79, 88, 0.06); border: 1px solid rgba(23, 79, 88, 0.14); }
+    .math-block .equation { font-size: 17px; color: var(--ink); font-weight: 750; margin-bottom: 8px; }
+    .math-block .result { font-size: 22px; font-weight: 900; color: var(--harbor); letter-spacing: -0.015em; }
+    .math-block .context { font-size: 14px; color: var(--muted); margin-top: 6px; }
+    .cta-block { margin: 52px 0 0; padding: 36px 40px; border-radius: 22px; background: #14221e; color: #fffaf1; }
+    .cta-block h2 { color: #fffaf1; margin: 0 0 10px; font-size: clamp(20px, 2.4vw, 28px); }
+    .cta-block p { color: rgba(255, 250, 241, 0.75); margin-bottom: 20px; font-size: 16px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 22px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); text-decoration: none; margin-top: 40px; }
+    .back-link:hover { color: var(--harbor); }
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--harbor); }
+    @media (max-width: 600px) { .navlinks a:not(.book) { display: none; } .cta-block { padding: 26px; } }
+  </style>
+</head>
+<body>
+  <nav class="wrap nav">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
+        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
+        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
+        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
+      </svg>
+      Hotel Report Automation
+    </a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/morning-report-workflow-audit/">Free tools</a>
+      <a href="/#pilot">Pilot</a>
+      <a class="book" href="/#book">Book a review</a>
+    </div>
+  </nav>
+
+  <main class="article-wrap">
+    <article class="article">
+      <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Reporting</div>
+
+      <div class="post-meta">
+        <span class="cat">Reporting</span>
+        <span class="read-time">6 min read</span>
+        <span class="byline">by Chandler Mahaney &middot; April 18, 2026</span>
+      </div>
+
+      <h1>Why Hotel Revenue Teams Spend Too Much Time in Spreadsheets</h1>
+
+      <p class="lede">The spreadsheet isn't the problem most people think it is. When I see a revenue manager spending 40 minutes every morning in Google Sheets, the first instinct for a lot of operators is to replace the spreadsheet — with a dashboard, a BI tool, or a purpose-built reporting platform. That instinct almost always leads somewhere expensive and time-consuming that doesn't fix the underlying issue.</p>
+
+      <p>In most cases, the spreadsheet is doing exactly what it's supposed to do. The problem is what it's being asked to do before that.</p>
+
+      <h2>What the spreadsheet is actually doing</h2>
+
+      <p>The morning spreadsheet in a hotel management company is almost always serving as a bridge. The PMS produces data. The rate shop produces data. The forecast file has the budget numbers. The channel manager has its own export. None of those systems talk to each other in a way that surfaces a combined operating view.</p>
+
+      <p>The spreadsheet is where someone assembles them every morning so the team can see the full picture in one place. It's a coordination layer between tools that were never designed to share data with each other. And as a coordination layer, it works. It's flexible, it's accessible to everyone on the team, and it's free.</p>
+
+      <p>The problem isn't the tool. It's that a human being has to do the assembly work manually, every day, for every property in the portfolio.</p>
+
+      <h2>Why no vendor has solved this</h2>
+
+      <p>PMS vendors are in the business of capturing and managing operating data. Building custom morning reporting views that combine their data with three other systems is outside their core product scope — it would require them to maintain integrations with every rate shop tool, every RMS, every channel manager their customers use. That's not a business they want to be in.</p>
+
+      <p>The same logic applies to rate intelligence tools and revenue management systems. Each one owns their slice of the data. None of them own the assembly step in between.</p>
+
+      <p>There have been attempts to solve this with hotel-specific BI platforms and consolidated reporting dashboards. Some of them are genuinely useful. But most require integration work, IT involvement, and ongoing maintenance that's out of reach for a mid-market hotel group running lean. The implementation cost alone often exceeds a year's worth of time savings from the manual process.</p>
+
+      <div class="callout">
+        <p>The gap between "all the data exists" and "the team can see it together in a useful format every morning" is real, it's persistent, and it's not on any vendor's core roadmap to close. That gap is exactly where the spreadsheet lives — and where the manual work happens.</p>
+      </div>
+
+      <h2>The economics of the manual alternative</h2>
+
+      <p>Here's the math that usually clarifies the problem. Take the number of properties in the portfolio. Multiply by the number of minutes it takes to pull and combine the morning reports for each one. Multiply by 260 working days.</p>
+
+      <div class="math-block">
+        <div class="equation">12 properties × 35 min/morning × 260 days</div>
+        <div class="result">= 4,368 hours per year</div>
+        <div class="context">More than two full-time roles — spent entirely on data assembly that produces no revenue.</div>
+      </div>
+
+      <p>None of that time produces any revenue. It just produces the view that revenue decisions are made from. The spreadsheet isn't expensive. The labor that fills it is.</p>
+
+      <p>This is also why the problem tends to go unaddressed. It's distributed across mornings in small increments — 35 minutes here, 40 minutes there — and absorbed as "what the job requires." It rarely shows up as a line item in any budget. It's just the invisible cost of running a manual process at scale.</p>
+
+      <h2>What the alternative actually looks like</h2>
+
+      <p>The alternative isn't replacing the spreadsheet with a dashboard. In most cases I'd argue it's automating the work that fills the spreadsheet in the first place.</p>
+
+      <p>The PMS export drops each morning on schedule. The rate shop file arrives automatically. The forecast spreadsheet sits in a shared drive. When those inputs are connected and the assembly is automated, the spreadsheet — or whatever output format the team prefers — gets populated without anyone touching it.</p>
+
+      <p>The revenue manager still sees a familiar format. The difference is that it's ready at 7:45am instead of 9:15am, it looks the same every day regardless of who's on, and no one spent 35 minutes building it. The spreadsheet didn't need to be replaced. The process that produces it did.</p>
+
+      <h2>The reason this matters beyond the time savings</h2>
+
+      <p>The time is the obvious argument. But there's a less obvious one that I think matters more in practice.</p>
+
+      <p>When the morning brief is manual, it's only as good as the person who assembled it that day. On a good day, it's thorough, catches everything, and goes out on time. On a bad day — when someone's rushing, or the export was late, or there was a staffing situation — it's abbreviated, delayed, or inconsistent with what went out the day before.</p>
+
+      <p>Rate decisions made from an abbreviated brief aren't the same quality as decisions made from a complete one. The downstream cost of that inconsistency is real, even if it rarely gets measured. A missed exception on a high-demand date, a rate adjustment that didn't happen because the brief was thin that morning — those add up.</p>
+
+      <p>Automation makes the brief consistent by removing the human assembly step. Not because humans aren't capable of doing it well — they clearly are — but because the best version of the process is one that produces the same complete output every morning, regardless of what else is happening. The spreadsheet is fine. The work required to fill it is worth fixing.</p>
+
+      <a class="back-link" href="/blog/">&larr; Back to all posts</a>
+
+      <div class="cta-block">
+        <h2>How much time is your team spending on assembly?</h2>
+        <p>The ROI calculator on the homepage will give you the exact number. If the answer is more than 20 minutes per property per morning, the automation case is usually straightforward.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="button primary" href="/#roi">Calculate the time cost</a>
+          <a class="button" style="color:#fffaf1;border:1px solid rgba(255,250,241,0.3);background:transparent" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="wrap">
+    <a href="/">Hotel Report Automation</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a>
+  </footer>
+</body>
+</html>
