@@ -4,354 +4,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Blog | Hotel Report Automation</title>
-  <meta name="description" content="Perspectives on hotel operations, reporting automation, and AI — written for revenue managers, COOs, and multi-property operators.">
+  <meta name="description" content="Practical writing on hotel reporting workflows, export-first automation, AI interpretation, and the operating layer behind reliable morning briefs.">
   <link rel="canonical" href="https://hotelreportautomation.com/blog/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <style>
-    :root {
-      --bg: #f6efe3;
-      --paper: #fffaf1;
-      --ink: #17221e;
-      --muted: #5e6c64;
-      --line: #ded1bf;
-      --harbor: #174f58;
-      --harbor-dark: #0d3037;
-      --copper: #a95732;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif;
-      background:
-        radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%),
-        radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%),
-        linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%);
-      line-height: 1.7;
-    }
-    a { color: var(--harbor); }
-    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
-    .nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      margin: 18px auto 0;
-      padding: 13px 16px;
-      border: 1px solid rgba(222, 209, 191, 0.9);
-      border-radius: 999px;
-      background: rgba(255, 250, 241, 0.82);
-      backdrop-filter: blur(16px);
-    }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
-    .navlinks { display: flex; align-items: center; gap: 18px; }
-    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
-    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
-    .page-header { padding: 64px 0 48px; border-bottom: 1px solid var(--line); margin-bottom: 52px; }
-    .page-header h1 { font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -0.025em; margin: 0 0 14px; }
-    .page-header p { font-size: 18px; color: var(--muted); margin: 0; max-width: 600px; }
-    .post-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; padding-bottom: 80px; }
-    .post-card {
-      display: flex;
-      flex-direction: column;
-      padding: 28px 30px;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      background: rgba(255, 250, 241, 0.88);
-      text-decoration: none;
-      color: inherit;
-      transition: border-color 0.15s, box-shadow 0.15s;
-    }
-    .post-card:hover { border-color: var(--harbor); box-shadow: 0 12px 36px rgba(23, 79, 88, 0.1); }
-    .post-card.featured {
-      grid-column: 1 / -1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      align-items: center;
-      padding: 36px 38px;
-      background: rgba(23, 79, 88, 0.04);
-      border-color: rgba(23, 79, 88, 0.2);
-    }
-    .post-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
-    .cat { display: inline-block; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
-    .cat-ai { background: rgba(169, 87, 50, 0.12); color: #743d24; }
-    .cat-reporting { background: rgba(23, 79, 88, 0.1); color: var(--harbor); }
-    .cat-consulting { background: rgba(23, 33, 30, 0.08); color: #2a3935; }
-    .cat-founder { background: rgba(20, 34, 30, 0.1); color: #14221e; }
-    .read-time { font-size: 13px; color: var(--muted); }
-    .post-card h2 { font-size: clamp(19px, 2.2vw, 26px); line-height: 1.18; letter-spacing: -0.018em; margin: 0 0 12px; }
-    .post-card.featured h2 { font-size: clamp(22px, 2.6vw, 32px); }
-    .post-card p { font-size: 15px; color: var(--muted); margin: 0 0 18px; flex-grow: 1; line-height: 1.65; }
-    .post-date { font-size: 13px; color: var(--muted); margin-top: auto; }
-    .featured-aside { display: flex; flex-direction: column; justify-content: center; }
-    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
-    footer a { color: var(--muted); text-decoration: none; }
-    footer a:hover { color: var(--harbor); }
-    @media (max-width: 720px) {
-      .post-grid { grid-template-columns: 1fr; }
-      .post-card.featured { grid-template-columns: 1fr; }
-      .navlinks a:not(.book) { display: none; }
-    }
+    :root{--ink:#111916;--bg:#f8f3e8;--paper:#fffaf1;--line:#ded2c1;--muted:#617069;--green:#123c35;--green2:#0b2925;--copper:#a95732}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:Verdana,Geneva,Arial,sans-serif;background:var(--bg);line-height:1.6}a{color:inherit}h1,h2,h3,p{margin-top:0}.wrap{width:min(1120px,calc(100% - 40px));margin:0 auto}.nav{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:68px}.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:850;font-size:15px}.mark{width:36px;height:36px;border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;background:var(--paper)}.navlinks{display:flex;align-items:center;gap:18px;font-size:14px;font-weight:750}.navlinks a{text-decoration:none;color:var(--muted)}.navlinks .book{color:#fffaf1;background:var(--green);padding:10px 14px;border-radius:999px}.hero{padding:74px 0 58px;border-top:1px solid rgba(17,25,22,.08)}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--copper);font-size:12px;font-weight:850;text-transform:uppercase}.eyebrow:before{content:"";width:28px;height:1px;background:var(--copper)}h1{margin:18px 0;max-width:980px;font-size:clamp(40px,6vw,78px);line-height:.98}.lead{max-width:760px;color:var(--muted);font-size:clamp(17px,1.6vw,20px)}.section{padding:64px 0;border-top:1px solid rgba(17,25,22,.08)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--line)}.post{min-height:255px;padding:24px;background:var(--paper);text-decoration:none;display:flex;flex-direction:column}.post.featured{grid-column:span 2;background:var(--green2);color:#fffaf1}.post small{color:var(--copper);font-weight:850;text-transform:uppercase}.post.featured small{color:#d89b73}.post h2{font-size:22px;line-height:1.16;margin:14px 0 10px}.post.featured h2{font-size:clamp(28px,3vw,42px)}.post p{color:var(--muted);font-size:15px}.post.featured p{color:rgba(255,250,241,.7)}.post span{margin-top:auto;color:var(--green);font-weight:850}.post.featured span{color:#fffaf1}.rail{display:grid;grid-template-columns:.82fr 1.18fr;gap:38px}.list{display:grid;gap:14px}.linkrow{display:grid;grid-template-columns:140px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid rgba(17,25,22,.12);text-decoration:none}.linkrow b{color:var(--copper);font-size:12px;text-transform:uppercase}.linkrow span{font-weight:850}.cta{display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;padding:44px;border-radius:8px;background:var(--green2);color:#fffaf1}.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;text-decoration:none;font-weight:850;font-size:14px;border:1px solid transparent}.primary{color:var(--green2);background:#fffaf1}.secondary{color:#fffaf1;border-color:rgba(255,250,241,.28);background:transparent}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:0}footer{padding:34px 0 46px;color:var(--muted);font-size:13px}footer a{text-decoration:none;color:var(--muted)}@media(max-width:900px){.grid,.rail,.cta{grid-template-columns:1fr}.post.featured{grid-column:span 1}.navlinks a:not(.book){display:none}.linkrow{grid-template-columns:1fr}}@media(max-width:620px){.wrap{width:min(100% - 24px,1120px)}h1{font-size:42px}.cta{padding:26px}}
   </style>
   <!-- HRA Tracking Start -->
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0b8e4b69a94a4822bcb52f78c32b3226"}'></script><!-- End Cloudflare Web Analytics -->
   <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("R6G5YH834165");</script>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3HB2R4PKD3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-3HB2R4PKD3');
-  </script>
-  <!-- End Google tag -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3HB2R4PKD3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3HB2R4PKD3');</script>
   <!-- HRA Tracking End -->
 </head>
 <body>
-  <nav class="wrap nav">
-    <a class="brand" href="/">
-      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
-        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
-        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
-        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
-      </svg>
-      Hotel Report Automation
-    </a>
-    <div class="navlinks">
-      <a href="/start-here/">Start here</a>
-      <a href="/blog/">Blog</a>
-      <a href="/morning-report-workflow-audit/">Free tools</a>
-      <a href="/#pilot">Pilot</a>
-      <a class="book" href="/#book">Book a review</a>
-    </div>
-  </nav>
+  <nav class="wrap nav"><a class="brand" href="/"><span class="mark" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M4 5.5h14M4 11h14M4 16.5h8" stroke="#123c35" stroke-width="2" stroke-linecap="round"/><path d="M14 14l2.2 2.2L20 12.4" stroke="#a95732" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span>Hotel Report Automation</span></a><div class="navlinks"><a href="/">Home</a><a href="/start-here/">Start here</a><a href="/workflow-review-prep/">Prep</a><a href="/about/">About</a><a class="book" href="/#book">Book a review</a></div></nav>
 
-  <main class="wrap">
-    <header class="page-header">
-      <h1>Perspectives on hotel operations,<br>automation, and AI.</h1>
-      <p>Written by Chandler Mahaney for revenue managers, COOs, and multi-property operators who want to understand what's actually worth doing.</p>
+  <main>
+    <header class="wrap hero">
+      <div class="eyebrow">Field notes</div>
+      <h1>Writing about the operating layer hotels actually need.</h1>
+      <p class="lead">Export-first automation, morning reporting workflows, reliability, AI interpretation, and the practical work behind turning manual assembly into something the team can trust.</p>
     </header>
 
-    <div class="post-grid">
+    <section class="section">
+      <div class="wrap grid">
+        <a class="post featured" href="/blog/email-is-the-api/"><small>Reliability</small><h2>Email is the API before the perfect integration exists.</h2><p>Scheduled exports, inboxes, and Drive folders are not a workaround. They are the operating layer many hotel teams already run on.</p><span>Read note</span></a>
+        <a class="post" href="/blog/ai-assembly-first/"><small>AI</small><h2>You cannot layer AI on a broken assembly process.</h2><p>The useful summary comes after the source data is organized.</p><span>Read</span></a>
+        <a class="post" href="/blog/actual-stack-building-hotel-report-automation/"><small>Founder</small><h2>The actual stack behind this business.</h2><p>Agents, shared context, Deepline, Smartlead, GitHub Pages, Cloudflare, QA gates, and human review.</p><span>Read</span></a>
+        <a class="post" href="/blog/five-source-reports/"><small>Reporting</small><h2>The five source reports behind the morning brief.</h2><p>The systems change, but the source categories repeat.</p><span>Read</span></a>
+        <a class="post" href="/blog/workflow-review-first-20-minutes/"><small>Sales</small><h2>What I look for in the first 20 minutes.</h2><p>The questions that reveal whether a reporting workflow is ready for a pilot.</p><span>Read</span></a>
+        <a class="post" href="/blog/when-hotel-spreadsheet-becomes-infrastructure/"><small>Operations</small><h2>When a spreadsheet becomes infrastructure.</h2><p>How a temporary manual report becomes the thing everyone depends on.</p><span>Read</span></a>
+      </div>
+    </section>
 
-      <a class="post-card featured" href="/blog/email-is-the-api/" style="background:rgba(169,87,50,0.04);border-color:rgba(169,87,50,0.22)">
-        <div>
-          <div class="post-meta">
-            <span class="cat cat-ai">AI in Hotels</span>
-            <span class="read-time">8 min read</span>
-          </div>
-          <h2>Email Is the API: How Hotel Reporting Automation Works Before the Perfect Integration Exists</h2>
-          <p>Hotel tech stacks are export-heavy and API-poor. That means email attachments, scheduled reports, and Drive folders aren't a workaround — they're the actual integration layer most hotel ops run on. The real engineering problem is reliability, not parsing.</p>
-          <span class="post-date">April 18, 2026</span>
+    <section class="section">
+      <div class="wrap rail">
+        <div><h2 style="font-size:clamp(28px,3.5vw,48px);line-height:1.06;margin-bottom:14px">Read by problem.</h2><p class="lead">The archive now has enough pages that the right path matters more than the full list.</p></div>
+        <div class="list">
+          <a class="linkrow" href="/blog/hotel-revenue-spreadsheets/"><b>Manual work</b><span>Why hotel revenue teams spend too much time in spreadsheets</span></a>
+          <a class="linkrow" href="/blog/data-integration-problem/"><b>Integrations</b><span>The hotel industry has a data integration problem, not a data problem</span></a>
+          <a class="linkrow" href="/blog/hotel-vendor-api-access/"><b>APIs</b><span>What happens when vendors will not give you API access</span></a>
+          <a class="linkrow" href="/blog/hotel-owner-reporting/"><b>Owners</b><span>What owner reporting should answer before the meeting</span></a>
+          <a class="linkrow" href="/blog/hotel-automation-pilot-mistakes/"><b>Pilots</b><span>Common mistakes in first hotel automation pilots</span></a>
         </div>
-        <div class="featured-aside" aria-hidden="true" style="padding:24px;background:rgba(169,87,50,0.06);border-radius:14px;border:1px solid rgba(169,87,50,0.16)">
-          <div style="font-size:13px;font-weight:800;color:var(--copper);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">The reliability layer</div>
-          <div style="display:grid;gap:8px">
-            <div style="padding:10px 12px;background:var(--paper);border-radius:9px;border:1px solid var(--line);font-size:13px;color:var(--muted)"><strong style="color:var(--ink)">Source inventory</strong> — what arrives, when, how</div>
-            <div style="padding:10px 12px;background:var(--paper);border-radius:9px;border:1px solid var(--line);font-size:13px;color:var(--muted)"><strong style="color:var(--ink)">Duplicate detection</strong> — don't process twice</div>
-            <div style="padding:10px 12px;background:var(--paper);border-radius:9px;border:1px solid var(--line);font-size:13px;color:var(--muted)"><strong style="color:var(--ink)">Missing file behavior</strong> — blank, flag, or halt</div>
-            <div style="padding:10px 12px;background:var(--paper);border-radius:9px;border:1px solid var(--line);font-size:13px;color:var(--muted)"><strong style="color:var(--ink)">Run log</strong> — audit trail every morning</div>
-          </div>
-        </div>
-      </a>
+      </div>
+    </section>
 
-      <a class="post-card featured" href="/blog/ai-assembly-first/">
-        <div>
-          <div class="post-meta">
-            <span class="cat cat-ai">AI in Hotels</span>
-            <span class="read-time">6 min read</span>
-          </div>
-          <h2>Why You Can't Layer AI on a Broken Assembly Process</h2>
-          <p>Everyone wants the AI summary that shows up at 7:45am and tells the team what to do first. The problem is most hotels try to build that layer before the foundation underneath it is solid — and then wonder why it isn't useful.</p>
-          <span class="post-date">April 18, 2026</span>
-        </div>
-        <div class="featured-aside" aria-hidden="true" style="padding:24px;background:rgba(23,79,88,0.06);border-radius:14px;border:1px solid rgba(23,79,88,0.14)">
-          <div style="font-size:13px;font-weight:800;color:var(--harbor);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px">The right sequence</div>
-          <div style="display:grid;gap:10px">
-            <div style="padding:12px 14px;background:var(--paper);border-radius:10px;border:1px solid var(--line);font-size:14px;color:var(--muted)"><strong style="color:var(--ink)">1. Map</strong> the current assembly process</div>
-            <div style="padding:12px 14px;background:var(--paper);border-radius:10px;border:1px solid var(--line);font-size:14px;color:var(--muted)"><strong style="color:var(--ink)">2. Automate</strong> the data assembly first</div>
-            <div style="padding:12px 14px;background:var(--paper);border-radius:10px;border:1px solid var(--line);font-size:14px;color:var(--muted)"><strong style="color:var(--ink)">3. Add AI</strong> interpretation on top</div>
-          </div>
-        </div>
-      </a>
-
-      <a class="post-card" href="/blog/actual-stack-building-hotel-report-automation/" style="grid-column: 1 / -1; border-color: rgba(169,87,50,0.24); background: linear-gradient(140deg, rgba(169,87,50,0.07), rgba(255,250,241,0.9));">
-        <div class="post-meta">
-          <span class="cat cat-founder">Founder Notes</span>
-          <span class="read-time">8 min read</span>
-        </div>
-        <h2>The Actual Stack I Am Using to Build Hotel Report Automation</h2>
-        <p>Not a prompt thread. Not a magic trick. The real operating stack behind this business: Codex, Claude Code, shared context, skills, Deepline, Smartlead, GitHub Pages, Cloudflare, workbooks, QA gates, and the human review layer that keeps the risky stuff from going live.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/five-source-reports/">
-        <div class="post-meta">
-          <span class="cat cat-reporting">Reporting</span>
-          <span class="read-time">5 min read</span>
-        </div>
-        <h2>The 5 Source Reports Behind Every Hotel Morning Brief</h2>
-        <p>Every hotel management company I've worked with builds their morning view from roughly the same five sources. The names change, the systems change, but the sources are almost always the same — and that's exactly what makes automation practical.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-revenue-spreadsheets/">
-        <div class="post-meta">
-          <span class="cat cat-reporting">Reporting</span>
-          <span class="read-time">6 min read</span>
-        </div>
-        <h2>Why Hotel Revenue Teams Spend Too Much Time in Spreadsheets</h2>
-        <p>The spreadsheet isn't the problem most people think it is. When I see a revenue manager spending 40 minutes every morning in Google Sheets, the instinct is usually to replace the spreadsheet. That instinct almost always leads somewhere expensive that doesn't fix the underlying issue.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/workflow-review-first-20-minutes/">
-        <div class="post-meta">
-          <span class="cat cat-consulting">Consulting</span>
-          <span class="read-time">6 min read</span>
-        </div>
-        <h2>What I Look For in the First 20 Minutes of a Workflow Review</h2>
-        <p>The 20-minute workflow review isn't a sales conversation. It's a diagnostic. By the end of it, I should know two things: whether I can help, and roughly where to start. Here's what I'm actually listening for.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-tech-stack-2026/" style="grid-column: 1 / -1">
-        <div class="post-meta">
-          <span class="cat cat-reporting">Hotel Tech</span>
-          <span class="read-time">12 min read</span>
-        </div>
-        <h2>The Hotel Tech Stack in 2026: An Honest Assessment</h2>
-        <p>PMS, RMS, rate intelligence, channel management — a category-by-category look at what actually works, what's overhyped, and the gap nobody in the stack has solved yet. Written for multi-property operators who want a clear-eyed view, not a vendor pitch.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/data-integration-problem/" style="grid-column: 1 / -1">
-        <div class="post-meta">
-          <span class="cat cat-ai">AI in Hotels</span>
-          <span class="read-time">7 min read</span>
-        </div>
-        <h2>The Hotel Industry Has a Data Integration Problem, Not a Data Problem</h2>
-        <p>A hotel management company today has access to more operating data than its counterpart from 20 years ago could have imagined. The PMS captures everything. The rate shop tracks competitors daily. The channel manager logs every booking source. None of this data is missing — the problem is that almost none of it talks to anything else. A software lens on why hotel reporting is still manual in 2026, and what the right fix actually looks like.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-vendor-api-access/">
-        <div class="post-meta">
-          <span class="cat cat-consulting">Consulting</span>
-          <span class="read-time">7 min read</span>
-        </div>
-        <h2>Hotel Software Vendors and API Access: What I Learned the Hard Way</h2>
-        <p>I spent months trying to get programmatic access to hotel software systems. Most vendors said no — some politely, some not. What I learned is that the export layer is more useful than it looks, and building on what you can reliably access beats waiting for vendors to open up.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/software-background-hotel-operations/">
-        <div class="post-meta">
-          <span class="cat cat-consulting">Consulting</span>
-          <span class="read-time">7 min read</span>
-        </div>
-        <h2>What a Software Background Teaches You About Hotel Operations</h2>
-        <p>Coming into hotel consulting from software, the operations looked different to me — not better, just through a different lens. The morning report is a data pipeline. Reliability is a design property, not a personality trait. The bottleneck is almost never where people think it is. Here's what that outside perspective reveals, and where it has real limits.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-automation-pilot-mistakes/">
-        <div class="post-meta">
-          <span class="cat cat-consulting">Consulting</span>
-          <span class="read-time">7 min read</span>
-        </div>
-        <h2>Why Hotel Automation Pilots Fail — And How to Set One Up That Actually Works</h2>
-        <p>Most hotel automation projects don't fail because the technology was wrong. They fail because the scope was wrong from the start — too broad, too vague, or aimed at a problem that wasn't the actual bottleneck. Five failure modes I've seen repeatedly, and the fix for each one.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-morning-brief-what-belongs/">
-        <div class="post-meta">
-          <span class="cat cat-reporting">Reporting</span>
-          <span class="read-time">6 min read</span>
-        </div>
-        <h2>What Belongs in a Hotel Morning Brief (And What Doesn't)</h2>
-        <p>Most hotel morning briefs have too much in them. The right brief gets the team oriented in under three minutes — occupancy, pickup, rate position, exceptions, done. Here's how to think about what to include, what to cut, and why the exceptions column is the most important one.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/ai-interpretation-vs-ai-assembly/" style="grid-column: 1 / -1">
-        <div class="post-meta">
-          <span class="cat cat-ai">AI in Hotels</span>
-          <span class="read-time">6 min read</span>
-        </div>
-        <h2>AI Interpretation vs. AI Assembly: Why the Distinction Matters in Hotel Operations</h2>
-        <p>There are two very different things AI can do in hotel revenue management — and most teams are trying to do the second one before they've solved the first. The interpretation layer depends entirely on the quality of the assembly layer underneath it. Getting the sequence right is the difference between AI that earns trust and AI that quietly erodes it.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-revenue-manager-morning-routine/">
-        <div class="post-meta">
-          <span class="cat cat-reporting">Reporting</span>
-          <span class="read-time">7 min read</span>
-        </div>
-        <h2>The Hotel Revenue Manager's Morning Routine: What It Looks Like and Where It Breaks</h2>
-        <p>The first 90 minutes set the direction for the whole day. In most hotels, about 60 of those minutes are spent on assembly — pulling, pasting, checking formulas — and 30 on actual analysis. Here's the full sequence, where it reliably breaks, and what a better version looks like.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/when-hotel-spreadsheet-becomes-infrastructure/">
-        <div class="post-meta">
-          <span class="cat cat-consulting">Consulting</span>
-          <span class="read-time">6 min read</span>
-        </div>
-        <h2>When the Hotel Spreadsheet Becomes Infrastructure</h2>
-        <p>Every hotel management company has one — a spreadsheet that started as a quick fix and became the thing the business can't start the morning without. Five signals it's become a liability, and why the right fix isn't replacing it.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/what-hotel-rms-gets-right/">
-        <div class="post-meta">
-          <span class="cat cat-reporting" style="background:rgba(23,79,88,0.1);color:var(--harbor)">Hotel Tech</span>
-          <span class="read-time">8 min read</span>
-        </div>
-        <h2>What Hotel RMS Software Gets Right (And Where It Still Leaves Gaps)</h2>
-        <p>Revenue management systems have gotten genuinely good at pricing optimization. The gap isn't in the algorithm — it's in the last mile between RMS output and the morning brief the team actually uses. Why that connection is still manual, and what to do about it.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-owner-reporting/">
-        <div class="post-meta">
-          <span class="cat cat-consulting">Consulting</span>
-          <span class="read-time">6 min read</span>
-        </div>
-        <h2>What Hotel Ownership Groups Actually Want to See Every Morning</h2>
-        <p>Owner reporting and operator reporting solve different problems. Most hotels send the same dense 40-row spreadsheet to both audiences. Here's the simpler view that ownership groups actually need — and why building it gets easier once the assembly layer is automated.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/automate-hotel-pms-exports/" style="grid-column: 1 / -1">
-        <div class="post-meta">
-          <span class="cat cat-reporting">Reporting</span>
-          <span class="read-time">8 min read</span>
-        </div>
-        <h2>How to Automate Hotel PMS Exports (And What to Do When Vendors Won't Let You)</h2>
-        <p>The PMS export is the first manual step in almost every hotel morning workflow — and the first thing worth eliminating. Every method ranked by ease: scheduled email delivery, SFTP file drops, API access, and browser automation as a last resort. Includes a practical breakdown of what the major PMS platforms actually support.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-      <a class="post-card" href="/blog/hotel-reporting-at-10-properties/">
-        <div class="post-meta">
-          <span class="cat cat-consulting">Consulting</span>
-          <span class="read-time">7 min read</span>
-        </div>
-        <h2>Hotel Reporting at 10 Properties: Why What Worked at 3 Stops Working</h2>
-        <p>The morning workflow that runs fine at 3 properties starts breaking at 8. At 15 it's a full-time job just to keep up. A clear-eyed look at how the reporting problem scales — and what hotel management companies actually need at each stage.</p>
-        <span class="post-date">April 18, 2026</span>
-      </a>
-
-    </div>
+    <section class="section">
+      <div class="wrap cta"><div><h2 style="margin:0 0 12px;font-size:clamp(28px,3.5vw,48px);line-height:1.06">Want to turn the writing into a workflow review?</h2><p style="margin:0;color:rgba(255,250,241,.72)">Bring the reports, the current output, and the manual steps. We will map the first pilot.</p></div><div class="actions"><a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a time</a><a class="button secondary" href="/workflow-review-prep/">Prep first</a></div></div>
+    </section>
   </main>
-
-  <footer class="wrap">
-    <a href="/">Hotel Report Automation</a> &middot; <a href="/start-here/">Start here</a> &middot; <a href="/automate-hotel-revenue-reporting/">Revenue reporting guide</a> &middot; <a href="/hotel-morning-report-template/">Morning report template</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a> &middot; <a href="/source-report-inventory/">Source report inventory</a> &middot; <a href="/hotel-pickup-report-template/">Pickup report template</a>
-   &middot; <a href="/privacy/" style="color:var(--muted);text-decoration:none">Privacy</a></footer>
+  <footer class="wrap">Hotel Report Automation · <a href="/">Home</a> · <a href="/start-here/">Start here</a> · <a href="/workflow-review-prep/">Workflow review prep</a> · <a href="/about/">About Chandler</a> · <a href="/privacy/">Privacy</a></footer>
 </body>
 </html>
