@@ -196,6 +196,27 @@
     .insight { padding: 22px; border-bottom: 1px solid var(--line); }
     .insight h2 { margin-bottom: 8px; font-size: 24px; line-height: 1.14; }
     .insight p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .signal {
+      padding: 14px 16px;
+      background: #fffaf1;
+      font-size: 13px;
+    }
+    .signal b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--green);
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+    .signal.warn b { color: var(--warning); }
+    .signal.danger b { color: var(--danger); }
     .moves {
       display: grid;
       gap: 1px;
@@ -212,6 +233,12 @@
     .move b { color: var(--green); font-size: 12px; text-transform: uppercase; }
     .move.warn b { color: var(--warning); }
     .move.danger b { color: var(--danger); }
+    .run-note {
+      padding: 13px 22px;
+      color: var(--muted);
+      background: rgba(244, 247, 241, 0.84);
+      font-size: 12px;
+    }
     .proof-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -396,7 +423,7 @@
       .hero-shell { min-height: auto; }
       .hero { min-height: auto; padding: 48px 0 10px; }
       h1 { font-size: 42px; }
-      .brief-top, .metrics, .move, .pilot-row { grid-template-columns: 1fr; }
+      .brief-top, .metrics, .signal-grid, .move, .pilot-row { grid-template-columns: 1fr; }
       .metric { border-right: 0; border-bottom: 1px solid var(--line); }
       .metric:last-child { border-bottom: 0; }
       .cta { padding: 26px; }
@@ -453,8 +480,8 @@
       <aside class="brief" id="example" aria-label="Anonymized hotel morning operating brief">
         <div class="brief-top">
           <div>
-            <div class="brief-title">Morning Operating Brief</div>
-            <div class="brief-meta">Anonymized 122-room hotel - Tuesday 7:15 AM</div>
+            <div class="brief-title">Daily Revenue Pulse</div>
+            <div class="brief-meta">Anonymized 122-room boutique hotel - Tuesday morning</div>
           </div>
           <div class="run-status">Run complete</div>
         </div>
@@ -465,14 +492,20 @@
           <div class="metric"><span>7d pickup</span><strong style="color:var(--success)">+14</strong></div>
         </div>
         <div class="insight">
-          <h2>Event weekend is underpriced.</h2>
-          <p>Comp set is running $24 to $40 higher on key weekend dates while 51 rooms remain available. Raise BAR before the next pickup window closes.</p>
+          <h2>Event weekend is underpriced — comp set running $40 higher on Saturday.</h2>
+          <p>Strong occupancy for the citywide event, but ADR is materially below comp average. Saturday still has 51 rooms available with own rates $24-$40 below comp.</p>
+        </div>
+        <div class="signal-grid">
+          <div class="signal"><b>Opportunity</b><span>Raise BAR to $285 Fri / $325 Sat while event pickup is still open.</span></div>
+          <div class="signal danger"><b>Risk</b><span>Missing event ADR will drag month RevPAR and budget ADR.</span></div>
+          <div class="signal warn"><b>Watch</b><span>Soft Sundays at 22-25% occupancy need demand generation this week.</span></div>
         </div>
         <div class="moves">
-          <div class="move"><b>Move 1</b><span>Raise Friday and Saturday BAR before revenue meeting.</span></div>
-          <div class="move warn"><b>Watch</b><span>Sunday occupancy is soft at 25.4% with weak pickup.</span></div>
-          <div class="move danger"><b>Exception</b><span>One source report arrived 18 minutes late; run log preserved the earlier file.</span></div>
+          <div class="move"><b>Move 1</b><span>Raise BAR for the event weekend before the next pickup window closes.</span></div>
+          <div class="move"><b>Move 2</b><span>Push transient rates for citywide event days — currently $194 against a $309 comp average.</span></div>
+          <div class="move warn"><b>Move 3</b><span>Activate promotions for soft Sunday dates before the weekend.</span></div>
         </div>
+        <div class="run-note">Anonymized hotel - internal reporting - pickup since prior day - generated automatically</div>
       </aside>
     </header>
 
