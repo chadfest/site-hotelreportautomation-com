@@ -4,199 +4,404 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hotel Report Automation</title>
-  <meta name="description" content="Automated daily hotel reporting workflows that turn occupancy, ADR, pickup, forecast, rates, and exceptions into decision-ready operating briefs.">
+  <meta name="description" content="Fixed-scope automation pilots for hotel teams that turn recurring PMS exports, rate shops, forecasts, pickup, and exception reports into a reliable morning operating brief.">
   <link rel="canonical" href="https://hotelreportautomation.com/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hotelreportautomation.com/">
-  <meta property="og:title" content="Hotel Report Automation — Automated daily reporting for hotel teams">
-  <meta property="og:description" content="We automate the manual steps behind hotel reporting so revenue and operations teams start with a decision-ready view every morning. No more spreadsheet assembly.">
+  <meta property="og:title" content="Hotel Report Automation">
+  <meta property="og:description" content="We automate the manual assembly behind daily hotel reporting so revenue and operations teams start with a reliable morning operating brief.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hotel Report Automation">
-  <meta name="twitter:description" content="Automated daily hotel reporting. No more manual assembly — just a decision-ready morning view for revenue and ops teams.">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What reporting systems and tools do you work with?","acceptedAnswer":{"@type":"Answer","text":"The most common starting point is a team pulling from PMS exports, spreadsheet-based reports, or recurring email outputs. We work with Google Sheets, Excel, scheduled PMS exports, rate shop outputs, and channel manager reports. If the workflow involves pulling from a system and manually combining the results, that is what we fix. Direct PMS access is usually not required."}},{"@type":"Question","name":"How long does a pilot take?","acceptedAnswer":{"@type":"Answer","text":"Most pilots deliver a working output in 2 to 4 weeks. The first week is process mapping and scope confirmation. The second week is building and testing the automation. Simpler workflows with clean source access can move faster. We agree on the timeline before anything starts."}},{"@type":"Question","name":"Do you need direct access to our PMS or internal systems?","acceptedAnswer":{"@type":"Answer","text":"Usually not. We work from whatever the team already exports or receives — files, scheduled email reports, or spreadsheet outputs. If your daily reporting process starts with exports, we can typically build on top of those without needing credentials to the underlying system."}},{"@type":"Question","name":"How is the pilot priced?","acceptedAnswer":{"@type":"Answer","text":"Pilots are fixed-scope projects, not hourly engagements. The scope and price depend on the number of source reports, the complexity of the assembly, and the output format. We agree on that before anything starts. The workflow review call is where we size it together."}}]}</script>
+  <meta name="twitter:description" content="Daily hotel reporting workflows, automated from exports into a reliable morning operating brief.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you need access to our PMS?","acceptedAnswer":{"@type":"Answer","text":"Usually not for the first pilot. We start from the scheduled exports, spreadsheets, recurring emails, rate shop files, and folder outputs your team already uses."}},{"@type":"Question","name":"What does the pilot deliver?","acceptedAnswer":{"@type":"Answer","text":"A working recurring reporting workflow: source intake, cleanup, assembly, exception checks, output delivery, run logs, and handoff notes for one defined morning reporting process."}},{"@type":"Question","name":"How long does a pilot take?","acceptedAnswer":{"@type":"Answer","text":"Most fixed-scope pilots run 2 to 4 weeks after the workflow review, depending on source report quality and output complexity."}},{"@type":"Question","name":"Is this an AI dashboard?","acceptedAnswer":{"@type":"Answer","text":"No. The automation assembles the reporting workflow first. AI is used after the data is organized, where it can summarize exceptions and suggest what deserves attention."}}]}</script>
   <style>
     :root {
-      --bg: #f6efe3;
+      --ink: #111916;
+      --ink-soft: #28342f;
+      --bg: #f8f3e8;
       --paper: #fffaf1;
-      --paper-strong: #fffdf8;
-      --ink: #17221e;
-      --muted: #5e6c64;
-      --line: #ded1bf;
-      --harbor: #174f58;
-      --harbor-dark: #0d3037;
+      --paper-2: #f1e7d7;
+      --line: #ded2c1;
+      --muted: #617069;
+      --green: #123c35;
+      --green-2: #0b2925;
       --copper: #a95732;
-      --amber: #efe2c8;
-      --good: #1f6f54;
-      --warn: #9b5a18;
-      --shadow: 0 28px 80px rgba(44, 34, 21, 0.13);
+      --success: #1f6f54;
+      --warning: #9b5a18;
+      --danger: #8f2f28;
+      --shadow: 0 24px 60px rgba(22, 22, 16, 0.12);
     }
+
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
       color: var(--ink);
-      font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif;
-      background:
-        radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.16), transparent 27%),
-        radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.17), transparent 30%),
-        linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%);
-      line-height: 1.6;
+      font-family: Verdana, Geneva, Arial, sans-serif;
+      background: var(--bg);
+      line-height: 1.55;
     }
     a { color: inherit; }
-    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    h1, h2, h3, p { margin-top: 0; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
     .nav {
+      position: relative;
+      z-index: 3;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 20px;
-      margin: 18px auto 0;
-      padding: 13px 16px;
-      border: 1px solid rgba(222, 209, 191, 0.9);
-      border-radius: 999px;
-      background: rgba(255, 250, 241, 0.82);
-      backdrop-filter: blur(16px);
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 68px;
+      color: #fffaf1;
     }
-    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; }
-    .navlinks { display: flex; align-items: center; gap: 18px; }
-    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
-    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
-    .hero {
-      padding: 84px 0 68px;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      text-decoration: none;
+      font-weight: 850;
+      font-size: 15px;
+    }
+    .mark {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255, 250, 241, 0.28);
+      border-radius: 8px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 52px;
-      align-items: start;
+      place-items: center;
+      background: rgba(255, 250, 241, 0.08);
+    }
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      font-weight: 750;
+    }
+    .navlinks a { text-decoration: none; color: rgba(255, 250, 241, 0.78); }
+    .navlinks .book {
+      color: var(--green-2);
+      background: #fffaf1;
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+    .hero-shell {
+      min-height: 100svh;
+      margin-top: -68px;
+      padding: 68px 0 56px;
+      background:
+        linear-gradient(105deg, rgba(11, 41, 37, 0.96) 0%, rgba(18, 60, 53, 0.94) 46%, rgba(17, 25, 22, 0.72) 100%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1100' viewBox='0 0 1600 1100'%3E%3Crect width='1600' height='1100' fill='%23123c35'/%3E%3Cg opacity='.22' stroke='%23fffaf1' stroke-width='1'%3E%3Cpath d='M0 140h1600M0 280h1600M0 420h1600M0 560h1600M0 700h1600M0 840h1600M0 980h1600M160 0v1100M320 0v1100M480 0v1100M640 0v1100M800 0v1100M960 0v1100M1120 0v1100M1280 0v1100M1440 0v1100'/%3E%3C/g%3E%3Cg opacity='.23'%3E%3Crect x='955' y='130' width='360' height='260' rx='6' fill='%23fffaf1'/%3E%3Crect x='1015' y='185' width='240' height='13' fill='%23a95732'/%3E%3Crect x='1015' y='230' width='190' height='10' fill='%23123c35'/%3E%3Crect x='1015' y='260' width='250' height='10' fill='%23123c35'/%3E%3Crect x='1015' y='290' width='160' height='10' fill='%23123c35'/%3E%3C/g%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: center;
+      color: #fffaf1;
+      overflow: hidden;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
+      gap: 42px;
+      align-items: center;
+      min-height: calc(100svh - 124px);
+      padding-top: 32px;
     }
     .eyebrow {
       display: inline-flex;
-      padding: 8px 12px;
-      border-radius: 999px;
-      color: #743d24;
-      background: rgba(169, 87, 50, 0.12);
+      align-items: center;
+      gap: 8px;
+      color: rgba(255, 250, 241, 0.78);
       font-size: 12px;
       font-weight: 850;
-      letter-spacing: 0.05em;
       text-transform: uppercase;
     }
-    h1, h2, h3, p { margin-top: 0; }
-    h1 {
-      margin: 18px 0;
-      font-size: clamp(30px, 3.8vw, 50px);
-      line-height: 1.06;
-      letter-spacing: -0.025em;
-      max-width: 820px;
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--copper);
     }
-    .lead { font-size: clamp(16px, 1.6vw, 19px); color: var(--muted); max-width: 690px; }
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
+    h1 {
+      margin: 18px 0 20px;
+      max-width: 760px;
+      font-size: clamp(40px, 6vw, 82px);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+    .hero p {
+      max-width: 640px;
+      color: rgba(255, 250, 241, 0.76);
+      font-size: clamp(17px, 1.7vw, 21px);
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       min-height: 48px;
-      padding: 0 19px;
+      padding: 0 18px;
       border-radius: 999px;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 850;
+      font-size: 14px;
+      border: 1px solid transparent;
+    }
+    .primary { color: var(--green-2); background: #fffaf1; }
+    .secondary { color: #fffaf1; border-color: rgba(255, 250, 241, 0.28); background: rgba(255, 250, 241, 0.08); }
+    .brief {
+      border: 1px solid rgba(255, 250, 241, 0.22);
+      border-radius: 8px;
+      background: rgba(255, 250, 241, 0.96);
+      color: var(--ink);
+      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
+      transform: rotate(-1.2deg);
+    }
+    .brief-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      padding: 20px 22px;
+      background: var(--ink);
+      color: #fffaf1;
+    }
+    .brief-title { font-size: 18px; font-weight: 850; }
+    .brief-meta { color: rgba(255, 250, 241, 0.62); font-size: 13px; margin-top: 4px; }
+    .run-status {
+      align-self: start;
+      padding: 6px 9px;
+      border-radius: 999px;
+      color: #bfe9ce;
+      background: rgba(31, 111, 84, 0.22);
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 1px solid var(--line);
+    }
+    .metric { padding: 16px; border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      text-transform: uppercase;
+    }
+    .metric strong { display: block; margin-top: 4px; font-size: 25px; line-height: 1.1; }
+    .insight { padding: 22px; border-bottom: 1px solid var(--line); }
+    .insight h2 { margin-bottom: 8px; font-size: 24px; line-height: 1.14; }
+    .insight p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
+    .moves {
+      display: grid;
+      gap: 1px;
+      background: var(--line);
+    }
+    .move {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 16px;
+      padding: 15px 22px;
+      background: #fffaf1;
+      font-size: 14px;
+    }
+    .move b { color: var(--green); font-size: 12px; text-transform: uppercase; }
+    .move.warn b { color: var(--warning); }
+    .move.danger b { color: var(--danger); }
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 0;
+      background: rgba(255, 250, 241, 0.18);
+      border-top: 1px solid rgba(255, 250, 241, 0.18);
+    }
+    .proof {
+      padding: 20px 22px;
+      background: rgba(0, 0, 0, 0.14);
+    }
+    .proof strong { display: block; font-size: 22px; }
+    .proof span { color: rgba(255, 250, 241, 0.6); font-size: 13px; }
+    .section {
+      padding: 84px 0;
+      border-top: 1px solid rgba(17, 25, 22, 0.08);
+    }
+    .section h2 {
+      margin-bottom: 14px;
+      max-width: 780px;
+      font-size: clamp(28px, 3.5vw, 48px);
+      line-height: 1.06;
       letter-spacing: 0;
     }
-    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
-    .secondary { color: var(--ink); border: 1px solid var(--line); background: rgba(255, 250, 241, 0.76); }
-    .example {
+    .section > p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+    .band { background: #fffaf1; }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 34px;
       border: 1px solid var(--line);
-      border-radius: 20px;
-      background: rgba(255, 250, 241, 0.88);
-      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--line);
+    }
+    .flow-step {
+      min-height: 220px;
+      padding: 24px;
+      background: #fffaf1;
+    }
+    .flow-step small {
+      display: block;
+      color: var(--copper);
+      font-weight: 850;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    .flow-step h3 { margin-bottom: 10px; font-size: 20px; line-height: 1.18; }
+    .flow-step p { color: var(--muted); margin-bottom: 0; font-size: 15px; }
+    .artifact {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 34px;
+      align-items: center;
+      margin-top: 32px;
+    }
+    .source-list {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf1;
       overflow: hidden;
     }
-    .example-head {
-      padding: 22px 24px;
-      color: #fffaf1;
-      background: linear-gradient(135deg, var(--harbor-dark), var(--harbor));
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: flex-start;
-    }
-    .example-head strong { display: block; font-size: 18px; line-height: 1.2; letter-spacing: -0.015em; }
-    .example-head span { color: rgba(255, 250, 241, 0.88); font-weight: 700; font-size: 15px; line-height: 1.45; }
-    .badge { padding: 7px 10px; border-radius: 999px; background: rgba(255, 250, 241, 0.14); font-size: 12px; font-weight: 900; white-space: nowrap; }
-    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); }
-    .metric { padding: 18px 16px; border-right: 1px solid var(--line); background: var(--paper-strong); }
-    .metric:last-child { border-right: 0; }
-    .metric span { display: block; color: var(--muted); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.035em; }
-    .metric strong { display: block; margin-top: 5px; font-size: 26px; letter-spacing: -0.015em; }
-    .insight { padding: 22px 24px; }
-    .insight h3 { margin-bottom: 9px; font-size: 18px; line-height: 1.22; letter-spacing: -0.018em; }
-    .insight p { margin-bottom: 0; color: var(--muted); }
-    .decision-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 24px 24px; }
-    .decision { padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper-strong); }
-    .decision b { display: block; margin-bottom: 6px; line-height: 1.25; }
-    .decision span { color: var(--muted); font-size: 15px; line-height: 1.5; }
-    .section { padding: 76px 0; }
-    .section h2 { margin-bottom: 14px; font-size: clamp(22px, 2.5vw, 36px); line-height: 1.12; letter-spacing: -0.025em; max-width: 850px; }
-    .section > p { color: var(--muted); font-size: 18px; max-width: 780px; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
-    .card {
-      min-height: 205px;
-      padding: 26px;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: rgba(255, 250, 241, 0.82);
-      box-shadow: 0 16px 42px rgba(44, 34, 21, 0.07);
-    }
-    .card h3 { margin-bottom: 10px; font-size: 17px; line-height: 1.22; letter-spacing: -0.015em; }
-    .card p { margin-bottom: 0; color: var(--muted); }
-    .steps { display: grid; gap: 14px; margin-top: 30px; max-width: 900px; }
-    .step {
+    .source-row {
       display: grid;
-      grid-template-columns: 46px 1fr;
-      gap: 16px;
+      grid-template-columns: 26px 1fr auto;
+      gap: 12px;
       align-items: center;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      background: var(--paper);
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
     }
-    .num { width: 46px; height: 46px; border-radius: 15px; display: grid; place-items: center; color: #fffaf1; background: var(--copper); font-weight: 950; }
-    .step p { margin: 4px 0 0; color: var(--muted); }
-    .booking {
-      margin: 62px 0 0;
-      padding: 38px;
-      border-radius: 22px;
-      background: #14221e;
-      color: #fffaf1;
+    .source-row:last-child { border-bottom: 0; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--success); }
+    .dot.warn { background: var(--warning); }
+    .pill {
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: var(--paper-2);
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 42px;
+      align-items: start;
+    }
+    .plain-list { display: grid; gap: 18px; margin-top: 24px; }
+    .plain-item {
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(17, 25, 22, 0.12);
+    }
+    .plain-item h3 { margin-bottom: 6px; font-size: 18px; }
+    .plain-item p { margin-bottom: 0; color: var(--muted); }
+    .pilot-table {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fffaf1;
+    }
+    .pilot-row {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 20px;
+      padding: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+    .pilot-row:last-child { border-bottom: 0; }
+    .pilot-row b { color: var(--green); }
+    .tools {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+    .tool {
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf1;
+      text-decoration: none;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+    .tool:hover { transform: translateY(-2px); border-color: rgba(169, 87, 50, 0.5); }
+    .tool h3 { margin-bottom: 6px; font-size: 16px; }
+    .tool p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+    .cta {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 28px;
       align-items: center;
+      padding: 44px;
+      border-radius: 8px;
+      background: var(--green-2);
+      color: #fffaf1;
     }
-    .booking h2 { margin-bottom: 9px; font-size: clamp(22px, 2.5vw, 36px); line-height: 1.12; letter-spacing: -0.025em; }
-    .booking p { margin-bottom: 0; color: rgba(255, 250, 241, 0.82); max-width: 760px; }
-    footer { padding: 30px 0 44px; color: var(--muted); font-size: 14px; }
-    @media (max-width: 900px) {
-      .hero, .grid, .booking { grid-template-columns: 1fr; }
-      .hero { padding-top: 58px; }
-      .metrics { grid-template-columns: repeat(2, 1fr); }
-      .metric:nth-child(2) { border-right: 0; }
-      .decision-grid { grid-template-columns: 1fr; }
+    .cta p { margin-bottom: 0; color: rgba(255, 250, 241, 0.72); }
+    .faq { display: grid; gap: 8px; margin-top: 28px; max-width: 900px; }
+    details {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fffaf1;
+      overflow: hidden;
+    }
+    summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 19px 20px;
+      font-weight: 850;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; color: var(--muted); }
+    details[open] summary::after { content: "-"; }
+    details p { margin: 0; padding: 0 20px 20px; color: var(--muted); }
+    footer {
+      padding: 34px 0 46px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    footer a { text-decoration: none; color: var(--muted); }
+
+    @media (max-width: 960px) {
+      .hero, .artifact, .split, .cta { grid-template-columns: 1fr; }
+      .hero { align-items: start; }
+      .brief { transform: none; }
+      .flow, .tools, .proof-strip { grid-template-columns: 1fr; }
       .navlinks a:not(.book) { display: none; }
     }
-    @media (max-width: 560px) {
-      .wrap { width: min(100% - 24px, 1060px); }
-      .nav { border-radius: 22px; align-items: flex-start; }
-      .brand { align-items: flex-start; }
-      .example-head, .booking { padding: 24px; }
-      .metrics { grid-template-columns: 1fr; }
-      .metric { border-right: 0; }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 24px, 1120px); }
+      .hero-shell { min-height: auto; }
+      .hero { min-height: auto; padding: 48px 0 10px; }
+      h1 { font-size: 42px; }
+      .brief-top, .metrics, .move, .pilot-row { grid-template-columns: 1fr; }
+      .metric { border-right: 0; border-bottom: 1px solid var(--line); }
+      .metric:last-child { border-bottom: 0; }
+      .cta { padding: 26px; }
+      .nav { align-items: flex-start; }
     }
-    details summary { list-style: none; cursor: pointer; font-size: 17px; font-weight: 750; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
-    details summary::-webkit-details-marker { display: none; }
-    details summary::after { content: "+"; font-size: 22px; font-weight: 300; color: var(--muted); flex-shrink: 0; margin-left: 16px; }
-    details[open] summary::after { content: "−"; }
-    details[open] summary { padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-    details p { margin: 0; padding: 16px 24px 20px; color: var(--muted); }
   </style>
   <!-- HRA Tracking Start -->
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0b8e4b69a94a4822bcb52f78c32b3226"}'></script><!-- End Cloudflare Web Analytics -->
@@ -213,299 +418,197 @@
   <!-- HRA Tracking End -->
 </head>
 <body>
-  <nav class="wrap nav">
-    <div class="brand"><svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
-  <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
-  <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
-  <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
-</svg><span>Hotel Report Automation</span></div>
-    <div class="navlinks">
-      <a href="/start-here/">Start here</a>
-      <a href="/report-stack-mapper/">Free tools</a>
-      <a href="/blog/">Blog</a>
-      <a href="#pilot">Pilot</a>
-      <a href="/about/">About</a>
-      <a class="book" href="#book">Book a review</a>
-    </div>
-  </nav>
+  <div class="hero-shell">
+    <nav class="wrap nav">
+      <a class="brand" href="/">
+        <span class="mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 5.5h14M4 11h14M4 16.5h8" stroke="#fffaf1" stroke-width="2" stroke-linecap="round"/>
+            <path d="M14 14l2.2 2.2L20 12.4" stroke="#d89b73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>Hotel Report Automation</span>
+      </a>
+      <div class="navlinks">
+        <a href="/start-here/">Start here</a>
+        <a href="#pilot">Pilot</a>
+        <a href="/report-stack-mapper/">Tools</a>
+        <a href="/about/">About</a>
+        <a class="book" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a review</a>
+      </div>
+    </nav>
 
-  <main class="wrap">
-    <section class="hero">
+    <header class="wrap hero">
       <div>
-        <div class="eyebrow">Daily reporting automation for hotel teams</div>
-        <h1>Turn recurring reports into decisions, not more spreadsheet work.</h1>
-        <p class="lead">We automate the manual steps behind occupancy, ADR, RevPAR, pickup, forecast, rate, and exception reporting so revenue and operations teams start with a decision-ready view every morning.</p>
+        <div class="eyebrow">Daily hotel reporting, rebuilt as an operating layer</div>
+        <h1>The morning brief your team should not have to assemble by hand.</h1>
+        <p>We turn recurring PMS exports, rate shops, forecasts, pickup files, and exception notes into a reliable morning operating brief. No giant data project. No PMS access required for the first pilot.</p>
         <div class="actions">
-          <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a reporting workflow review</a>
-          <a class="button secondary" href="#example">See an anonymized example</a>
+          <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+          <a class="button secondary" href="#example">See the output</a>
         </div>
       </div>
 
-      <aside class="example" id="example" aria-label="Anonymized daily revenue pulse example">
-        <div class="example-head">
-          <div><strong>Daily Revenue Pulse</strong><span>Anonymized 122-room boutique hotel &middot; Tuesday morning</span></div>
-          <div class="badge">Generated automatically</div>
+      <aside class="brief" id="example" aria-label="Anonymized hotel morning operating brief">
+        <div class="brief-top">
+          <div>
+            <div class="brief-title">Morning Operating Brief</div>
+            <div class="brief-meta">Anonymized 122-room hotel - Tuesday 7:15 AM</div>
+          </div>
+          <div class="run-status">Run complete</div>
         </div>
         <div class="metrics">
-          <div class="metric"><span>Occupancy</span><strong>77.9%</strong><small style="display:block;font-size:11px;color:var(--muted);margin-top:3px;">95 of 122 rooms</small></div>
-          <div class="metric"><span>ADR</span><strong>$188</strong><small style="display:block;font-size:11px;color:var(--muted);margin-top:3px;">Tr $204 &middot; Grp $170</small></div>
+          <div class="metric"><span>Occupancy</span><strong>77.9%</strong></div>
+          <div class="metric"><span>ADR</span><strong>$188</strong></div>
           <div class="metric"><span>Revenue</span><strong>$17.9k</strong></div>
-          <div class="metric"><span>7d pickup</span><strong style="color:#1b5e20">+14</strong></div>
+          <div class="metric"><span>7d pickup</span><strong style="color:var(--success)">+14</strong></div>
         </div>
         <div class="insight">
-          <h3>Event weekend is underpriced — comp set running $40 higher on Saturday.</h3>
-          <p>Strong occupancy for the citywide event but ADR is materially below the comp average. The weekend has 51 rooms available with own rates $24–40 below comp.</p>
+          <h2>Event weekend is underpriced.</h2>
+          <p>Comp set is running $24 to $40 higher on key weekend dates while 51 rooms remain available. Raise BAR before the next pickup window closes.</p>
         </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 24px 16px">
-          <div style="border-left:3px solid #1b5e20;background:rgba(212,237,218,.35);padding:12px 14px;border-radius:0 10px 10px 0">
-            <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#1b5e20;margin-bottom:6px">↑ Opportunity</div>
-            <div style="font-size:12px;line-height:1.6;color:var(--ink)">Raise BAR to $285 Fri / $325 Sat. 51 rooms available Saturday at $40 below comp.</div>
-          </div>
-          <div style="border-left:3px solid #7a0000;background:rgba(253,232,232,.4);padding:12px 14px;border-radius:0 10px 10px 0">
-            <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7a0000;margin-bottom:6px">⚠ Risk</div>
-            <div style="font-size:12px;line-height:1.6;color:var(--ink)">Missing event ADR will drag month RevPAR and put budget ADR out of reach.</div>
-          </div>
-          <div style="border-left:3px solid #856404;background:rgba(255,243,205,.45);padding:12px 14px;border-radius:0 10px 10px 0">
-            <div style="font-size:10px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#856404;margin-bottom:6px">◎ Watch</div>
-            <div style="font-size:12px;line-height:1.6;color:var(--ink)">Soft Sundays at 22–25% occupancy need demand generation this week.</div>
-          </div>
-        </div>
-        <div style="padding:0 24px 24px">
-          <div style="border:1.5px solid #1b5e20;border-radius:12px;padding:16px;background:rgba(20,61,31,.04)">
-            <div style="font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#1b5e20;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid rgba(20,61,31,.15)">Today's Moves</div>
-            <div style="display:grid;gap:7px">
-              <div style="display:flex;gap:8px;font-size:12px;line-height:1.55"><span style="color:var(--muted);font-weight:700;min-width:16px">1.</span><span>Raise BAR for the event weekend before the next pickup window closes.</span></div>
-              <div style="display:flex;gap:8px;font-size:12px;line-height:1.55"><span style="color:var(--muted);font-weight:700;min-width:16px">2.</span><span>Push transient rates for citywide event days — currently $194 against a $309 comp average.</span></div>
-              <div style="display:flex;gap:8px;font-size:12px;line-height:1.55"><span style="color:var(--muted);font-weight:700;min-width:16px">3.</span><span>Activate promotions for soft Sunday dates to drive demand before the weekend.</span></div>
-            </div>
-          </div>
+        <div class="moves">
+          <div class="move"><b>Move 1</b><span>Raise Friday and Saturday BAR before revenue meeting.</span></div>
+          <div class="move warn"><b>Watch</b><span>Sunday occupancy is soft at 25.4% with weak pickup.</span></div>
+          <div class="move danger"><b>Exception</b><span>One source report arrived 18 minutes late; run log preserved the earlier file.</span></div>
         </div>
       </aside>
-    </section>
+    </header>
 
-    <section class="section" id="output" style="padding-top:0">
-      <h2>The full output, in the team's inbox before the day starts.</h2>
-      <p>Assembled automatically from PMS exports, rate shop data, and recurring reports. Every section below is generated without anyone touching a spreadsheet.</p>
-      <div style="margin-top:32px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)">
+    <div class="wrap proof-strip" aria-label="Proof points">
+      <div class="proof"><strong>Exports first</strong><span>Start from the reports your team already receives.</span></div>
+      <div class="proof"><strong>Run logs</strong><span>Every output says what arrived, what was missing, and what changed.</span></div>
+      <div class="proof"><strong>Fixed scope</strong><span>Map one workflow, ship one working pilot, then expand.</span></div>
+    </div>
+  </div>
 
-        <div style="background:#0a3d1f;padding:22px 28px">
-          <div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:8px">Daily Revenue Pulse</div>
-          <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
-            <div style="font-size:22px;font-weight:800;color:#fff;letter-spacing:-.02em;font-family:Georgia,serif">Anonymized Boutique Hotel</div>
-            <div style="font-size:12px;font-weight:700;color:#0a3d1f;background:#d4edda;padding:7px 16px;border-radius:999px;white-space:nowrap">▲ Positive Momentum</div>
-          </div>
-          <div style="font-size:13px;color:rgba(255,255,255,.45);margin-top:6px">Tuesday, Apr 14</div>
-        </div>
-
-        <div style="padding:20px 28px 10px">
-          <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#6b5e50">Next 7 Days</div>
-        </div>
-        <div style="overflow-x:auto;padding:0 28px 24px;-webkit-overflow-scrolling:touch">
-          <table style="width:100%;border-collapse:collapse;min-width:560px;border:1px solid #e2ddd6;border-radius:12px;overflow:hidden">
-            <thead>
-              <tr style="background:#1a1a2e">
-                <th style="padding:10px 12px;text-align:left;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap">Date</th>
-                <th style="padding:10px 12px;text-align:right;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em">Occ</th>
-                <th style="padding:10px 12px;text-align:right;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em">ADR</th>
-                <th style="padding:10px 12px;text-align:right;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em">Revenue</th>
-                <th style="padding:10px 12px;text-align:right;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em">7D PU</th>
-                <th style="padding:10px 12px;text-align:right;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap">Own Rate</th>
-                <th style="padding:10px 12px;text-align:right;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap">Comp Avg</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="background:#fff"><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;font-size:13px;font-weight:600;white-space:nowrap">Tue<div style="font-size:11px;color:#9a8c7e;font-weight:400;margin-top:2px">Citywide Event</div></td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:800">77.9%</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$188</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$17,874</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700;color:#1b5e20">+14</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700">$194</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:12px;color:#9a8c7e">$309</td></tr>
-              <tr style="background:#f9f7f3"><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;font-size:13px;font-weight:600;white-space:nowrap">Wed<div style="font-size:11px;color:#9a8c7e;font-weight:400;margin-top:2px">Citywide Event</div></td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:800">75.4%</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$186</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$17,114</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700;color:#1b5e20">+8</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700">$195</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:12px;color:#9a8c7e">$316</td></tr>
-              <tr style="background:#fff"><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;font-size:13px;font-weight:600;white-space:nowrap">Thu</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:800">61.5%</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$192</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$14,411</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700;color:#1b5e20">+8</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700">$189</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:12px;color:#9a8c7e">$234</td></tr>
-              <tr style="background:#f9f7f3"><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;font-size:13px;font-weight:600;white-space:nowrap">Fri<div style="font-size:11px;color:#9a8c7e;font-weight:400;margin-top:2px">Weekend Event</div></td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:800">66.4%</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$222</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$18,001</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700;color:#1b5e20">+8</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700">$259</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:12px;color:#9a8c7e">$283</td></tr>
-              <tr style="background:rgba(255,205,210,.3)"><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;font-size:13px;font-weight:600;white-space:nowrap">Sat<div style="font-size:11px;color:#9a8c7e;font-weight:400;margin-top:2px">Weekend Event</div></td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:800;color:#b71c1c">49.2%</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$241</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$14,485</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700;color:#1b5e20">+8</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700">$279</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:12px;color:#9a8c7e">$319</td></tr>
-              <tr style="background:rgba(255,205,210,.3)"><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;font-size:13px;font-weight:600;white-space:nowrap">Sun</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:800;color:#b71c1c">25.4%</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$178</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px">$5,513</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700;color:#9a8c7e">+2</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:13px;font-weight:700">$169</td><td style="padding:10px 12px;border-bottom:1px solid #ede8e0;text-align:right;font-size:12px;color:#9a8c7e">$191</td></tr>
-              <tr style="background:#fff"><td style="padding:10px 12px;font-size:13px;font-weight:600;white-space:nowrap">Mon</td><td style="padding:10px 12px;text-align:right;font-size:13px;font-weight:800">73.0%</td><td style="padding:10px 12px;text-align:right;font-size:13px">$186</td><td style="padding:10px 12px;text-align:right;font-size:13px">$16,581</td><td style="padding:10px 12px;text-align:right;font-size:13px;font-weight:700;color:#1b5e20">+14</td><td style="padding:10px 12px;text-align:right;font-size:13px;font-weight:700">$211</td><td style="padding:10px 12px;text-align:right;font-size:12px;color:#9a8c7e">$256</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div style="display:flex;flex-wrap:wrap;gap:20px;padding:0 28px 28px">
-          <div style="flex:1;min-width:260px">
-            <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#6b5e50;margin-bottom:10px">Rate Shop — Today</div>
-            <table style="width:100%;border-collapse:collapse;border:1px solid #e2ddd6;border-radius:12px;overflow:hidden">
-              <tr style="background:#f0ede6"><td style="padding:10px 14px;font-size:13px;font-weight:800;color:#1a1a1a">Our Property <span style="font-size:11px;font-weight:500;color:#6b5e50">— Rank #3</span></td><td style="padding:10px 14px;font-size:13px;font-weight:800;text-align:right">$194</td></tr>
-              <tr style="background:#fff"><td style="padding:8px 14px;font-size:13px;color:#444;border-bottom:1px solid #f0ece6">Meridian Hotel</td><td style="padding:8px 14px;font-size:13px;font-weight:600;text-align:right;border-bottom:1px solid #f0ece6">$163</td></tr>
-              <tr style="background:#f9f7f3"><td style="padding:8px 14px;font-size:13px;color:#444;border-bottom:1px solid #f0ece6">City Suites</td><td style="padding:8px 14px;font-size:13px;font-weight:600;text-align:right;border-bottom:1px solid #f0ece6">$199</td></tr>
-              <tr style="background:#fff"><td style="padding:8px 14px;font-size:13px;color:#444;border-bottom:1px solid #f0ece6">The Landmark</td><td style="padding:8px 14px;font-size:13px;font-weight:600;text-align:right;border-bottom:1px solid #f0ece6">$589</td></tr>
-              <tr style="background:#f9f7f3"><td style="padding:8px 14px;font-size:13px;color:#444;border-bottom:1px solid #f0ece6">Grand Plaza</td><td style="padding:8px 14px;font-size:13px;font-weight:600;text-align:right;border-bottom:1px solid #f0ece6">$359</td></tr>
-              <tr style="background:#fff"><td style="padding:8px 14px;font-size:13px;color:#444;border-bottom:1px solid #f0ece6">Harbor House</td><td style="padding:8px 14px;font-size:13px;font-weight:600;text-align:right;border-bottom:1px solid #f0ece6">$369</td></tr>
-              <tr style="background:#f9f7f3"><td style="padding:8px 14px;font-size:13px;color:#444;border-bottom:1px solid #f0ece6">Eastside Suites</td><td style="padding:8px 14px;font-size:13px;font-weight:600;text-align:right;border-bottom:1px solid #f0ece6">$176</td></tr>
-              <tr style="background:#f9f7f3"><td style="padding:8px 14px;font-size:12px;color:#9a8c7e">Avg comp</td><td style="padding:8px 14px;font-size:12px;font-weight:700;color:#9a8c7e;text-align:right">$309</td></tr>
-            </table>
-          </div>
-          <div style="flex:1;min-width:260px">
-            <div style="font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#6b5e50;margin-bottom:10px">Month Context</div>
-            <table style="width:100%;border-collapse:collapse;border:1px solid #e2ddd6;border-radius:12px;overflow:hidden">
-              <thead><tr style="background:#f9f7f3"><th style="padding:10px 14px;text-align:left;font-size:11px;color:#9a8c7e;font-weight:700;text-transform:uppercase;letter-spacing:.05em"></th><th style="padding:10px 14px;text-align:right;font-size:11px;color:#9a8c7e;font-weight:700;text-transform:uppercase;letter-spacing:.05em">Rooms</th><th style="padding:10px 14px;text-align:right;font-size:11px;color:#9a8c7e;font-weight:700;text-transform:uppercase;letter-spacing:.05em">ADR</th><th style="padding:10px 14px;text-align:right;font-size:11px;color:#9a8c7e;font-weight:700;text-transform:uppercase;letter-spacing:.05em">Revenue</th></tr></thead>
-              <tbody>
-                <tr style="background:#fff"><td style="padding:9px 14px;font-size:13px;border-bottom:1px solid #f0ece6">Budget</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">2,930</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">$247</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">$725k</td></tr>
-                <tr style="background:#f9f7f3"><td style="padding:9px 14px;font-size:13px;border-bottom:1px solid #f0ece6">Forecast</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">2,930</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">$247</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">$725k</td></tr>
-                <tr style="background:#fff"><td style="padding:9px 14px;font-size:13px;border-bottom:1px solid #f0ece6">Last Year</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">1,960</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">$196</td><td style="padding:9px 14px;font-size:13px;text-align:right;border-bottom:1px solid #f0ece6">$385k</td></tr>
-                <tr style="background:#f9f7f3"><td style="padding:9px 14px;font-size:13px;color:#9a8c7e">MTD (13d)</td><td style="padding:9px 14px;font-size:13px;text-align:right;color:#9a8c7e">834</td><td style="padding:9px 14px;font-size:13px;text-align:right;color:#9a8c7e">$202</td><td style="padding:9px 14px;font-size:13px;text-align:right;color:#9a8c7e">$169k</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div style="padding:14px 28px;border-top:1px solid #ede8e0">
-          <div style="font-size:11px;color:#b0a898">Anonymized hotel &nbsp;&middot;&nbsp; Internal reporting &nbsp;&middot;&nbsp; Pickup since prior day &nbsp;&middot;&nbsp; Generated automatically</div>
+  <main>
+    <section class="section band">
+      <div class="wrap">
+        <h2>The hard part is the daily assembly layer.</h2>
+        <p>Most hotel teams already have the numbers. The drag is getting the right files into the right shape early enough for revenue and operations decisions.</p>
+        <div class="flow" aria-label="Workflow from source reports to operating brief">
+          <div class="flow-step"><small>01</small><h3>Source reports arrive</h3><p>PMS exports, pickup reports, rate shop files, forecasts, channel notes, and spreadsheets land by email or in folders.</p></div>
+          <div class="flow-step"><small>02</small><h3>Checks run</h3><p>The workflow resolves business dates, catches duplicates, flags late files, and records what was used.</p></div>
+          <div class="flow-step"><small>03</small><h3>Brief assembles</h3><p>Tables, exception notes, rate deltas, pickup, and portfolio summaries are created in the format your team uses.</p></div>
+          <div class="flow-step"><small>04</small><h3>AI interprets</h3><p>Only after assembly, AI summarizes the exceptions, names the first move, and explains caveats.</p></div>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <h2>The output should feel like a smart morning brief, not another report to interpret.</h2>
-      <p>Most teams already have the data. The problem is that it arrives across exports, tabs, inboxes, PMS reports, rate shops, and dashboards. We connect those pieces, automate the assembly, and surface the exceptions that deserve attention first.</p>
-      <div class="grid">
-        <div class="card"><h3>Automated report assembly</h3><p>Recurring exports, file movement, copy/paste, formulas, formatting, and cross-property summaries stop being manual.</p></div>
-        <div class="card"><h3>Decision-ready context</h3><p>The brief can call out underpriced dates, pickup gaps, forecast risk, comp-set deltas, and properties that need action.</p></div>
-        <div class="card"><h3>No new habits required</h3><p>Delivered as email, Google Sheets, a dashboard, folder output, or an internal page — whatever the team already opens every morning.</p></div>
-      </div>
-    </section>
-
-    <section class="section" id="pilot">
-      <h2>A focused pilot that removes multiple manual steps from one important workflow.</h2>
-      <p>The pilot is not “one automation.” It is the set of automations needed to create a completed daily result from the reports your team already uses.</p>
-      <div class="steps">
-        <div class="step"><div class="num">1</div><div><strong>Map the recurring workflow.</strong><p>Inputs, exports, owner, timing, manual edits, decision points, and final audience.</p></div></div>
-        <div class="step"><div class="num">2</div><div><strong>Automate the assembly layer.</strong><p>Pull, clean, combine, format, summarize, and route the reporting output automatically.</p></div></div>
-        <div class="step"><div class="num">3</div><div><strong>Ship the operating view.</strong><p>Deliver the morning report, exception summary, dashboard, or updated spreadsheet the team actually uses.</p></div></div>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:0">
-      <div style="padding:32px 36px;border:1px solid rgba(23,79,88,.25);border-radius:20px;background:linear-gradient(140deg,rgba(23,79,88,.07),rgba(255,250,241,.94))">
-        <div class="eyebrow" style="margin-bottom:14px;color:#16454d;background:rgba(23,79,88,.11)">AI interpretation layer</div>
-        <h2 style="font-size:clamp(26px,3vw,38px);letter-spacing:-.022em;line-height:1.12;margin-bottom:12px;max-width:700px">The automation handles the assembly. The AI handles the interpretation.</h2>
-        <p style="color:var(--muted);font-size:17px;max-width:740px;margin-bottom:22px">Once the reporting pipeline is running, the AI layer reads across all the consolidated data — occupancy, pickup, rate position, forecast gaps, comp-set deltas — and writes the brief. It calls out which properties need attention, names the exceptions, and surfaces the first move. That is the part that used to take judgment and time every morning. Once the automations are in place, it happens automatically too.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px">
-          <div style="flex:1;min-width:200px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--paper)"><b style="display:block;font-size:14px;margin-bottom:5px">Watch today</b><span style="color:var(--muted);font-size:13px;line-height:1.5">Event weekend is underpriced versus the comp set. Raise BAR before the next pickup window closes.</span></div>
-          <div style="flex:1;min-width:200px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--paper)"><b style="display:block;font-size:14px;margin-bottom:5px">Positive signal</b><span style="color:var(--muted);font-size:13px;line-height:1.5">7-day pickup tracking ahead of pace across 6 of 9 properties.</span></div>
-          <div style="flex:1;min-width:200px;padding:16px 18px;border:1px solid var(--line);border-radius:12px;background:var(--paper)"><b style="display:block;font-size:14px;margin-bottom:5px">Needs review</b><span style="color:var(--muted);font-size:13px;line-height:1.5">Two shoulder dates show soft demand with meaningful availability remaining.</span></div>
+      <div class="wrap artifact">
+        <div>
+          <h2>Reliability is the product.</h2>
+          <p>A morning report is only useful if the team trusts the run. The pilot includes the unglamorous pieces that make automation usable in real hotel operations.</p>
+          <div class="plain-list">
+            <div class="plain-item"><h3>Missing-file behavior</h3><p>Required and optional reports are handled differently, with clear warnings instead of silent failures.</p></div>
+            <div class="plain-item"><h3>Business-date rules</h3><p>The system knows whether a late-night export belongs to yesterday, today, or the next operating day.</p></div>
+            <div class="plain-item"><h3>Approval gates</h3><p>Human review stays where judgment matters, especially before AI-written summaries go out broadly.</p></div>
+          </div>
+        </div>
+        <div class="source-list" aria-label="Example run log">
+          <div class="source-row"><span class="dot"></span><strong>PMS daily detail</strong><span class="pill">received 6:42</span></div>
+          <div class="source-row"><span class="dot"></span><strong>Pickup export</strong><span class="pill">received 6:44</span></div>
+          <div class="source-row"><span class="dot"></span><strong>Rate shop</strong><span class="pill">received 6:51</span></div>
+          <div class="source-row"><span class="dot warn"></span><strong>Forecast workbook</strong><span class="pill">late 18m</span></div>
+          <div class="source-row"><span class="dot"></span><strong>Morning brief</strong><span class="pill">sent 7:15</span></div>
         </div>
       </div>
     </section>
 
-    <style>#rc-igrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}#rc-ogrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}@media(max-width:640px){#rc-igrid,#rc-ogrid{grid-template-columns:1fr}}</style>
-    <section class="section" id="calculator">
-      <h2>How much is manual reporting costing your team?</h2>
-      <p>Enter your portfolio size and the time spent each morning. The math usually surprises people.</p>
-      <div style="margin-top:32px;max-width:860px;border:1px solid var(--line);border-radius:20px;background:rgba(255,250,241,.92);box-shadow:var(--shadow);overflow:hidden">
-        <div style="padding:32px 36px;display:grid;gap:26px">
-          <div id="rc-igrid">
-            <div>
-              <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px">Properties in portfolio</div>
-              <input type="range" id="rc-props" min="1" max="50" value="8" style="width:100%;accent-color:#174f58;margin-bottom:10px" oninput="rcCalc()">
-              <div style="display:flex;justify-content:space-between;align-items:baseline"><span id="rc-pv" style="font-size:38px;font-weight:800;letter-spacing:-.02em">8</span><span style="font-size:14px;color:var(--muted)">properties</span></div>
-            </div>
-            <div>
-              <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px">Minutes per morning</div>
-              <input type="range" id="rc-mins" min="10" max="120" value="35" step="5" style="width:100%;accent-color:#174f58;margin-bottom:10px" oninput="rcCalc()">
-              <div style="display:flex;justify-content:space-between;align-items:baseline"><span id="rc-mv" style="font-size:38px;font-weight:800;letter-spacing:-.02em">35</span><span style="font-size:14px;color:var(--muted)">min / day</span></div>
-            </div>
+    <section class="section band" id="pilot">
+      <div class="wrap split">
+        <div>
+          <h2>A focused pilot, not a forever implementation.</h2>
+          <p>The first engagement turns one recurring reporting workflow into a working operating brief. Scope is fixed after the workflow review.</p>
+          <div class="actions">
+            <a class="button primary" style="background:var(--green);color:#fffaf1" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+            <a class="button secondary" style="color:var(--green);border-color:var(--line);background:#fffaf1" href="/workflow-review-prep/">Prep for the review</a>
           </div>
+        </div>
+        <div class="pilot-table">
+          <div class="pilot-row"><b>Map</b><span>Inputs, owners, timing, manual edits, formulas, output audience, and failure points.</span></div>
+          <div class="pilot-row"><b>Build</b><span>Source intake, cleanup, assembly, formatting, exception checks, run log, and output delivery.</span></div>
+          <div class="pilot-row"><b>Handoff</b><span>Operating notes, rerun process, caveats, approval gates, and expansion options.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Use the free tools if you want to inspect the workflow first.</h2>
+        <p>These are not lead magnets in costume. They are the same framing used to scope a real pilot: source reports, timing risk, manual steps, and target output.</p>
+        <div class="tools">
+          <a class="tool" href="/morning-report-workflow-audit/"><h3>Workflow audit</h3><p>Score the fragility of your current morning reporting process.</p></a>
+          <a class="tool" href="/report-stack-mapper/"><h3>Report stack mapper</h3><p>Map the reports, owners, arrival times, and automation fit.</p></a>
+          <a class="tool" href="/hotel-morning-report-template/"><h3>Morning report template</h3><p>Use a cleaner target format before automating anything.</p></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="wrap split">
+        <div>
+          <h2>Built by someone who looks for the human middleware.</h2>
+          <p>Chandler Mahaney builds practical automation around the work hotel teams already do: exports, inboxes, spreadsheets, scheduled reports, review notes, and morning decisions. The goal is not to replace judgment. It is to stop wasting judgment on assembly.</p>
+        </div>
+        <div class="plain-list" style="margin-top:0">
+          <div class="plain-item"><h3>No PMS access required for the first pilot</h3><p>Exports and scheduled reports are often enough to prove value quickly.</p></div>
+          <div class="plain-item"><h3>AI after assembly</h3><p>Interpretation becomes useful once the source data has been cleaned and checked.</p></div>
+          <div class="plain-item"><h3>Fixed-scope delivery</h3><p>The pilot has a defined workflow, output, timeline, and handoff.</p></div>
+          <a class="button secondary" style="justify-self:start;color:var(--green);border-color:var(--line);background:#fffaf1" href="/about/">About Chandler</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Common questions.</h2>
+        <div class="faq">
+          <details>
+            <summary>Do you need access to our PMS?</summary>
+            <p>Usually not for the first pilot. We start from the scheduled exports, spreadsheets, recurring emails, rate shop files, and folder outputs your team already uses.</p>
+          </details>
+          <details>
+            <summary>What does the pilot deliver?</summary>
+            <p>A working recurring reporting workflow: source intake, cleanup, assembly, exception checks, output delivery, run logs, and handoff notes for one defined morning reporting process.</p>
+          </details>
+          <details>
+            <summary>How long does a pilot take?</summary>
+            <p>Most fixed-scope pilots run 2 to 4 weeks after the workflow review, depending on source report quality and output complexity.</p>
+          </details>
+          <details>
+            <summary>Is this an AI dashboard?</summary>
+            <p>No. The automation assembles the reporting workflow first. AI is used after the data is organized, where it can summarize exceptions and suggest what deserves attention.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="book">
+      <div class="wrap">
+        <div class="cta">
           <div>
-            <div style="font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:12px">Who handles the reporting?</div>
-            <div style="display:flex;flex-wrap:wrap;gap:8px">
-              <button id="rc-b0" onclick="rcRole(85000,0)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid #174f58;background:#174f58;color:#fff">Revenue Manager</button>
-              <button id="rc-b1" onclick="rcRole(120000,1)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)">Dir. of Revenue</button>
-              <button id="rc-b2" onclick="rcRole(145000,2)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)">VP / COO</button>
-              <button id="rc-b3" onclick="rcRole(0,3)" style="padding:9px 16px;border-radius:999px;font-family:inherit;font-size:13px;font-weight:750;cursor:pointer;border:1.5px solid var(--line);background:transparent;color:var(--ink)">Skip salary</button>
-            </div>
+            <h2 style="margin-bottom:12px">Book a reporting workflow review.</h2>
+            <p>Bring the reports, the current output, and the manual steps. We will identify the fastest pilot with the clearest operating value.</p>
+          </div>
+          <div class="actions" style="margin-top:0">
+            <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a time</a>
+            <a class="button secondary" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20workflow%20review&body=Hi%20Chandler%2C%0A%0AI%27d%20like%20to%20review%20a%20hotel%20reporting%20workflow.%0A%0ACompany%3A%0AReports%20involved%3A%0AWho%20uses%20the%20output%3A%0AWhat%20is%20manual%20today%3A%0ATwo%20times%20that%20work%3A%0A">Email instead</a>
           </div>
         </div>
-        <div style="border-top:1px solid var(--line);background:#0d3037;padding:28px 36px">
-          <div id="rc-ogrid">
-            <div>
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,250,241,.4);margin-bottom:6px">Hours per year</div>
-              <div id="rc-h" style="font-size:42px;font-weight:800;letter-spacing:-.025em;line-height:1.05;color:#fffaf1">—</div>
-              <div id="rc-w" style="font-size:13px;color:rgba(255,250,241,.5);margin-top:4px"></div>
-            </div>
-            <div>
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,250,241,.4);margin-bottom:6px">Annual cost</div>
-              <div id="rc-c" style="font-size:42px;font-weight:800;letter-spacing:-.025em;line-height:1.05;color:#fffaf1">—</div>
-              <div id="rc-cn" style="font-size:13px;color:rgba(255,250,241,.5);margin-top:4px">select a role above</div>
-            </div>
-            <div>
-              <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,250,241,.4);margin-bottom:6px">Manual operations</div>
-              <div id="rc-o" style="font-size:42px;font-weight:800;letter-spacing:-.025em;line-height:1.05;color:#fffaf1">—</div>
-              <div style="font-size:13px;color:rgba(255,250,241,.5);margin-top:4px">per year</div>
-            </div>
-          </div>
-          <div style="margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,250,241,.1);font-size:15px;color:rgba(255,250,241,.6)">All of that goes away. <a href="#book" style="color:#fffaf1;font-weight:800;text-decoration:underline;text-underline-offset:3px">Book a review to scope the pilot →</a></div>
-        </div>
-      </div>
-    </section>
-    <script>
-    !function(){var _r=85000,_ac='#174f58';function _c(){var p=+document.getElementById('rc-props').value,m=+document.getElementById('rc-mins').value;document.getElementById('rc-pv').textContent=p;document.getElementById('rc-mv').textContent=m;var h=Math.round(p*m*365/60);document.getElementById('rc-h').textContent=h.toLocaleString();document.getElementById('rc-w').textContent=(h/40).toFixed(1)+' work weeks';document.getElementById('rc-o').textContent=(p*365).toLocaleString();if(_r>0){var c=Math.round(h*(_r/2080));document.getElementById('rc-c').textContent='$'+c.toLocaleString();document.getElementById('rc-cn').textContent='at $'+Math.round(_r/2080)+'/hr';}else{document.getElementById('rc-c').textContent='—';document.getElementById('rc-cn').textContent='salary not included';}}window.rcCalc=_c;window.rcRole=function(r,i){_r=r;for(var j=0;j<4;j++){var b=document.getElementById('rc-b'+j);b.style.background='transparent';b.style.color='';b.style.borderColor='var(--line)';}var a=document.getElementById('rc-b'+i);a.style.background=_ac;a.style.color='#fff';a.style.borderColor=_ac;_c();};_c();}();
-    </script>
-
-    <section class="section">
-      <h2>Common questions.</h2>
-      <div style="display:grid;gap:8px;margin-top:28px;max-width:860px">
-        <details style="border:1px solid var(--line);border-radius:12px;background:rgba(255,250,241,.82);overflow:hidden">
-          <summary>What reporting systems and tools do you work with?</summary>
-          <p>The most common starting point is a team pulling from PMS exports, spreadsheet-based reports, or recurring email outputs. We work with Google Sheets, Excel, scheduled PMS exports, rate shop outputs, and channel manager reports. If the workflow involves pulling from a system and manually combining the results, that is what we fix. Direct PMS access is usually not required.</p>
-        </details>
-        <details style="border:1px solid var(--line);border-radius:12px;background:rgba(255,250,241,.82);overflow:hidden">
-          <summary>How long does a pilot take?</summary>
-          <p>Most pilots deliver a working output in 2 to 4 weeks. The first week is process mapping and scope confirmation. The second week is building and testing the automation. Simpler workflows with clean source access can move faster. We agree on the timeline before anything starts.</p>
-        </details>
-        <details style="border:1px solid var(--line);border-radius:12px;background:rgba(255,250,241,.82);overflow:hidden">
-          <summary>Do you need direct access to our PMS or internal systems?</summary>
-          <p>Usually not. We work from whatever the team already exports or receives — files, scheduled email reports, or spreadsheet outputs. If your daily reporting process starts with exports, we can typically build on top of those without needing credentials to the underlying system.</p>
-        </details>
-        <details style="border:1px solid var(--line);border-radius:12px;background:rgba(255,250,241,.82);overflow:hidden">
-          <summary>How is the pilot priced?</summary>
-          <p>Pilots are fixed-scope projects, not hourly engagements. The scope and price depend on the number of source reports, the complexity of the assembly, and the output format. We agree on that before anything starts. The workflow review call is where we size it together.</p>
-        </details>
-      </div>
-    </section>
-
-    <section class="section" style="padding-top:0">
-      <div style="margin-bottom:24px;padding:32px 36px;border:1px solid rgba(169,87,50,.26);border-radius:20px;background:linear-gradient(140deg,rgba(169,87,50,.08),rgba(255,250,241,.94));display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center">
-        <div>
-          <div class="eyebrow" style="margin-bottom:14px">Built by someone inside the workflow</div>
-          <h2 style="font-size:clamp(24px,2.8vw,34px);line-height:1.12;letter-spacing:-.022em;margin-bottom:10px;max-width:760px">I look for the place where smart hotel people have become human middleware.</h2>
-          <p style="color:var(--muted);font-size:16px;max-width:760px;margin-bottom:0">Most teams already have the data. The problem is the manual path between source reports and the morning view: exports, spreadsheets, rate checks, exception notes, and the same report rebuilt again tomorrow.</p>
-        </div>
-        <a class="button secondary" href="/about/" style="white-space:nowrap">About Chandler</a>
-      </div>
-      <div style="padding:32px 36px;border:1px solid rgba(23,79,88,.25);border-radius:20px;background:linear-gradient(140deg,rgba(23,79,88,.07),rgba(255,250,241,.94));display:flex;flex-wrap:wrap;gap:22px;align-items:center;justify-content:space-between">
-        <div>
-          <div class="eyebrow" style="margin-bottom:14px;color:#16454d;background:rgba(23,79,88,.11)">Free workflow tools</div>
-          <h2 style="font-size:clamp(26px,3vw,38px);letter-spacing:-.022em;line-height:1.12;margin-bottom:12px;max-width:720px">Score the workflow, then map the report stack.</h2>
-          <p style="color:var(--muted);font-size:17px;max-width:760px;margin-bottom:0">Use the audit to find the hidden friction, map the recurring reports, and grab the morning report template so the team has a better target output.</p>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:10px">
-          <a class="button secondary" href="/morning-report-workflow-audit/" style="white-space:nowrap">Run the audit</a>
-          <a class="button secondary" href="/report-stack-mapper/" style="white-space:nowrap">Open the mapper</a>
-          <a class="button secondary" href="/hotel-morning-report-template/" style="white-space:nowrap">Use the template</a>
-          <a class="button secondary" href="/hotel-pickup-report-template/" style="white-space:nowrap">Build a pickup report</a>
-          <a class="button secondary" href="/portfolio-morning-brief-generator/" style="white-space:nowrap">Generate a sample brief</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="booking" id="book">
-      <div>
-        <h2>Book a reporting workflow review.</h2>
-        <p>Send the workflow you want to fix first, or send two times that work for a 20-minute call. I will help identify the fastest pilot with the clearest operating value. If you want to prep first, use the <a href="/workflow-review-prep/" style="color:#fffaf1;font-weight:800;text-decoration:underline;text-underline-offset:3px">workflow review checklist</a>.</p>
-        <p style="margin-top:10px;font-size:15px;color:rgba(255,250,241,.65);">This work is built on direct experience automating reporting workflows inside hotel management and operations — not a generic automation template.</p>
-      </div>
-      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:10px;flex-shrink:0">
-        <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a time</a>
-        <a href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20workflow%20review&body=Hi%20Chandler%2C%0A%0AI%27d%20like%20to%20review%20a%20hotel%20reporting%20workflow.%0A%0ACompany%3A%0AReports%20involved%3A%0AWho%20uses%20the%20output%3A%0AWhat%20is%20manual%20today%3A%0ATwo%20times%20that%20work%3A%0A" style="font-size:14px;color:rgba(255,250,241,.65);text-decoration:none;text-align:center">or email instead</a>
       </div>
     </section>
   </main>
 
-  <footer class="wrap">Hotel Report Automation &middot; Reporting workflow automation for hotel revenue and operations teams. &middot; <a href="/start-here/" style="color:var(--muted);text-decoration:none">Start here</a> &middot; <a href="/workflow-review-prep/" style="color:var(--muted);text-decoration:none">Workflow review prep</a> &middot; <a href="/about/" style="color:var(--muted);text-decoration:none">About Chandler</a> &middot; <a href="/automate-hotel-revenue-reporting/" style="color:var(--muted);text-decoration:none">How to automate hotel revenue reporting</a> &middot; <a href="/hotel-morning-report-template/" style="color:var(--muted);text-decoration:none">Morning report template</a> &middot; <a href="/morning-report-workflow-audit/" style="color:var(--muted);text-decoration:none">Workflow audit</a> &middot; <a href="/report-stack-mapper/" style="color:var(--muted);text-decoration:none">Report stack mapper</a> &middot; <a href="/portfolio-morning-brief-generator/" style="color:var(--muted);text-decoration:none">Brief generator</a> &middot; <a href="/hotel-pickup-report-template/" style="color:var(--muted);text-decoration:none">Pickup report template</a> &middot; <a href="/multi-property-hotel-reporting/" style="color:var(--muted);text-decoration:none">Multi-property reporting</a> &middot; <a href="/hotel-operations-dashboard/" style="color:var(--muted);text-decoration:none">Hotel operations dashboard</a> &middot; <a href="/privacy/" style="color:var(--muted);text-decoration:none">Privacy</a></footer>
+  <footer class="wrap">
+    Hotel Report Automation · Reporting workflow automation for hotel revenue and operations teams. ·
+    <a href="/start-here/">Start here</a> ·
+    <a href="/workflow-review-prep/">Workflow review prep</a> ·
+    <a href="/about/">About Chandler</a> ·
+    <a href="/blog/">Blog</a> ·
+    <a href="/privacy/">Privacy</a>
+  </footer>
 </body>
 </html>
