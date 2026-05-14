@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Before AI Summarizes Your Hotel Reports, Build the Run Log | Hotel Report Automation</title>
+  <meta name="description" content="AI summaries only help hotel reporting workflows when the source files, checks, missing reports, caveats, and approvals are tracked first. The run log is the trust layer.">
+  <link rel="canonical" href="https://hotelreportautomation.com/blog/run-log-before-ai-summary/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://hotelreportautomation.com/blog/run-log-before-ai-summary/">
+  <meta property="og:title" content="Before AI Summarizes Your Hotel Reports, Build the Run Log">
+  <meta property="og:description" content="The run log is the trust layer between messy hotel exports and useful AI interpretation.">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Before AI Summarizes Your Hotel Reports, Build the Run Log","author":{"@type":"Person","name":"Chandler Mahaney"},"publisher":{"@type":"Organization","name":"Hotel Report Automation"},"datePublished":"2026-05-14","url":"https://hotelreportautomation.com/blog/run-log-before-ai-summary/"}</script>
+  <style>
+    :root { --bg: #f6efe3; --paper: #fffaf1; --ink: #17221e; --muted: #5e6c64; --line: #ded1bf; --harbor: #174f58; --harbor-dark: #0d3037; --copper: #a95732; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, "Helvetica Neue", Arial, sans-serif; background: radial-gradient(circle at 12% 8%, rgba(169, 87, 50, 0.1), transparent 27%), radial-gradient(circle at 88% 18%, rgba(23, 79, 88, 0.11), transparent 30%), linear-gradient(180deg, #fbf6ec 0%, var(--bg) 56%, #eddfcb 100%); line-height: 1.7; }
+    a { color: var(--harbor); }
+    .wrap { width: min(1060px, calc(100% - 40px)); margin: 0 auto; }
+    .article-wrap { width: min(740px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin: 18px auto 0; padding: 13px 16px; border: 1px solid rgba(222, 209, 191, 0.9); border-radius: 999px; background: rgba(255, 250, 241, 0.82); backdrop-filter: blur(16px); }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -0.01em; text-decoration: none; color: var(--ink); }
+    .navlinks { display: flex; align-items: center; gap: 18px; }
+    .navlinks a { text-decoration: none; color: var(--muted); font-size: 15px; font-weight: 750; }
+    .navlinks .book { color: #fffaf1; background: var(--ink); padding: 10px 15px; border-radius: 999px; }
+    .article { padding: 56px 0 80px; }
+    .breadcrumb { font-size: 14px; color: var(--muted); margin-bottom: 24px; }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+    .cat { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(23, 79, 88, 0.08); color: #244a48; }
+    .read-time, .byline { font-size: 14px; color: var(--muted); }
+    h1 { font-size: clamp(32px, 4vw, 52px); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 22px; }
+    .lede { font-size: clamp(17px, 1.9vw, 20px); color: var(--muted); margin-bottom: 40px; border-bottom: 1px solid var(--line); padding-bottom: 32px; line-height: 1.6; }
+    h2 { font-size: clamp(22px, 2.4vw, 30px); line-height: 1.18; letter-spacing: -0.012em; margin: 44px 0 14px; }
+    p { font-size: 17px; line-height: 1.78; margin: 0 0 20px; color: var(--ink); }
+    ul { margin: 10px 0 28px; padding-left: 22px; }
+    li { margin: 8px 0; font-size: 16px; color: var(--ink); }
+    .callout { margin: 32px 0; padding: 22px 26px; border-left: 4px solid var(--harbor); border-radius: 0 14px 14px 0; background: rgba(23, 79, 88, 0.06); }
+    .callout p { margin: 0; font-size: 16px; color: var(--muted); }
+    .log-table { margin: 30px 0 34px; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--paper); }
+    .log-row { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 17px 20px; border-bottom: 1px solid var(--line); }
+    .log-row:last-child { border-bottom: 0; }
+    .log-row b { color: var(--harbor-dark); }
+    .log-row span { color: var(--muted); font-size: 15px; }
+    .cta-block { margin: 52px 0 0; padding: 34px 38px; border-radius: 18px; background: #14221e; color: #fffaf1; }
+    .cta-block h2 { color: #fffaf1; margin: 0 0 10px; font-size: clamp(22px, 2.4vw, 30px); }
+    .cta-block p { color: rgba(255, 250, 241, 0.75); margin-bottom: 20px; font-size: 16px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 20px; border-radius: 999px; text-decoration: none; font-weight: 800; }
+    .primary { color: #fffaf1; background: linear-gradient(135deg, var(--harbor), var(--harbor-dark)); box-shadow: 0 16px 36px rgba(13, 48, 55, 0.22); }
+    .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); text-decoration: none; margin-top: 40px; }
+    footer { padding: 28px 0 44px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+    footer a { color: var(--muted); text-decoration: none; }
+    @media (max-width: 650px) { .navlinks a:not(.book) { display: none; } .log-row { grid-template-columns: 1fr; gap: 6px; } .cta-block { padding: 26px; } }
+  </style>
+  <!-- HRA Tracking Start -->
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0b8e4b69a94a4822bcb52f78c32b3226"}'></script><!-- End Cloudflare Web Analytics -->
+  <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("R6G5YH834165");</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3HB2R4PKD3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3HB2R4PKD3');</script>
+  <!-- HRA Tracking End -->
+  <link rel="stylesheet" href="/assets/relaunch-2026.css">
+</head>
+<body>
+  <nav class="wrap nav">
+    <a class="brand" href="/">
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" style="flex-shrink:0">
+        <rect x="1" y="24" width="9" height="10" rx="2" fill="#174f58" opacity=".35"/>
+        <rect x="13.5" y="15" width="9" height="19" rx="2" fill="#174f58" opacity=".62"/>
+        <rect x="26" y="5" width="9" height="29" rx="2" fill="#174f58"/>
+      </svg>
+      Hotel Report Automation
+    </a>
+    <div class="navlinks">
+      <a href="/blog/">Blog</a>
+      <a href="/morning-report-workflow-audit/">Free tools</a>
+      <a href="/#pilot">Pilot</a>
+      <a class="book" href="/#book">Book a review</a>
+    </div>
+  </nav>
+
+  <main class="article-wrap">
+    <article class="article">
+      <div class="breadcrumb"><a href="/">Home</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; Reliability</div>
+
+      <div class="post-meta">
+        <span class="cat">Reliability</span>
+        <span class="read-time">6 min read</span>
+        <span class="byline">by Chandler Mahaney &middot; May 14, 2026</span>
+      </div>
+
+      <h1>Before AI Summarizes Your Hotel Reports, Build the Run Log</h1>
+
+      <p class="lede">AI summaries sound useful in hotel reporting. A clean paragraph that says which dates are soft, where pickup changed, and what rate move deserves attention is genuinely valuable. But the summary is only as trustworthy as the run underneath it. If nobody knows which reports arrived, which files were late, which numbers were missing, and what caveats were attached, the AI layer is just writing with confidence on top of uncertainty.</p>
+
+      <p>That is why the first useful artifact in a reporting automation pilot is not the AI summary. It is the run log.</p>
+
+      <h2>The demo skips the part that breaks</h2>
+
+      <p>Most AI reporting demos start after the data has already been cleaned. The PMS export is available. The rate shop is in a tidy table. The pickup report is aligned to the right business date. The forecast workbook is current. The model gets a neat context window and produces a neat answer.</p>
+
+      <p>Real hotel mornings are messier. One export lands 20 minutes late. A file has yesterday's date in the filename but today's business date inside the report. A regional manager forwards a revised spreadsheet after the first version was already saved. One property changes a column label. Someone wants the brief anyway because the revenue call starts in 15 minutes.</p>
+
+      <div class="callout">
+        <p>The model is not the first trust problem. The first trust problem is whether the system knows what happened before the model was asked to interpret anything.</p>
+      </div>
+
+      <h2>What the run log does</h2>
+
+      <p>A run log is the operational receipt behind the brief. It is not meant to be beautiful. It is meant to answer the questions a hotel operator asks when the output looks off.</p>
+
+      <div class="log-table" aria-label="Example run log fields">
+        <div class="log-row"><b>Business date</b><span>Which operating day the brief covers, especially when exports arrive overnight.</span></div>
+        <div class="log-row"><b>Source status</b><span>Which reports arrived, which were missing, which were optional, and which were late.</span></div>
+        <div class="log-row"><b>File identity</b><span>Filename, timestamp, sender or folder, duplicate handling, and raw archive link.</span></div>
+        <div class="log-row"><b>Checks run</b><span>Schema checks, row counts, required columns, stale values, and obvious mismatch flags.</span></div>
+        <div class="log-row"><b>Output caveats</b><span>What the brief should warn the reader about before they act on the numbers.</span></div>
+        <div class="log-row"><b>Human approval</b><span>Who reviewed the output, what changed, and whether the AI-written notes were approved.</span></div>
+      </div>
+
+      <p>Once that exists, AI interpretation gets much safer. The prompt can include the caveats. The summary can say "forecast file was 18 minutes late" instead of pretending the run was clean. The system can refuse to make a recommendation when a required source is missing. A human reviewer can see what changed instead of guessing.</p>
+
+      <h2>The run log changes the sales conversation</h2>
+
+      <p>Without a run log, an automated morning brief is a prettier report. With a run log, it becomes an operating process the team can trust. That difference matters to a VP of Revenue or COO because the risk is not just whether the report looks right. The risk is whether a bad report causes a bad decision before anyone catches it.</p>
+
+      <p>This is also why "no PMS access required" works as a first pilot. Scheduled exports are enough if the workflow tracks source identity, business-date rules, duplicates, missing-file behavior, and approvals. You do not need the perfect integration to prove the value of a reliable morning operating brief. You need the reports your team already uses and a disciplined run behind them.</p>
+
+      <h2>Where AI belongs</h2>
+
+      <p>AI belongs after assembly and checks. It is useful for naming the exception, explaining the likely decision, drafting the first move, and turning a dense table into something a revenue or operations leader can read quickly. It is not useful as a substitute for source control.</p>
+
+      <p>The order is simple:</p>
+
+      <ul>
+        <li>Map the reports and manual steps.</li>
+        <li>Automate source intake and raw archiving.</li>
+        <li>Run checks for dates, duplicates, schema changes, and missing files.</li>
+        <li>Assemble the brief.</li>
+        <li>Then let AI interpret the checked output, with the run caveats included.</li>
+      </ul>
+
+      <p>That sequence is less exciting than promising an AI dashboard. It is also the sequence that survives contact with the actual morning.</p>
+
+      <a class="back-link" href="/blog/">&larr; Back to all posts</a>
+
+      <div class="cta-block">
+        <h2>Want to see where your reporting workflow is fragile?</h2>
+        <p>Start by mapping the source reports, owners, arrival times, and failure points. That is the same inventory used to scope a fixed pilot.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="button primary" href="/source-report-inventory/">Use the source report inventory</a>
+          <a class="button" style="color:#fffaf1;border:1px solid rgba(255,250,241,0.3);background:transparent" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="wrap">
+    <a href="/">Hotel Report Automation</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/source-report-inventory/">Source report inventory</a> &middot; <a href="/workflow-review-prep/">Workflow review prep</a> &middot; <a href="/morning-report-workflow-audit/">Workflow audit</a> &middot; <a href="/report-stack-mapper/">Report stack mapper</a> &middot; <a href="/privacy/">Privacy</a>
+  </footer>
+</body>
+</html>
