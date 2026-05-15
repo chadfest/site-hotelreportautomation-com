@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hotel Reporting Automation Proof Pack | Hotel Report Automation</title>
+  <meta name="description" content="A public-safe proof pack showing the source inventory, run log, missing-file rules, QA matrix, sample brief, and handoff artifacts behind a hotel reporting automation pilot.">
+  <link rel="canonical" href="https://hotelreportautomation.com/proof-pack/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hotelreportautomation.com/proof-pack/">
+  <meta property="og:title" content="Hotel Reporting Automation Proof Pack">
+  <meta property="og:description" content="Inspect the operating artifacts behind a fixed-scope hotel reporting automation pilot.">
+  <style>
+    :root { --ink:#111916; --muted:#617069; --bg:#f8f3e8; --paper:#fffaf1; --sheet:#fffdf7; --line:#ded2c1; --green:#123c35; --green2:#0b2925; --copper:#a95732; --amber:#f0c75a; --red:#8f2f28; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; color: var(--ink); font-family: Verdana, Geneva, Arial, sans-serif; background: var(--bg); line-height: 1.6; }
+    a { color: inherit; }
+    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 68px; }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 850; font-size: 15px; }
+    .mark { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 8px; display: grid; place-items: center; background: var(--paper); }
+    .navlinks { display: flex; align-items: center; gap: 18px; font-size: 14px; font-weight: 750; }
+    .navlinks a { text-decoration: none; color: var(--muted); }
+    .navlinks .book { color: #fffaf1; background: var(--green); padding: 10px 14px; border-radius: 999px; }
+    .hero { padding: 76px 0 64px; border-top: 1px solid rgba(17,25,22,.08); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--copper); font-size: 12px; font-weight: 850; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--copper); }
+    h1 { margin: 18px 0; max-width: 960px; font-size: clamp(38px, 5.6vw, 78px); line-height: .98; letter-spacing: 0; }
+    .lead { max-width: 790px; color: var(--muted); font-size: clamp(17px, 1.7vw, 21px); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 18px; border-radius: 999px; text-decoration: none; font-weight: 850; font-size: 14px; border: 1px solid transparent; }
+    .primary { color: #fffaf1; background: var(--green); }
+    .secondary { color: var(--green); border-color: var(--line); background: var(--paper); }
+    .section { padding: 70px 0; border-top: 1px solid rgba(17,25,22,.1); }
+    .band { background: #fffaf1; }
+    h2 { margin: 0 0 14px; max-width: 800px; font-size: clamp(28px, 3.3vw, 48px); line-height: 1.06; }
+    .section > .wrap > p, .section-text { max-width: 760px; color: var(--muted); font-size: 18px; }
+    .artifact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 30px; }
+    .artifact { min-height: 245px; padding: 20px; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); }
+    .artifact small { display: block; margin-bottom: 12px; color: var(--copper); font-size: 11px; font-weight: 850; text-transform: uppercase; }
+    .artifact h3 { margin: 0 0 10px; font-size: 20px; line-height: 1.18; }
+    .artifact p { margin: 0; color: var(--muted); font-size: 15px; }
+    .proof-table { margin-top: 28px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--sheet); }
+    .proof-row { display: grid; grid-template-columns: 190px 1fr 180px; gap: 18px; padding: 16px 18px; border-bottom: 1px solid var(--line); align-items: center; }
+    .proof-row:last-child { border-bottom: 0; }
+    .proof-row b { color: var(--green2); }
+    .proof-row span { color: var(--muted); font-size: 14px; }
+    .tag { justify-self: start; padding: 5px 8px; border-radius: 999px; background: #efe6d6; color: var(--green2); font-size: 11px; font-weight: 850; text-transform: uppercase; white-space: nowrap; }
+    .sample { display: grid; grid-template-columns: minmax(0,.92fr) minmax(0,1.08fr); gap: 34px; align-items: start; margin-top: 30px; }
+    .brief { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--sheet); }
+    .brief-head { display: grid; grid-template-columns: 1fr auto; gap: 18px; padding: 20px; background: var(--ink); color: #fffaf1; }
+    .brief-head strong { display: block; font-size: 18px; }
+    .brief-head span { color: rgba(255,250,241,.7); font-size: 13px; }
+    .status { align-self: start; padding: 6px 9px; border-radius: 999px; color: var(--ink); background: var(--amber); font-size: 11px; font-weight: 850; white-space: nowrap; }
+    .metrics { display: grid; grid-template-columns: repeat(4,1fr); border-bottom: 1px solid var(--line); }
+    .metric { padding: 14px; border-right: 1px solid var(--line); }
+    .metric:last-child { border-right: 0; }
+    .metric span { display: block; color: var(--muted); font-size: 10px; font-weight: 850; text-transform: uppercase; }
+    .metric strong { display: block; margin-top: 4px; font-size: 24px; line-height: 1.1; }
+    .brief-body { padding: 20px; }
+    .brief-body h3 { margin: 0 0 8px; font-size: 28px; line-height: 1.1; }
+    .brief-body p { margin: 0; color: var(--muted); }
+    .log { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--sheet); }
+    .log-row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 15px 18px; border-bottom: 1px solid var(--line); }
+    .log-row:last-child { border-bottom: 0; }
+    .log-row b { color: var(--green2); }
+    .log-row span { color: var(--muted); font-size: 14px; }
+    .qa-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 30px; }
+    .qa { padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--sheet); }
+    .qa b { display: block; margin-bottom: 7px; color: var(--green2); }
+    .qa span { color: var(--muted); font-size: 14px; }
+    .cta { display: grid; grid-template-columns: 1fr auto; gap: 28px; align-items: center; padding: 40px; border-radius: 8px; background: var(--green2); color: #fffaf1; }
+    .cta p { margin: 0; color: rgba(255,250,241,.72); }
+    footer { padding: 34px 0 46px; color: var(--muted); font-size: 13px; }
+    footer a { text-decoration: none; color: var(--muted); }
+    @media (max-width: 900px) { .artifact-grid, .sample, .qa-grid, .cta { grid-template-columns: 1fr; } .navlinks a:not(.book) { display: none; } .proof-row { grid-template-columns: 1fr; gap: 7px; } .metrics { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 620px) { .wrap { width: min(100% - 24px,1120px); } .hero { padding: 54px 0 42px; } h1 { font-size: 40px; } .brief-head, .metrics { grid-template-columns: 1fr; } .metric { border-right: 0; border-bottom: 1px solid var(--line); } .cta { padding: 26px; } }
+  </style>
+  <!-- HRA Tracking Start -->
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0b8e4b69a94a4822bcb52f78c32b3226"}'></script><!-- End Cloudflare Web Analytics -->
+  <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("R6G5YH834165");</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3HB2R4PKD3"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-3HB2R4PKD3');</script>
+  <!-- HRA Tracking End -->
+  <link rel="stylesheet" href="/assets/relaunch-2026.css">
+</head>
+<body>
+  <nav class="wrap nav"><a class="brand" href="/"><span class="mark" aria-hidden="true">HRA</span><span>Hotel Report Automation</span></a><div class="navlinks"><a href="/">Home</a><a href="/blog/">Blog</a><a href="/workflow-review-prep/">Prep</a><a href="/about/">About</a><a class="book" href="/#book">Book a review</a></div></nav>
+
+  <main>
+    <header class="wrap hero">
+      <div class="eyebrow">Proof pack</div>
+      <h1>Inspect the reliability layer before you book a workflow review.</h1>
+      <p class="lead">This is a public-safe version of the operating artifacts behind a fixed-scope hotel reporting automation pilot: source inventory, run log, missing-file rules, QA tests, sample brief, and handoff. The point is not polish. The point is whether the output can be trusted.</p>
+      <div class="actions"><a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a><a class="button secondary" href="/source-report-inventory/">Map your source reports</a></div>
+    </header>
+
+    <section class="section band">
+      <div class="wrap">
+        <h2>What a pilot has to prove.</h2>
+        <p class="section-text">A reporting automation pilot should prove more than "a script can make a file." It should prove the workflow knows what arrived, what was missing, what changed, what the output depends on, and what a human still needs to approve.</p>
+        <div class="artifact-grid">
+          <div class="artifact"><small>01</small><h3>Source inventory</h3><p>The exact reports, systems, owners, timing, required/optional status, and business-date rules before anything is built.</p></div>
+          <div class="artifact"><small>02</small><h3>Run log</h3><p>A machine-readable and human-readable record of each run: processed files, warnings, missing inputs, output links, and approval status.</p></div>
+          <div class="artifact"><small>03</small><h3>Exception behavior</h3><p>Rules for late files, duplicates, conflicting source data, changed columns, unsafe AI summaries, and reruns.</p></div>
+          <div class="artifact"><small>04</small><h3>Sample operating brief</h3><p>The morning output itself: metrics, exceptions, caveats, and first moves in the format the team will actually read.</p></div>
+          <div class="artifact"><small>05</small><h3>QA matrix</h3><p>Concrete tests for happy path, missing required file, missing optional file, duplicate conflict, wrong date, and AI caveat behavior.</p></div>
+          <div class="artifact"><small>06</small><h3>Handoff README</h3><p>Operating notes so the client knows what the workflow does, what it does not do, how to rerun it, and when to escalate.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Source inventory before automation.</h2>
+        <p class="section-text">Most reporting workflows are described too loosely. The inventory turns "we pull the PMS report and a few spreadsheets" into explicit operating inputs.</p>
+        <div class="proof-table" aria-label="Source report inventory example">
+          <div class="proof-row"><b>PMS on-the-books report</b><span>Daily email attachment, expected 7:00 AM, required for occupancy, ADR, revenue, RevPAR, and pickup sections.</span><span class="tag">Required</span></div>
+          <div class="proof-row"><b>Rate shop export</b><span>Rate-intelligence report, expected 7:15 AM, optional for rate-position notes but caveated if missing.</span><span class="tag">Optional</span></div>
+          <div class="proof-row"><b>Forecast workbook</b><span>RMS or BI workbook, expected 7:20 AM, required for forecast variance and pace context.</span><span class="tag">Required</span></div>
+          <div class="proof-row"><b>Budget / month context</b><span>Static or weekly file used for budget gaps, month-to-date commentary, and owner-facing context.</span><span class="tag">Context</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="wrap">
+        <h2>The run log is the trust layer.</h2>
+        <p class="section-text">If a brief says "raise rate for Saturday," the team should know what source data supported that recommendation and what caveats were attached.</p>
+        <div class="sample">
+          <div class="log" aria-label="Run log example">
+            <div class="log-row"><b>Status</b><span>COMPLETE_WITH_MISSING</span></div>
+            <div class="log-row"><b>Business date</b><span>2026-05-14, from PMS report control cell</span></div>
+            <div class="log-row"><b>Files expected</b><span>4 expected, 3 processed, 1 optional late</span></div>
+            <div class="log-row"><b>Warnings</b><span>Rate shop late 18m; rate-position section caveated until rerun</span></div>
+            <div class="log-row"><b>Approval</b><span>AI summary pending human review before wide send</span></div>
+          </div>
+          <div class="brief" aria-label="Sample morning operating brief">
+            <div class="brief-head"><div><strong>Daily Revenue Pulse</strong><span>Anonymized 122-room boutique hotel</span></div><div class="status">Caveated</div></div>
+            <div class="metrics">
+              <div class="metric"><span>Occupancy</span><strong>77.9%</strong></div>
+              <div class="metric"><span>ADR</span><strong>$188</strong></div>
+              <div class="metric"><span>Revenue</span><strong>$17.9k</strong></div>
+              <div class="metric"><span>7d pickup</span><strong>+14</strong></div>
+            </div>
+            <div class="brief-body"><h3>Event weekend needs rate review.</h3><p>Strong occupancy and pickup support a rate check. Rate-position detail is caveated until the late rate-shop file is processed.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>Tests before handoff.</h2>
+        <p class="section-text">A pilot is not production-like until the expected failures are tested. These are the scenarios I want covered before a hotel team depends on the brief.</p>
+        <div class="qa-grid">
+          <div class="qa"><b>Missing required PMS report</b><span>Output blocks or blanks dependent KPIs. Prior-day values are not silently reused.</span></div>
+          <div class="qa"><b>Missing optional rate shop</b><span>Output can still ship if safe, but rate-position notes are visibly caveated.</span></div>
+          <div class="qa"><b>Duplicate conflicting file</b><span>Both raw files are archived. The workflow flags conflict instead of overwriting quietly.</span></div>
+          <div class="qa"><b>Wrong business date</b><span>Date mismatch blocks or caveats the affected sections before AI interpretation runs.</span></div>
+          <div class="qa"><b>Column renamed upstream</b><span>Required field mapping fails visibly. Blank or zero is not treated as a real number.</span></div>
+          <div class="qa"><b>AI summary with missing source</b><span>The summary must cite missing inputs and avoid unsupported recommendations.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="wrap">
+        <div class="cta">
+          <div><h2 style="margin-bottom:12px">Bring your actual reports.</h2><p>A workflow review is useful when we can inspect the real source reports, timing, owners, output, and failure points.</p></div>
+          <div class="actions" style="margin-top:0"><a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a time</a><a class="button secondary" href="/workflow-review-prep/">Prep first</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">Hotel Report Automation &middot; <a href="/">Home</a> &middot; <a href="/blog/">Blog</a> &middot; <a href="/source-report-inventory/">Source inventory</a> &middot; <a href="/workflow-review-prep/">Workflow review prep</a> &middot; <a href="/about/">About Chandler</a> &middot; <a href="/privacy/">Privacy</a></footer>
+</body>
+</html>
