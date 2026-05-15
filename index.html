@@ -4,436 +4,23 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hotel Report Automation</title>
-  <meta name="description" content="Fixed-scope automation pilots for hotel teams that turn scheduled exports, rate shops, forecasts, pickup, and exception reports into run-logged morning operating briefs.">
+  <meta name="description" content="Hotel Report Automation installs the invisible preparation layer behind daily hotel reporting: source reports, checks, caveats, run logs, and a prepared morning operating view.">
   <link rel="canonical" href="https://hotelreportautomation.com/">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="/favicon.svg">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://hotelreportautomation.com/">
   <meta property="og:title" content="Hotel Report Automation">
-  <meta property="og:description" content="We automate the manual assembly behind daily hotel reporting so revenue and operations teams start with a run-logged morning operating brief.">
+  <meta property="og:description" content="Arrive to the day already prepared. Source reports collected, checked, caveated, and composed before the first decisions are made.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Hotel Report Automation">
-  <meta name="twitter:description" content="Daily hotel reporting workflows, automated from exports into a run-logged morning operating brief.">
+  <meta name="twitter:description" content="The hotel morning reporting scramble, replaced by prepared arrival.">
+  <link rel="preload" as="image" href="/assets/alpine/lodge-interior-hero.jpg">
+  <link rel="stylesheet" href="/assets/hra-alpine.css">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do you need access to our PMS?","acceptedAnswer":{"@type":"Answer","text":"Usually not for the first pilot. We start from the scheduled exports, spreadsheets, recurring emails, rate shop files, and folder outputs your team already uses."}},{"@type":"Question","name":"What does the pilot deliver?","acceptedAnswer":{"@type":"Answer","text":"A working recurring reporting workflow: source intake, cleanup, assembly, exception checks, output delivery, run logs, and handoff notes for one defined morning reporting process."}},{"@type":"Question","name":"How long does a pilot take?","acceptedAnswer":{"@type":"Answer","text":"Most fixed-scope pilots run 2 to 4 weeks after the workflow review, depending on source report quality and output complexity."}},{"@type":"Question","name":"Is this an AI dashboard?","acceptedAnswer":{"@type":"Answer","text":"No. The automation assembles the reporting workflow first. AI is used after the data is organized, where it can summarize exceptions and suggest what deserves attention."}}]}</script>
-  <style>
-    :root {
-      --ink: #111916;
-      --ink-soft: #28342f;
-      --bg: #f8f3e8;
-      --paper: #fffaf1;
-      --paper-2: #f1e7d7;
-      --line: #ded2c1;
-      --muted: #617069;
-      --green: #123c35;
-      --green-2: #0b2925;
-      --copper: #a95732;
-      --success: #1f6f54;
-      --warning: #9b5a18;
-      --danger: #8f2f28;
-      --shadow: 0 24px 60px rgba(22, 22, 16, 0.12);
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: Verdana, Geneva, Arial, sans-serif;
-      background: var(--bg);
-      line-height: 1.55;
-    }
-    a { color: inherit; }
-    h1, h2, h3, p { margin-top: 0; }
-    .wrap { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
-    .nav {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 68px;
-      color: #fffaf1;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      text-decoration: none;
-      font-weight: 850;
-      font-size: 15px;
-    }
-    .mark {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(255, 250, 241, 0.28);
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      background: rgba(255, 250, 241, 0.08);
-    }
-    .navlinks {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 14px;
-      font-weight: 750;
-    }
-    .navlinks a { text-decoration: none; color: rgba(255, 250, 241, 0.78); }
-    .navlinks .book {
-      color: var(--green-2);
-      background: #fffaf1;
-      padding: 10px 14px;
-      border-radius: 999px;
-    }
-    .hero-shell {
-      min-height: 100svh;
-      margin-top: -68px;
-      padding: 68px 0 56px;
-      background:
-        linear-gradient(105deg, rgba(11, 41, 37, 0.96) 0%, rgba(18, 60, 53, 0.94) 46%, rgba(17, 25, 22, 0.72) 100%),
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='1100' viewBox='0 0 1600 1100'%3E%3Crect width='1600' height='1100' fill='%23123c35'/%3E%3Cg opacity='.22' stroke='%23fffaf1' stroke-width='1'%3E%3Cpath d='M0 140h1600M0 280h1600M0 420h1600M0 560h1600M0 700h1600M0 840h1600M0 980h1600M160 0v1100M320 0v1100M480 0v1100M640 0v1100M800 0v1100M960 0v1100M1120 0v1100M1280 0v1100M1440 0v1100'/%3E%3C/g%3E%3Cg opacity='.23'%3E%3Crect x='955' y='130' width='360' height='260' rx='6' fill='%23fffaf1'/%3E%3Crect x='1015' y='185' width='240' height='13' fill='%23a95732'/%3E%3Crect x='1015' y='230' width='190' height='10' fill='%23123c35'/%3E%3Crect x='1015' y='260' width='250' height='10' fill='%23123c35'/%3E%3Crect x='1015' y='290' width='160' height='10' fill='%23123c35'/%3E%3C/g%3E%3C/svg%3E");
-      background-size: cover;
-      background-position: center;
-      color: #fffaf1;
-      overflow: hidden;
-    }
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 0.92fr) minmax(420px, 1.08fr);
-      gap: 42px;
-      align-items: center;
-      min-height: calc(100svh - 124px);
-      padding-top: 32px;
-    }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: rgba(255, 250, 241, 0.78);
-      font-size: 12px;
-      font-weight: 850;
-      text-transform: uppercase;
-    }
-    .eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: var(--copper);
-    }
-    h1 {
-      margin: 18px 0 20px;
-      max-width: 760px;
-      font-size: clamp(40px, 6vw, 82px);
-      line-height: 0.96;
-      letter-spacing: 0;
-    }
-    .hero p {
-      max-width: 640px;
-      color: rgba(255, 250, 241, 0.76);
-      font-size: clamp(17px, 1.7vw, 21px);
-    }
-    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 850;
-      font-size: 14px;
-      border: 1px solid transparent;
-    }
-    .primary { color: var(--green-2); background: #fffaf1; }
-    .secondary { color: #fffaf1; border-color: rgba(255, 250, 241, 0.28); background: rgba(255, 250, 241, 0.08); }
-    .brief {
-      border: 1px solid rgba(255, 250, 241, 0.22);
-      border-radius: 8px;
-      background: rgba(255, 250, 241, 0.96);
-      color: var(--ink);
-      box-shadow: 0 34px 90px rgba(0, 0, 0, 0.28);
-      overflow: hidden;
-      transform: rotate(-1.2deg);
-    }
-    .brief-top {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 20px;
-      padding: 20px 22px;
-      background: var(--ink);
-      color: #fffaf1;
-    }
-    .brief-title { font-size: 18px; font-weight: 850; }
-    .brief-meta { color: rgba(255, 250, 241, 0.62); font-size: 13px; margin-top: 4px; }
-    .run-status {
-      align-self: start;
-      padding: 6px 9px;
-      border-radius: 999px;
-      color: #bfe9ce;
-      background: rgba(31, 111, 84, 0.22);
-      font-size: 11px;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border-bottom: 1px solid var(--line);
-    }
-    .metric { padding: 16px; border-right: 1px solid var(--line); }
-    .metric:last-child { border-right: 0; }
-    .metric span {
-      display: block;
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 850;
-      text-transform: uppercase;
-    }
-    .metric strong { display: block; margin-top: 4px; font-size: 25px; line-height: 1.1; }
-    .insight { padding: 22px; border-bottom: 1px solid var(--line); }
-    .insight h2 { margin-bottom: 8px; font-size: 24px; line-height: 1.14; }
-    .insight p { margin-bottom: 0; color: var(--muted); font-size: 15px; }
-    .signal-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .signal {
-      padding: 14px 16px;
-      background: #fffaf1;
-      font-size: 13px;
-    }
-    .signal b {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--green);
-      font-size: 11px;
-      text-transform: uppercase;
-    }
-    .signal.warn b { color: var(--warning); }
-    .signal.danger b { color: var(--danger); }
-    .moves {
-      display: grid;
-      gap: 1px;
-      background: var(--line);
-    }
-    .move {
-      display: grid;
-      grid-template-columns: 96px 1fr;
-      gap: 16px;
-      padding: 15px 22px;
-      background: #fffaf1;
-      font-size: 14px;
-    }
-    .move b { color: var(--green); font-size: 12px; text-transform: uppercase; }
-    .move.warn b { color: var(--warning); }
-    .move.danger b { color: var(--danger); }
-    .run-note {
-      padding: 13px 22px;
-      color: var(--muted);
-      background: rgba(244, 247, 241, 0.84);
-      font-size: 12px;
-    }
-    .proof-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      margin-top: 0;
-      background: rgba(255, 250, 241, 0.18);
-      border-top: 1px solid rgba(255, 250, 241, 0.18);
-    }
-    .proof {
-      padding: 20px 22px;
-      background: rgba(0, 0, 0, 0.14);
-    }
-    .proof strong { display: block; font-size: 22px; }
-    .proof span { color: rgba(255, 250, 241, 0.6); font-size: 13px; }
-    .section {
-      padding: 84px 0;
-      border-top: 1px solid rgba(17, 25, 22, 0.08);
-    }
-    .section h2 {
-      margin-bottom: 14px;
-      max-width: 780px;
-      font-size: clamp(28px, 3.5vw, 48px);
-      line-height: 1.06;
-      letter-spacing: 0;
-    }
-    .section > p {
-      max-width: 760px;
-      color: var(--muted);
-      font-size: 18px;
-    }
-    .band { background: #fffaf1; }
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 34px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: var(--line);
-    }
-    .flow-step {
-      min-height: 220px;
-      padding: 24px;
-      background: #fffaf1;
-    }
-    .flow-step small {
-      display: block;
-      color: var(--copper);
-      font-weight: 850;
-      margin-bottom: 12px;
-      text-transform: uppercase;
-    }
-    .flow-step h3 { margin-bottom: 10px; font-size: 20px; line-height: 1.18; }
-    .flow-step p { color: var(--muted); margin-bottom: 0; font-size: 15px; }
-    .artifact {
-      display: grid;
-      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-      gap: 34px;
-      align-items: center;
-      margin-top: 32px;
-    }
-    .source-list {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fffaf1;
-      overflow: hidden;
-    }
-    .source-row {
-      display: grid;
-      grid-template-columns: 26px 1fr auto;
-      gap: 12px;
-      align-items: center;
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--line);
-      font-size: 14px;
-    }
-    .source-row:last-child { border-bottom: 0; }
-    .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--success); }
-    .dot.warn { background: var(--warning); }
-    .pill {
-      padding: 5px 8px;
-      border-radius: 999px;
-      background: var(--paper-2);
-      color: var(--muted);
-      font-size: 11px;
-      font-weight: 850;
-      white-space: nowrap;
-    }
-    .split {
-      display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
-      gap: 42px;
-      align-items: start;
-    }
-    .plain-list { display: grid; gap: 18px; margin-top: 24px; }
-    .plain-item {
-      padding-bottom: 18px;
-      border-bottom: 1px solid rgba(17, 25, 22, 0.12);
-    }
-    .plain-item h3 { margin-bottom: 6px; font-size: 18px; }
-    .plain-item p { margin-bottom: 0; color: var(--muted); }
-    .pilot-table {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      background: #fffaf1;
-    }
-    .pilot-row {
-      display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 20px;
-      padding: 22px;
-      border-bottom: 1px solid var(--line);
-    }
-    .pilot-row:last-child { border-bottom: 0; }
-    .pilot-row b { color: var(--green); }
-    .tools {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      margin-top: 28px;
-    }
-    .tool {
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fffaf1;
-      text-decoration: none;
-      transition: transform 160ms ease, border-color 160ms ease;
-    }
-    .tool:hover { transform: translateY(-2px); border-color: rgba(169, 87, 50, 0.5); }
-    .tool h3 { margin-bottom: 6px; font-size: 16px; }
-    .tool p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
-    .cta {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 28px;
-      align-items: center;
-      padding: 44px;
-      border-radius: 8px;
-      background: var(--green-2);
-      color: #fffaf1;
-    }
-    .cta p { margin-bottom: 0; color: rgba(255, 250, 241, 0.72); }
-    .faq { display: grid; gap: 8px; margin-top: 28px; max-width: 900px; }
-    details {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #fffaf1;
-      overflow: hidden;
-    }
-    summary {
-      cursor: pointer;
-      list-style: none;
-      padding: 19px 20px;
-      font-weight: 850;
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; color: var(--muted); }
-    details[open] summary::after { content: "-"; }
-    details p { margin: 0; padding: 0 20px 20px; color: var(--muted); }
-    footer {
-      padding: 34px 0 46px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-    footer a { text-decoration: none; color: var(--muted); }
-
-    @media (max-width: 960px) {
-      .hero, .artifact, .split, .cta { grid-template-columns: 1fr; }
-      .hero { align-items: start; }
-      .brief { transform: none; }
-      .flow, .tools, .proof-strip { grid-template-columns: 1fr; }
-      .navlinks a:not(.book) { display: none; }
-    }
-    @media (max-width: 620px) {
-      .wrap { width: min(100% - 24px, 1120px); }
-      .hero-shell { min-height: auto; }
-      .hero { min-height: auto; padding: 48px 0 10px; }
-      h1 { font-size: 42px; }
-      .brief-top, .metrics, .signal-grid, .move, .pilot-row { grid-template-columns: 1fr; }
-      .metric { border-right: 0; border-bottom: 1px solid var(--line); }
-      .metric:last-child { border-bottom: 0; }
-      .cta { padding: 26px; }
-      .nav { align-items: flex-start; }
-    }
-  </style>
   <!-- HRA Tracking Start -->
   <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0b8e4b69a94a4822bcb52f78c32b3226"}'></script><!-- End Cloudflare Web Analytics -->
   <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("R6G5YH834165");</script>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3HB2R4PKD3"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -441,212 +28,221 @@
     gtag('js', new Date());
     gtag('config', 'G-3HB2R4PKD3');
   </script>
-  <!-- End Google tag -->
   <!-- HRA Tracking End -->
-  <link rel="stylesheet" href="/assets/relaunch-2026.css">
 </head>
 <body>
-  <div class="hero-shell">
-    <nav class="wrap nav">
-      <a class="brand" href="/">
-        <span class="mark" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 5.5h14M4 11h14M4 16.5h8" stroke="#fffaf1" stroke-width="2" stroke-linecap="round"/>
-            <path d="M14 14l2.2 2.2L20 12.4" stroke="#d89b73" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </span>
-        <span>Hotel Report Automation</span>
-      </a>
-      <div class="navlinks">
-        <a href="/start-here/">Start here</a>
-        <a href="#pilot">Pilot</a>
-        <a href="/proof-pack/">Proof</a>
-        <a href="/report-stack-mapper/">Tools</a>
-        <a href="/blog/">Blog</a>
-        <a href="/about/">About</a>
-        <a class="book" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a review</a>
-      </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Primary">
+    <a class="brand" href="/">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span>Hotel Report Automation</span>
+    </a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="/proof-pack/">Proof</a>
+      <a href="/workflow-review-prep/">Prep</a>
+      <a href="/report-stack-mapper/">Tools</a>
+      <a href="/blog/">Notes</a>
+      <a class="nav-action" href="#start">Map one workflow</a>
     </nav>
+  </header>
 
-    <header class="wrap hero">
-      <div>
-        <div class="eyebrow">Export-first hotel reporting automation</div>
-        <h1>Reliable morning briefs from the reports your team already exports.</h1>
-        <p>We map the manual reporting workflow, automate the scheduled exports and checks, and deliver a run-logged operating brief in a fixed-scope pilot. No PMS access required for the first pass.</p>
-        <div class="actions">
-          <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
-          <a class="button secondary" href="/proof-pack/">Inspect the proof pack</a>
+  <main id="main">
+    <section class="arrival-hero" aria-labelledby="hero-title">
+      <div class="hero-image" aria-hidden="true">
+        <img src="/assets/alpine/lodge-interior-hero.jpg" alt="">
+        <div class="curtain left"></div>
+        <div class="curtain right"></div>
+        <div class="snowlight"></div>
+      </div>
+
+      <div class="hero-copy reveal">
+        <p class="kicker">Hotel Report Automation</p>
+        <h1 id="hero-title">Arrive to the day already prepared.</h1>
+        <p class="hero-lede">Source reports collected, checked, caveated, and composed into the operating view your team needs before the first decisions are made.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/proof-pack/">See the proof pack</a>
+          <a class="button secondary" href="#start">Map one reporting workflow</a>
         </div>
       </div>
 
-      <aside class="brief" id="example" aria-label="Anonymized hotel morning operating brief">
-        <div class="brief-top">
-          <div>
-            <div class="brief-title">Daily Revenue Pulse</div>
-            <div class="brief-meta">Anonymized 122-room boutique hotel - Tuesday morning</div>
-          </div>
-          <div class="run-status">Run complete</div>
-        </div>
-        <div class="metrics">
-          <div class="metric"><span>Occupancy</span><strong>77.9%</strong></div>
-          <div class="metric"><span>ADR</span><strong>$188</strong></div>
-          <div class="metric"><span>Revenue</span><strong>$17.9k</strong></div>
-          <div class="metric"><span>7d pickup</span><strong style="color:var(--success)">+14</strong></div>
-        </div>
-        <div class="insight">
-          <h2>Event weekend is underpriced — comp set running $40 higher on Saturday.</h2>
-          <p>Strong occupancy for the citywide event, but ADR is materially below comp average. Saturday still has 51 rooms available with own rates $24-$40 below comp.</p>
-        </div>
-        <div class="signal-grid">
-          <div class="signal"><b>Opportunity</b><span>Raise BAR to $285 Fri / $325 Sat while event pickup is still open.</span></div>
-          <div class="signal danger"><b>Risk</b><span>Missing event ADR will drag month RevPAR and budget ADR.</span></div>
-          <div class="signal warn"><b>Watch</b><span>Soft Sundays at 22-25% occupancy need demand generation this week.</span></div>
-        </div>
-        <div class="moves">
-          <div class="move"><b>Move 1</b><span>Raise BAR for the event weekend before the next pickup window closes.</span></div>
-          <div class="move"><b>Move 2</b><span>Push transient rates for citywide event days — currently $194 against a $309 comp average.</span></div>
-          <div class="move warn"><b>Move 3</b><span>Activate promotions for soft Sunday dates before the weekend.</span></div>
-        </div>
-        <div class="run-note">Anonymized hotel - internal reporting - pickup since prior day - generated automatically</div>
-      </aside>
-    </header>
+      <div class="prepared-strip" aria-label="Prepared morning layers">
+        <span>Source reports</span>
+        <span>Timing checks</span>
+        <span>Run log</span>
+        <span>Operating view</span>
+      </div>
+    </section>
 
-    <div class="wrap proof-strip" aria-label="Proof points">
-      <div class="proof"><strong>Exports first</strong><span>Scheduled reports, inboxes, folders, no PMS access for the first pilot.</span></div>
-      <div class="proof"><strong>Run logged</strong><span>Source status, missing-file rules, caveats, and approval gates.</span></div>
-      <div class="proof"><strong>2-4 week pilot</strong><span>One recurring reporting workflow, fixed scope, working handoff.</span></div>
-    </div>
-  </div>
+    <section class="quiet-section opening" aria-labelledby="opening-title">
+      <div class="section-inner reveal">
+        <p class="section-kicker">The feeling</p>
+        <h2 id="opening-title">The hotel morning opens before the scramble starts.</h2>
+        <p>The daily numbers already exist. The relief comes when the view is prepared, the caveats are named, and the team starts from calm command instead of reconstruction.</p>
+      </div>
+    </section>
 
-  <main>
-    <section class="section band">
-      <div class="wrap">
-        <h2>The hard part is the daily assembly layer.</h2>
-        <p>Most hotel teams already have the numbers. The drag is getting the right files into the right shape early enough for revenue and operations decisions.</p>
-        <div class="flow" aria-label="Workflow from source reports to operating brief">
-          <div class="flow-step"><small>01</small><h3>Source reports arrive</h3><p>PMS exports, pickup reports, rate shop files, forecasts, channel notes, and spreadsheets land by email or in folders.</p></div>
-          <div class="flow-step"><small>02</small><h3>Checks run</h3><p>The workflow resolves business dates, catches duplicates, flags late files, and records what was used.</p></div>
-          <div class="flow-step"><small>03</small><h3>Brief assembles</h3><p>Tables, exception notes, rate deltas, pickup, and portfolio summaries are created in the format your team uses.</p></div>
-          <div class="flow-step"><small>04</small><h3>AI interprets</h3><p>Only after assembly, AI summarizes the exceptions, names the first move, and explains caveats.</p></div>
+    <section class="source-dawn" aria-labelledby="source-title">
+      <div class="section-head reveal">
+        <p class="section-kicker">Before sunrise</p>
+        <h2 id="source-title">What used to be a chase becomes an overnight run.</h2>
+      </div>
+
+      <div class="source-board reveal" aria-label="Hotel reporting sources">
+        <div class="source-line">
+          <span>PMS export</span>
+          <strong>Received 6:32</strong>
+        </div>
+        <div class="source-line">
+          <span>Pickup report</span>
+          <strong>Received 6:38</strong>
+        </div>
+        <div class="source-line">
+          <span>Rate shop</span>
+          <strong>Received 6:45</strong>
+        </div>
+        <div class="source-line caveat">
+          <span>Forecast workbook</span>
+          <strong>Late 18m</strong>
+        </div>
+        <div class="source-line">
+          <span>Brief composed</span>
+          <strong>Ready 7:12</strong>
         </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap artifact">
-        <div>
-          <h2>Reliability is the product.</h2>
-          <p>A morning report is only useful if the team trusts the run. The pilot includes the unglamorous pieces that make automation usable in real hotel operations.</p>
-          <div class="plain-list">
-            <div class="plain-item"><h3>Missing-file behavior</h3><p>Required and optional reports are handled differently, with clear warnings instead of silent failures.</p></div>
-            <div class="plain-item"><h3>Business-date rules</h3><p>The system knows whether a late-night export belongs to yesterday, today, or the next operating day.</p></div>
-            <div class="plain-item"><h3>Approval gates</h3><p>Human review stays where judgment matters, especially before AI-written summaries go out broadly.</p></div>
-            <a class="button secondary" style="justify-self:start;color:var(--green);border-color:var(--line);background:#fffaf1" href="/proof-pack/">Inspect the proof pack</a>
-          </div>
+    <section class="preparation-layer" aria-labelledby="prep-title">
+      <div class="section-head reveal">
+        <p class="section-kicker">Invisible preparation layer</p>
+        <h2 id="prep-title">The service happens before anyone asks.</h2>
+      </div>
+
+      <div class="run-rail" aria-label="Preparation workflow">
+        <article class="run-step reveal">
+          <span>01</span>
+          <h3>Collect the sources.</h3>
+          <p>Scheduled exports, inbox attachments, folders, forecasts, rate shops, and property notes are gathered from the places your team already uses.</p>
+        </article>
+        <article class="run-step reveal">
+          <span>02</span>
+          <h3>Check the morning.</h3>
+          <p>Business dates, duplicate files, missing required inputs, late optional reports, and stale numbers are surfaced before the brief is trusted.</p>
+        </article>
+        <article class="run-step reveal">
+          <span>03</span>
+          <h3>Compose the view.</h3>
+          <p>Revenue, occupancy, pickup, forecast, rate position, and exceptions are shaped into the operating view the team can actually use.</p>
+        </article>
+        <article class="run-step reveal">
+          <span>04</span>
+          <h3>Carry the caveats.</h3>
+          <p>The run log travels with the output, so the team knows what arrived, what failed, what changed, and what still needs judgment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="view-section" aria-labelledby="view-title">
+      <div class="view-copy reveal">
+        <p class="section-kicker">The view</p>
+        <h2 id="view-title">A prepared operating brief, not another dashboard to babysit.</h2>
+        <p>The first workflow turns daily reporting into a morning ritual: the source layer runs, the exceptions surface, and the team opens the day with the prepared view.</p>
+      </div>
+
+      <div class="operating-folio reveal" aria-label="Anonymized sample operating brief">
+        <div class="folio-top">
+          <span>Daily Revenue Pulse</span>
+          <strong>Run complete</strong>
         </div>
-        <div class="source-list" aria-label="Example run log">
-          <div class="source-row"><span class="dot"></span><strong>PMS daily detail</strong><span class="pill">received 6:42</span></div>
-          <div class="source-row"><span class="dot"></span><strong>Pickup export</strong><span class="pill">received 6:44</span></div>
-          <div class="source-row"><span class="dot"></span><strong>Rate shop</strong><span class="pill">received 6:51</span></div>
-          <div class="source-row"><span class="dot warn"></span><strong>Forecast workbook</strong><span class="pill">late 18m</span></div>
-          <div class="source-row"><span class="dot"></span><strong>Morning brief</strong><span class="pill">sent 7:15</span></div>
+        <div class="folio-metrics">
+          <div><span>Occupancy</span><strong>77.9%</strong></div>
+          <div><span>ADR</span><strong>$188</strong></div>
+          <div><span>Revenue</span><strong>$17.9k</strong></div>
+          <div><span>7d pickup</span><strong>+14</strong></div>
+        </div>
+        <div class="folio-insight">
+          <p>Event weekend is underpriced. Comp set is running $40 higher on Saturday while 51 rooms remain available.</p>
+        </div>
+        <div class="folio-actions">
+          <div><b>Opportunity</b><span>Raise BAR before the next pickup window closes.</span></div>
+          <div class="warning"><b>Watch</b><span>Soft Sunday dates need demand generation this week.</span></div>
+          <div><b>Caveat</b><span>Forecast workbook arrived late and is flagged in the run log.</span></div>
         </div>
       </div>
     </section>
 
-    <section class="section band" id="pilot">
-      <div class="wrap split">
-        <div>
-          <h2>A focused pilot, not a forever implementation.</h2>
-          <p>The first engagement turns one recurring reporting workflow into a working operating brief. Scope is fixed after the workflow review.</p>
-          <div class="actions">
-            <a class="button primary" style="background:var(--green);color:#fffaf1" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a workflow review</a>
-            <a class="button secondary" style="color:var(--green);border-color:var(--line);background:#fffaf1" href="/workflow-review-prep/">Prep for the review</a>
-          </div>
-        </div>
-        <div class="pilot-table">
-          <div class="pilot-row"><b>Map</b><span>Inputs, owners, timing, manual edits, formulas, output audience, and failure points.</span></div>
-          <div class="pilot-row"><b>Build</b><span>Source intake, cleanup, assembly, formatting, exception checks, run log, and output delivery.</span></div>
-          <div class="pilot-row"><b>Handoff</b><span>Operating notes, rerun process, caveats, approval gates, and expansion options.</span></div>
-        </div>
+    <section class="assurance" id="proof" aria-labelledby="proof-title">
+      <div class="section-head reveal">
+        <p class="section-kicker">Assurance</p>
+        <h2 id="proof-title">The magic is inspectable.</h2>
+        <p>The proof layer shows what arrived, what failed, what the system refused to guess, and what a human still approves.</p>
+      </div>
+
+      <div class="proof-ledger reveal" aria-label="Reliability proof artifacts">
+        <a href="/proof-pack/"><span>Proof pack</span><strong>Source inventory, run log, exception behavior, sample brief, QA matrix, handoff README.</strong></a>
+        <a href="/blog/run-log-before-ai-summary/"><span>Run-log note</span><strong>Why the run log matters before AI summarizes anything.</strong></a>
+        <a href="/source-report-inventory/"><span>Source inventory</span><strong>Map reports, owners, timing, required status, and reliability risk.</strong></a>
+        <a href="/workflow-review-prep/"><span>Workflow prep</span><strong>Bring the real inputs, failure points, output, and manual steps.</strong></a>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap">
-        <h2>Use the free tools if you want to inspect the workflow first.</h2>
-        <p>These are not lead magnets in costume. They are the same framing used to scope a real pilot: source reports, timing risk, manual steps, and target output.</p>
-        <div class="tools">
-          <a class="tool" href="/morning-report-workflow-audit/"><h3>Workflow audit</h3><p>Score the fragility of your current morning reporting process.</p></a>
-          <a class="tool" href="/report-stack-mapper/"><h3>Report stack mapper</h3><p>Map the reports, owners, arrival times, and automation fit.</p></a>
-          <a class="tool" href="/hotel-morning-report-template/"><h3>Morning report template</h3><p>Use a cleaner target format before automating anything.</p></a>
-        </div>
+    <section class="installation" id="start" aria-labelledby="start-title">
+      <div class="installation-copy reveal">
+        <p class="section-kicker">The first installation</p>
+        <h2 id="start-title">Start with one recurring workflow.</h2>
+        <p>We map the inputs, define the checks, build the run, and deliver the prepared operating view your team can use every morning. Exports are enough for the first pass.</p>
+      </div>
+
+      <div class="installation-steps reveal">
+        <div><span>Map</span><p>Reports, owners, timing, manual edits, output audience, and failure points.</p></div>
+        <div><span>Build</span><p>Source intake, archive, checks, assembly, caveats, run log, and delivery.</p></div>
+        <div><span>Handoff</span><p>Operating notes, rerun path, approval rules, and the next workflow to consider.</p></div>
+      </div>
+
+      <div class="final-actions reveal">
+        <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Map one reporting workflow</a>
+        <a class="button secondary dark" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20workflow%20review&body=Hi%20Chandler%2C%0A%0AI%27d%20like%20to%20review%20a%20hotel%20reporting%20workflow.%0A%0ACompany%3A%0AReports%20involved%3A%0AWho%20uses%20the%20output%3A%0AWhat%20is%20manual%20today%3A%0ATwo%20times%20that%20work%3A%0A">Email the workflow</a>
       </div>
     </section>
 
-    <section class="section band">
-      <div class="wrap split">
-        <div>
-          <h2>Built by someone who looks for the human middleware.</h2>
-          <p>Chandler Mahaney builds practical automation around the work hotel teams already do: exports, inboxes, spreadsheets, scheduled reports, review notes, and morning decisions. The goal is not to replace judgment. It is to stop wasting judgment on assembly.</p>
-        </div>
-        <div class="plain-list" style="margin-top:0">
-          <div class="plain-item"><h3>No PMS access required for the first pilot</h3><p>Exports and scheduled reports are often enough to prove value quickly.</p></div>
-          <div class="plain-item"><h3>AI after assembly</h3><p>Interpretation becomes useful once the source data has been cleaned and checked.</p></div>
-          <div class="plain-item"><h3>Fixed-scope delivery</h3><p>The pilot has a defined workflow, output, timeline, and handoff.</p></div>
-          <a class="button secondary" style="justify-self:start;color:var(--green);border-color:var(--line);background:#fffaf1" href="/about/">About Chandler</a>
-        </div>
+    <section class="faq-section" aria-labelledby="faq-title">
+      <div class="section-head reveal">
+        <p class="section-kicker">Questions</p>
+        <h2 id="faq-title">Practical by design.</h2>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <h2>Common questions.</h2>
-        <div class="faq">
-          <details>
-            <summary>Do you need access to our PMS?</summary>
-            <p>Usually not for the first pilot. We start from the scheduled exports, spreadsheets, recurring emails, rate shop files, and folder outputs your team already uses.</p>
-          </details>
-          <details>
-            <summary>What does the pilot deliver?</summary>
-            <p>A working recurring reporting workflow: source intake, cleanup, assembly, exception checks, output delivery, run logs, and handoff notes for one defined morning reporting process.</p>
-          </details>
-          <details>
-            <summary>How long does a pilot take?</summary>
-            <p>Most fixed-scope pilots run 2 to 4 weeks after the workflow review, depending on source report quality and output complexity.</p>
-          </details>
-          <details>
-            <summary>Is this an AI dashboard?</summary>
-            <p>No. The automation assembles the reporting workflow first. AI is used after the data is organized, where it can summarize exceptions and suggest what deserves attention.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="book">
-      <div class="wrap">
-        <div class="cta">
-          <div>
-            <h2 style="margin-bottom:12px">Book a reporting workflow review.</h2>
-            <p>Bring the reports, the current output, and the manual steps. We will identify the fastest pilot with the clearest operating value.</p>
-          </div>
-          <div class="actions" style="margin-top:0">
-            <a class="button primary" href="https://calendar.app.google/EZMLNB919eyVULcDA" target="_blank" rel="noopener">Book a time</a>
-            <a class="button secondary" href="mailto:chandler@hotelreportautomation.com?subject=Reporting%20workflow%20review&body=Hi%20Chandler%2C%0A%0AI%27d%20like%20to%20review%20a%20hotel%20reporting%20workflow.%0A%0ACompany%3A%0AReports%20involved%3A%0AWho%20uses%20the%20output%3A%0AWhat%20is%20manual%20today%3A%0ATwo%20times%20that%20work%3A%0A">Email instead</a>
-          </div>
-        </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>Do you need access to our PMS?</summary>
+          <p>Usually not for the first pilot. We start from the scheduled exports, spreadsheets, recurring emails, rate shop files, and folder outputs your team already uses.</p>
+        </details>
+        <details>
+          <summary>What does the pilot deliver?</summary>
+          <p>A working recurring reporting workflow: source intake, cleanup, assembly, exception checks, output delivery, run logs, and handoff notes for one defined morning reporting process.</p>
+        </details>
+        <details>
+          <summary>How long does a pilot take?</summary>
+          <p>Most fixed-scope pilots run 2 to 4 weeks after the workflow review, depending on source report quality and output complexity.</p>
+        </details>
+        <details>
+          <summary>Is this an AI dashboard?</summary>
+          <p>No. The workflow assembles and checks the reporting layer first. AI is used after the source view is organized, where it can summarize exceptions and suggest what deserves attention.</p>
+        </details>
       </div>
     </section>
   </main>
 
-  <footer class="wrap">
-    Hotel Report Automation · Reporting workflow automation for hotel revenue and operations teams. ·
-    <a href="/start-here/">Start here</a> ·
-    <a href="/proof-pack/">Proof pack</a> ·
-    <a href="/workflow-review-prep/">Workflow review prep</a> ·
-    <a href="/about/">About Chandler</a> ·
-    <a href="/blog/">Blog</a> ·
-    <a href="/privacy/">Privacy</a>
+  <footer class="site-footer">
+    <div>
+      <strong>Hotel Report Automation</strong>
+      <span>The hotel morning, prepared before the day begins.</span>
+      <span class="image-credit">Hero image: <a href="https://commons.wikimedia.org/wiki/File:Inside_Timberline_Lodge_-_The_Mountain_View.jpg" target="_blank" rel="noopener">Raven Winters</a> / <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Cropped and resized.</span>
+    </div>
+    <nav aria-label="Footer navigation">
+      <a href="/proof-pack/">Proof pack</a>
+      <a href="/workflow-review-prep/">Prep</a>
+      <a href="/about/">About Chandler</a>
+      <a href="/privacy/">Privacy</a>
+    </nav>
   </footer>
 </body>
 </html>
